@@ -21,6 +21,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
+
 ### Raeeda Ibnat Hossain 
 
 <img src="images/rae2480.png" width="200px">
@@ -31,31 +32,40 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Xu Zhehao
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/xzh119.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/xzh119)] [[portfolio](team/xzh119.md)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role: Team Lead
+* Responsibilities: UI
 
-### Jean Doe
+### Timothy Soon
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/soonami69.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/soonami69)] [[portfolio](team/soonami69.md)]
+
+* Role: Integration
+* Responsibilities: Scheduling and Tracking
+
+### Sun Ze Dong
+
+<img src="images/zedonggg.png" width="200px">
+
+[[github](https://github.com/zedonggg)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Hrishikesh Sathyian
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/hrishikeshsathyian.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/hrishikeshsathyian)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Full Stack
