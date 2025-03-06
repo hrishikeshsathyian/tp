@@ -31,14 +31,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Timothy Soon
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/soonami69.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/soonami69)] [[portfolio](team/soonami69.md)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role: Integration
+* Responsibilities: Scheduling and Tracking
 
 ### Jean Doe
 
