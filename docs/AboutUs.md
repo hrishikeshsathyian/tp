@@ -40,11 +40,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Sun Ze Dong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/zedonggg.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/zedonggg)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
