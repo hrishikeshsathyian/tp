@@ -22,7 +22,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Project Advisor
 
 
-### Raeeda Ibnat Hossain 
+### Raeeda Ibnat Hossain
 
 <img src="images/rae2480.png" width="200px">
 
