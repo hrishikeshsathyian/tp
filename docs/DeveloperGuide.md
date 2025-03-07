@@ -287,14 +287,24 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                     | So that I can…​                                                        |
+|----------|--------------------------------------------|-------------------------------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                   | see usage instructions                          | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                       | create a new wedding folder with a unique name | organize wedding details separately                                    |
+| `* * *`  | user                                       | open a wedding by its name                     | manage its details                                                     |
+| `* * *`  | user                                       | close an open wedding                          | open a different wedding                                              |
+| `* * *`  | user                                       | add a new person’s contact details to a wedding | track attendees and their information                                 |
+| `* * *`  | user                                       | find a person by name                          | quickly locate their details                                          |
+| `* * *`  | user                                       | search using partial name matching             | find people even if I don’t remember their full name                   |
+| `* * *`  | user                                       | filter search results by guests, staff, or couple | narrow down results                                                  |
+| `* * *`  | user                                       | delete a person from a wedding                 | remove incorrect or outdated entries                                  |
+| `* * *`  | user                                       | be asked for confirmation before deletion      | avoid deleting someone by mistake                                    |
+| `* * *`  | user                                       | have my wedding data saved automatically       | avoid losing my progress                                             |
+| `* * *`  | user                                       | retrieve my saved data when restarting the app | continue managing weddings from where I left off                     |
+| `* * *`  | user                                       | have data persist even after closing the app   | ensure my information remains intact                                 |
+| `* *`    | user                                       | hide private contact details                   | minimize chance of someone else seeing them by accident              |
+| `*`      | user with many persons in the address book | sort persons by name                           | locate a person easily                                               |
+
 
 *{More to be added}*
 
