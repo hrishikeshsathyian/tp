@@ -339,7 +339,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-
+* **Client**:  A couple or individual using the wedding planner’s services to organize their wedding
+* **Vendor**: A service provider (e.g., caterers, florists, photographers) who collaborates with the wedding planner
+* **Invitation**: A digital or physical wedding invitation managed and tracked within the system
+* **Event Timeline**: A structured schedule outlining key wedding milestones and deadlines
+* **Vendor Coordination**: The process of managing communication and contracts with wedding vendors
+* **Reminder Notifications**: Automated alerts to keep planners on schedule with tasks
+* **Error Message**: A message displayed when an invalid operation occurs
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
