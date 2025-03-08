@@ -11,3 +11,4 @@ HappyEverAfter is the ultimate wedding planning hub, streamlining client and ven
 
 ## Acknowledgement
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+
