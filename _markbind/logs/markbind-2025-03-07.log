@@ -1,0 +1,19 @@
+2025-03-07T14:39:06.228Z - error: No config file found in parent directories of /Users/raeeda/Desktop/Code/2103T/tp
+2025-03-07T14:39:06.233Z - error: uncaughtException: The "path" argument must be of type string. Received undefined date=Fri Mar 07 2025 22:39:06 GMT+0800 (Singapore Standard Time), pid=27367, uid=501, gid=20, cwd=/Users/raeeda/Desktop/Code/2103T/tp, execPath=/Users/raeeda/.nvm/versions/node/v22.13.1/bin/node, version=v22.13.1, argv=[/Users/raeeda/.nvm/versions/node/v22.13.1/bin/node, /Users/raeeda/.nvm/versions/node/v22.13.1/bin/markbind, serve], rss=118505472, heapTotal=65388544, heapUsed=34639296, external=2296755, arrayBuffers=16875, loadavg=[1.921875, 1.97998046875, 1.87548828125], uptime=3376165
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at Object.join (node:path:1268:7)
+    at serve (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/src/cmd/serve.js:57:27)
+    at Command.<anonymous> (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/index.js:62:5)
+    at Command.listener [as _actionHandler] (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/node_modules/commander/lib/command.js:488:17)
+    at /Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/node_modules/commander/lib/command.js:1227:65
+    at Command._chainOrCall (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/node_modules/commander/lib/command.js:1144:12)
+    at Command._parseCommand (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/node_modules/commander/lib/command.js:1227:27)
+    at Command._dispatchSubcommand (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/node_modules/commander/lib/command.js:1050:25)
+    at Command._parseCommand (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/node_modules/commander/lib/command.js:1193:19)
+    at Command.parse (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/node_modules/commander/lib/command.js:897:10)
+    at Object.<anonymous> (/Users/raeeda/.nvm/versions/node/v22.13.1/lib/node_modules/markbind-cli/index.js:87:9)
+    at Module._compile (node:internal/modules/cjs/loader:1562:14)
+    at Object..js (node:internal/modules/cjs/loader:1699:10)
+    at Module.load (node:internal/modules/cjs/loader:1313:32)
+    at Function._load (node:internal/modules/cjs/loader:1123:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
