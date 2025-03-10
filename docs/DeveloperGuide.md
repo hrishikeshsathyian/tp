@@ -302,14 +302,69 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Creating a new wedding**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User creates a new wedding
+2. HappilyEverAfter provides confirmation that the wedding has been created
+
+     Use case ends.
+
+**Extensions**
+
+* 2a. There exists a wedding with the same name.
+
+  2ai. HappilyEverAfter shows an error message.
+
+    Use case resumes at step 1.
+
+  Use case ends.
+
+* 2b. Wedding name provided is in an invalid format.
+  
+  2bi. HappilyEverAfter shows an error message.
+
+    Use case resumes at step 2.
+
+
+**Use case: Adding a person to a wedding**
+
+**MSS**
+
+1. User requests to list weddings
+2. HappilyEverAfter shows a list of weddings
+3. User opens the wedding they want
+4. HappilyEverAfter provides confirmation that the wedding has been opened
+5. User adds contact information of person
+6. HappilyEverAfter acts the person to that wedding.
+
+     Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 5a. Contact information provided is in an invalid format.
+  
+  5ai. HappilyEverAfter shows an error message.
+
+    Use case resumes at step 2.
+
+**Use case: Delete a person from a wedding**
+
+**MSS**
+
+1. User requests to list weddings
+2. HappilyEverAfter shows a list of weddings
+3. User opens the wedding they want
+4. HappilyEverAfter provides confirmation that the wedding has been opened
+5. User requests to list persons associated with that wedding
+6. HappilyEverAfter shows a list of persons
+7. User requests to delete a specific person in the list
+8. HappilyEverAfter deletes the person
 
     Use case ends.
 
@@ -319,11 +374,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 5a. The list is empty.
 
-    * 3a1. AddressBook shows an error message.
+  Use case ends.
 
-      Use case resumes at step 2.
+* 7a. The given index is invalid.
+
+    * 7a1. AddressBook shows an error message.
+
+      Use case resumes at step 6.
 
 *{More to be added}*
 
