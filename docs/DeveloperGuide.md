@@ -399,8 +399,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 weddings without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  Data loss should not occur even in the event of an unexpected shutdown (e.g., GUI crash).
+5.  The system should be modular, allowing for easy addition or removal of features without affecting existing functionality.
+6.  All data should be stored locally on the user's device, and users should be able to access and modify their data without any delays caused by network connectivity.
+7.  The system should perform input validation and generate a response within 500 milliseconds for each user input to ensure a smooth and responsive user experience.
+
 
 *{More to be added}*
 
