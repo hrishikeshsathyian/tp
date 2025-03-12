@@ -80,11 +80,7 @@ public class Date {
         return date.equals(otherDate.date);
     }
 
-    /**
-     * Returns a hash code value for the object.
-     *
-     * @return the hash code of the date.
-     */
+
     @Override
     public int hashCode() {
         return date.hashCode();
