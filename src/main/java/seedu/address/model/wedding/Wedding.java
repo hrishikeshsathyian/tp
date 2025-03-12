@@ -10,17 +10,35 @@ public class Wedding {
 
     private final Title title;
 
-    private final Person bride;
+    private Person bride;
 
-    private final Person groom;
+    private Person groom;
 
     private Person[] members;
 
 
-    public Wedding(Date date, Title name, Person bride, Person groom ) {
+    public Wedding(Date date, Title name) {
         this.date = date;
         this.title = name;
-        this.bride = bride;
-        this.groom = groom;
     }
+
+    /**
+     * Returns true if both Weddings have the same title and date.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof Wedding)) {
+            return false;
+        }
+
+        Wedding otherWedding = (Wedding) other;
+        boolean isEqual = this.date.equals(otherWedding.date) && this.title.equals(otherWedding.title);
+        return isEqual;
+    }
+
 }
