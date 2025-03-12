@@ -22,6 +22,14 @@ public class Wedding {
         this.title = name;
     }
 
+    public Title getTitle() {
+        return this.title;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
     /**
      * Returns true if both Weddings have the same title and date.
      */
