@@ -1,5 +1,7 @@
 package seedu.address.logic.commands.Wedding;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -7,8 +9,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.wedding.Wedding;
 
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Adds a Wedding to the Wedding Planner
+ */
 public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Wedding successfully created!";

@@ -132,7 +132,7 @@ public class ModelManager implements Model {
     @Override
     public void addWedding(Wedding wedding) {
         // TODO
-        return ;
+        return;
     }
 
     @Override

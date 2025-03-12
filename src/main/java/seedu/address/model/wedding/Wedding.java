@@ -17,6 +17,11 @@ public class Wedding {
     private Person[] members;
 
 
+    /**
+     * Creates a Wedding object
+     * @param date
+     * @param name
+     */
     public Wedding(Date date, Title name) {
         this.date = date;
         this.title = name;
