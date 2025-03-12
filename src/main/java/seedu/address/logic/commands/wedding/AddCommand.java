@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.Wedding;
+package seedu.address.logic.commands.wedding;
 
 import static java.util.Objects.requireNonNull;
 
@@ -18,6 +18,9 @@ public class AddCommand extends Command {
     public static final String MESSAGE_DUPLICATE_WEDDING = "This wedding already exists.";
     private final Wedding toAdd;
 
+    /**
+     * Every field must be present and not null.
+     */
     public AddCommand(Wedding wedding) {
         requireNonNull(wedding);
         this.toAdd = wedding;

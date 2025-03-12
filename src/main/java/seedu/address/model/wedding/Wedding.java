@@ -18,9 +18,7 @@ public class Wedding {
 
 
     /**
-     * Creates a Wedding object
-     * @param date
-     * @param name
+     * Every field must be present and not null.
      */
     public Wedding(Date date, Title name) {
         this.date = date;
