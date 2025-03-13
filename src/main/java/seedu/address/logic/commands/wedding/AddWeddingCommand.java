@@ -12,7 +12,7 @@ import seedu.address.model.wedding.Wedding;
 /**
  * Adds a Wedding to the Wedding Planner
  */
-public class AddCommand extends Command {
+public class AddWeddingCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Wedding successfully created!";
     public static final String MESSAGE_DUPLICATE_WEDDING = "This wedding already exists.";
@@ -21,9 +21,9 @@ public class AddCommand extends Command {
     /**
      * Every field must be present and not null.
      */
-    public AddCommand(Wedding wedding) {
-        requireNonNull(wedding);
-        this.toAdd = wedding;
+    public AddWeddingCommand(Wedding toAdd) {
+        requireNonNull(toAdd);
+        this.toAdd = toAdd;
     }
 
     @Override

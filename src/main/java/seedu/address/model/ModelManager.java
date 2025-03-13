@@ -142,6 +142,19 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean weddingHasPerson(Wedding wedding, Person toAdd) {
+        // TODO
+        return false;
+    }
+
+    @Override
+    public void addWeddingPerson(Wedding wedding, Person toAdd) {
+        // TODO
+        return;
+    }
+
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;

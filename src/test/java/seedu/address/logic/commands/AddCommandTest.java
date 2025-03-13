@@ -23,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.wedding.Wedding;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -156,6 +157,50 @@ public class AddCommandTest {
         @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        /**
+         * Adds the given wedding.
+         * {@code Wedding} must not already exist in the Wedding Planner.
+         *
+         * @param wedding
+         */
+        @Override
+        public void addWedding(Wedding wedding) {
+
+        }
+
+        /**
+         * Returns true if a wedding with the same identity as {@code Wedding} exists in the Wedding Planner.
+         *
+         * @param wedding
+         */
+        @Override
+        public boolean hasWedding(Wedding wedding) {
+            return false;
+        }
+
+        /**
+         * Checks for duplicate Person in {@code wedding}.
+         *
+         * @param wedding
+         * @param toAdd
+         * @return true if the Wedding already has a Person with the same identity as {@code Person}
+         */
+        @Override
+        public boolean weddingHasPerson(Wedding wedding, Person toAdd) {
+            return false;
+        }
+
+        /**
+         * Adds a Person to the given Wedding.
+         *
+         * @param wedding
+         * @param toAdd
+         */
+        @Override
+        public void addWeddingPerson(Wedding wedding, Person toAdd) {
+
         }
     }
 
