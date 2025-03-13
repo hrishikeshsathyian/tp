@@ -12,7 +12,6 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
-import seedu.address.model.wedding.Wedding;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -23,6 +22,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -129,29 +129,7 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
-    @Override
-    public void addWedding(Wedding wedding) {
-        // TODO
-        return;
-    }
 
-    @Override
-    public boolean hasWedding(Wedding wedding) {
-        // TODO
-        return false;
-    }
-
-    @Override
-    public boolean weddingHasPerson(Wedding wedding, Person toAdd) {
-        // TODO
-        return false;
-    }
-
-    @Override
-    public void addWeddingPerson(Wedding wedding, Person toAdd) {
-        // TODO
-        return;
-    }
 
 
     @Override

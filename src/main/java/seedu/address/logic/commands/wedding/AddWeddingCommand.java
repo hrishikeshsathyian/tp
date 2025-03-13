@@ -6,7 +6,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
+import seedu.address.model.WeddingModel;
 import seedu.address.model.wedding.Wedding;
 
 /**
@@ -27,7 +27,7 @@ public class AddWeddingCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);
 
         if (model.hasWedding(toAdd)) {
