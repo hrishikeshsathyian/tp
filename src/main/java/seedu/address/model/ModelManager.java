@@ -23,6 +23,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
 
+
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
@@ -127,6 +128,9 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }
+
+
+
 
     @Override
     public boolean equals(Object other) {
