@@ -52,4 +52,9 @@ public class Wedding {
         return isEqual;
     }
 
+
+    public boolean isSameWedding(Wedding wedding) {
+        return this.equals(wedding);
+    }
+
 }
