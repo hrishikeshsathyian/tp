@@ -31,6 +31,14 @@ public class Wedding {
         this.title = name;
     }
 
+    /**
+     * Overloaded Wedding constructor to be used for file storage loading
+     * @param date
+     * @param title
+     * @param bride
+     * @param groom
+     * @param members
+     */
     public Wedding(Date date, Title title, Person bride, Person groom, UniquePersonList members) {
         requireAllNonNull(date, title, bride, groom, members);
         this.date = date;
