@@ -1,5 +1,10 @@
 package seedu.address.model.wedding;
+
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import seedu.address.model.person.Person;
+import seedu.address.model.person.UniquePersonList;
+
 /**
  * Represents a Wedding in the address book.
  * Guarantees: details are present, validated and not null.
@@ -14,15 +19,25 @@ public class Wedding {
 
     private Person groom;
 
-    private Person[] members;
+    private UniquePersonList members;
 
 
     /**
      * Every field must be present and not null.
      */
     public Wedding(Date date, Title name) {
+        requireAllNonNull(date, name);
         this.date = date;
         this.title = name;
+    }
+
+    public Wedding(Date date, Title title, Person bride, Person groom, UniquePersonList members) {
+        requireAllNonNull(date, title, bride, groom, members);
+        this.date = date;
+        this.title = title;
+        this.bride = bride;
+        this.groom = groom;
+        this.members = members;
     }
 
     public Title getTitle() {
