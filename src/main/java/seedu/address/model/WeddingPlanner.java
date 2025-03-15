@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import seedu.address.model.wedding.UniqueWeddingList;
 import seedu.address.model.wedding.Wedding;
 
 
@@ -12,14 +13,14 @@ import seedu.address.model.wedding.Wedding;
  */
 public class WeddingPlanner {
 
-    private final List<Wedding> weddings;
+    private final UniqueWeddingList weddings;
 
     /**
      * Constructs an empty {@code WeddingPlanner}.
      * Initializes an empty list to store weddings.
      */
     public WeddingPlanner() {
-        this.weddings = new ArrayList<>();
+        this.weddings = new UniqueWeddingList();
     }
 
     /**
