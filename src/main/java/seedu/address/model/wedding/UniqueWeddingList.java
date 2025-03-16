@@ -1,7 +1,6 @@
 package seedu.address.model.wedding;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 
@@ -9,14 +8,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.wedding.exceptions.DuplicateWeddingException;
 import seedu.address.model.wedding.exceptions.WeddingNotFoundException;
 
 /**
  * A list of weddings that enforces uniqueness between its elements and does not allow nulls.
- * A wedding is considered unique by comparing using {@code Wedding#isSamePerson(Person)}. As such, adding and updating of
- * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
+ * A wedding is considered unique by comparing using {@code Wedding#isSamePerson(Person)}. As such, adding and updating
+ * of persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
  * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
  * as to ensure that the person with exactly the same fields will be removed.
  *
@@ -24,9 +22,10 @@ import seedu.address.model.wedding.exceptions.WeddingNotFoundException;
  *
  * @see Person#isSamePerson(Person)
  */
-public class UniqueWeddingList implements Iterable<Wedding>{
+public class UniqueWeddingList implements Iterable<Wedding> {
     private final ObservableList<Wedding> internalWeddingsList = FXCollections.observableArrayList();
-    private final ObservableList<Wedding> internalUnmodifiableWeddingsList = FXCollections.unmodifiableObservableList(internalWeddingsList);
+    private final ObservableList<Wedding> internalUnmodifiableWeddingsList = FXCollections
+            .unmodifiableObservableList(internalWeddingsList);
 
     /**
      * Returns true if the list contains an equivalent wedding as the given argument.
