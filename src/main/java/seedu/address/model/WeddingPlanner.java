@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.wedding.UniqueWeddingList;
 import seedu.address.model.wedding.Wedding;
@@ -48,5 +49,9 @@ public class WeddingPlanner {
         return new ToStringBuilder(this)
                 .add("weddings", weddings)
                 .toString();
+    }
+
+    public ObservableList<Wedding> getWeddingList() {
+        return weddings.getWeddingList();
     }
 }

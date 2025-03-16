@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.wedding.Wedding;
 
@@ -60,5 +61,10 @@ public class WeddingModelManager implements WeddingModel {
     @Override
     public void addWeddingPerson(Wedding wedding, Person toAdd) {
 
+    }
+
+    @Override
+    public ObservableList<Wedding> getWeddingList() {
+        return weddingPlanner.getWeddingList();
     }
 }

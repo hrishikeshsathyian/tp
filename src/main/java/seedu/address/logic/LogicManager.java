@@ -15,7 +15,11 @@ import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.WeddingModel;
+import seedu.address.model.WeddingModelManager;
+import seedu.address.model.WeddingPlanner;
 import seedu.address.model.person.Person;
+import seedu.address.model.wedding.Wedding;
 import seedu.address.storage.Storage;
 
 /**
@@ -30,15 +34,18 @@ public class LogicManager implements Logic {
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
     private final Model model;
+
+    private final WeddingModel weddingModel;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
-    public LogicManager(Model model, Storage storage) {
+    public LogicManager(Model model, WeddingModel weddingModel, Storage storage) {
         this.model = model;
         this.storage = storage;
+        this.weddingModel = weddingModel; // FOR TESTING PURPOSES
         addressBookParser = new AddressBookParser();
     }
 
@@ -69,6 +76,11 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Person> getFilteredPersonList() {
         return model.getFilteredPersonList();
+    }
+
+    @Override
+    public ObservableList<Wedding> getWeddingList() {
+        return weddingModel.getWeddingList();
     }
 
     @Override

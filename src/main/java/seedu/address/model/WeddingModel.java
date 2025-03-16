@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.wedding.Wedding;
 
@@ -32,4 +33,7 @@ public interface WeddingModel {
      * @param toAdd
      */
     void addWeddingPerson(Wedding wedding, Person toAdd);
+
+    /** Returns an unmodifiable view of the wedding list */
+    ObservableList<Wedding> getWeddingList();
 }

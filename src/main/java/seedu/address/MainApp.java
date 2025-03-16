@@ -21,7 +21,13 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.WeddingModel;
+import seedu.address.model.WeddingModelManager;
+import seedu.address.model.WeddingPlanner;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.model.wedding.Date;
+import seedu.address.model.wedding.Title;
+import seedu.address.model.wedding.Wedding;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
@@ -44,6 +50,7 @@ public class MainApp extends Application {
     protected Logic logic;
     protected Storage storage;
     protected Model model;
+    protected WeddingModel weddingModel;
     protected Config config;
 
     @Override
@@ -62,7 +69,15 @@ public class MainApp extends Application {
 
         model = initModelManager(storage, userPrefs);
 
-        logic = new LogicManager(model, storage);
+        /*TODO: REPLACE THE DATA HERE WITH THE ACTUAL FETCHING.
+          THIS IS SAMPLE DATA I USED FOR TESTING THE UI
+          - TIM
+         */
+        weddingModel = new WeddingModelManager(new WeddingPlanner());
+        weddingModel.addWedding(new Wedding(new Date("11072025"), new Title("TimChaewon")));
+        weddingModel.addWedding(new Wedding(new Date("13092025"), new Title("JayVik")));
+
+        logic = new LogicManager(model, weddingModel, storage);
 
         ui = new UiManager(logic);
     }
