@@ -2,7 +2,6 @@ package seedu.address.logic.commands.wedding;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -18,8 +17,7 @@ public class AddWeddingCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD 
         + ": Creates a wedding draft\n"
         + "Parameters: n/WEDDING_NAME d/DATE\n"
-        + "Example: " + COMMAND_WORD + " n/John & Mary d/2025-12-25";
-
+        + "Example: " + COMMAND_WORD + " n/John & Mary d/25122025";
     public static final String MESSAGE_SUCCESS = "Wedding draft created! "
         + "Now add bride/groom using:\n"
         + "addweddingperson n/NAME p/PHONE e/EMAIL a/ADDRESS role/bride\n"
