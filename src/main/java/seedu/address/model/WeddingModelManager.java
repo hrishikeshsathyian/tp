@@ -1,7 +1,12 @@
 package seedu.address.model;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.function.Predicate;
+
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.wedding.Wedding;
@@ -14,6 +19,7 @@ public class WeddingModelManager implements WeddingModel {
     private final WeddingPlanner weddingPlanner;
     private Wedding currentWedding;
     private Wedding draftWedding;
+    private final FilteredList<Wedding> filteredWeddings;
 
     /**
      * Initializes a WeddingModelManager with the given Wedding Planner
@@ -22,6 +28,7 @@ public class WeddingModelManager implements WeddingModel {
         this.weddingPlanner = weddingPlanner;
         this.currentWedding = null;
         this.draftWedding = null;
+        this.filteredWeddings = new FilteredList<>(this.weddingPlanner.getWeddingList());
     }
 
     // =========== Permanent Storage Operations ===========
@@ -34,6 +41,17 @@ public class WeddingModelManager implements WeddingModel {
     @Override
     public boolean hasWedding(Wedding wedding) {
         return weddingPlanner.hasWedding(wedding);
+    }
+
+    @Override
+    public ObservableList<Wedding> getFilteredWeddingList() {
+        return filteredWeddings;
+    }
+
+    @Override
+    public void updateFilteredWeddingList(Predicate<Wedding> predicate) {
+        requireNonNull(predicate);
+        filteredWeddings.setPredicate(predicate);
     }
 
     // =========== Draft Management ===========

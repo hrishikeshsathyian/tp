@@ -12,36 +12,48 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.wedding.Wedding;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of both address book and wedding planner data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
+    public static final Predicate<Wedding> PREDICATE_SHOW_ALL_WEDDINGS = unused -> true;
+
 
     private final AddressBook addressBook;
+    private final WeddingPlanner weddingPlanner;
     private final UserPrefs userPrefs;
+    
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Wedding> filteredWeddings;
+    
+    private Wedding currentWedding;
+    private Wedding draftWedding;
 
+    public ModelManager(ReadOnlyAddressBook addressBook, 
+                       ReadOnlyWeddingPlanner weddingPlanner,
+                       ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(addressBook, weddingPlanner, userPrefs);
 
-    /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
-     */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, userPrefs);
-
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with:\n- Address Book: " + addressBook 
+                + "\n- Wedding Planner: " + weddingPlanner 
+                + "\n- User Prefs: " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
+        this.weddingPlanner = new WeddingPlanner(weddingPlanner);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredWeddings = new FilteredList<>(this.weddingPlanner.getWeddingList());
     }
 
+    /**
+     * Creates empty ModelManager for new users.
+     */
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new WeddingPlanner(), new UserPrefs());
     }
-
-    //=========== UserPrefs ==================================================================================
 
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
@@ -76,7 +88,15 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    public Path getWeddingPlannerFilePath() {
+        return userPrefs.getWeddingPlannerFilePath();
+    }
+
+
+    public void setWeddingPlannerFilePath(Path weddingPlannerFilePath) {
+        requireNonNull(weddingPlannerFilePath);
+        userPrefs.setWeddingPlannerFilePath(weddingPlannerFilePath);
+    }
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
@@ -108,16 +128,84 @@ public class ModelManager implements Model {
     @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
-
         addressBook.setPerson(target, editedPerson);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    @Override
+    public void addWedding(Wedding wedding) {
+        weddingPlanner.addWedding(wedding);
+        updateFilteredWeddingList(PREDICATE_SHOW_ALL_WEDDINGS);
+    }
 
-    /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
+    @Override
+    public boolean hasWedding(Wedding wedding) {
+        requireNonNull(wedding);
+        return weddingPlanner.hasWedding(wedding);
+    }
+
+    @Override
+    public void setDraftWedding(Wedding wedding) {
+        draftWedding = wedding;
+        logger.info("New draft set: " + wedding);
+    }
+
+    @Override
+    public boolean hasDraftWedding() {
+        return draftWedding != null;
+    }
+
+    @Override
+    public Wedding getDraftWedding() {
+        return draftWedding;
+    }
+
+    @Override
+    public void commitDraftWedding() {
+        if (draftWedding == null) {
+            throw new IllegalStateException("No draft to commit");
+        }
+        if (hasWedding(draftWedding)) {
+            throw new IllegalStateException("Duplicate wedding in permanent storage");
+        }
+        addWedding(draftWedding);
+        draftWedding = null;
+    }
+
+    @Override
+    public void setCurrentWedding(Wedding wedding) {
+        currentWedding = wedding;
+        logger.info("Entered context for: " + wedding);
+    }
+
+    @Override
+    public void clearCurrentWedding() {
+        currentWedding = null;
+        logger.info("Cleared wedding context");
+    }
+
+    @Override
+    public boolean hasCurrentWedding() {
+        return currentWedding != null;
+    }
+
+    @Override
+    public Wedding getCurrentWedding() {
+        return currentWedding;
+    }
+
+    @Override
+    public boolean weddingHasPerson(Wedding wedding, Person person) {
+        requireAllNonNull(wedding, person);
+        return wedding.hasPerson(person);
+    }
+
+    @Override
+    public void addWeddingPerson(Wedding wedding, Person person) {
+        requireAllNonNull(wedding, person);
+        wedding.addMember(person);
+        updateFilteredWeddingList(PREDICATE_SHOW_ALL_WEDDINGS);
+    }
+
     @Override
     public ObservableList<Person> getFilteredPersonList() {
         return filteredPersons;
@@ -129,24 +217,29 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+    @Override
+    public ObservableList<Wedding> getFilteredWeddingList() {
+        return filteredWeddings;
+    }
 
-
+    @Override
+    public void updateFilteredWeddingList(Predicate<Wedding> predicate) {
+        requireNonNull(predicate);
+        filteredWeddings.setPredicate(predicate);
+    }
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
+        if (other == this) return true;
+        if (!(other instanceof ModelManager)) return false;
 
-        // instanceof handles nulls
-        if (!(other instanceof ModelManager)) {
-            return false;
-        }
-
-        ModelManager otherModelManager = (ModelManager) other;
-        return addressBook.equals(otherModelManager.addressBook)
-                && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+        ModelManager otherManager = (ModelManager) other;
+        return addressBook.equals(otherManager.addressBook)
+                && weddingPlanner.equals(otherManager.weddingPlanner)
+                && userPrefs.equals(otherManager.userPrefs)
+                && filteredPersons.equals(otherManager.filteredPersons)
+                && filteredWeddings.equals(otherManager.filteredWeddings)
+                && java.util.Objects.equals(currentWedding, otherManager.currentWedding)
+                && java.util.Objects.equals(draftWedding, otherManager.draftWedding);
     }
-
 }

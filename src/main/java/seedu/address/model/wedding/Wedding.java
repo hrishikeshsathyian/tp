@@ -74,6 +74,22 @@ public class Wedding {
         this.members = members;
     }
 
+    /**
+     * Checks if the wedding contains the specified person.
+     */
+    public boolean hasPerson(Person person) {
+        requireNonNull(person);
+        
+        // Check if person is the bride or groom
+        boolean isBride = bride != null && bride.isSamePerson(person);
+        boolean isGroom = groom != null && groom.isSamePerson(person);
+        
+        // Check if person is in members list
+        boolean isMember = members != null && members.contains(person);
+        
+        return isBride || isGroom || isMember;
+    }
+
     // =========== Core Methods ===========
     public Title getTitle() {
         return title;

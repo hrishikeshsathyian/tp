@@ -1,5 +1,8 @@
 package seedu.address.model;
 
+import java.util.function.Predicate;
+
+import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.wedding.Wedding;
 
@@ -71,4 +74,15 @@ public interface WeddingModel {
      * Adds a Person to the specified wedding
      */
     void addWeddingPerson(Wedding wedding, Person toAdd);
+
+    /**
+     * Returns an unmodifiable view of the filtered wedding list
+     */
+    ObservableList<Wedding> getFilteredWeddingList();
+
+    /**
+     * Updates the filter of the filtered wedding list to filter by the given {@code predicate}.
+     * @throws NullPointerException if the predicate is null.
+     */
+    void updateFilteredWeddingList(Predicate<Wedding> predicate);
 }
