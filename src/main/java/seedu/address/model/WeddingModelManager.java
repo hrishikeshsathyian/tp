@@ -9,6 +9,7 @@ import seedu.address.model.wedding.Wedding;
 public class WeddingModelManager implements WeddingModel {
 
     private final WeddingPlanner weddingPlanner;
+    private Wedding currentWedding;
 
     /**
      * Initializes a WeddingModelManager with the given Wedding Planner
@@ -16,6 +17,7 @@ public class WeddingModelManager implements WeddingModel {
      */
     public WeddingModelManager(WeddingPlanner weddingPlanner) {
         this.weddingPlanner = weddingPlanner;
+        this.currentWedding = null;
     }
 
     /**
@@ -60,5 +62,17 @@ public class WeddingModelManager implements WeddingModel {
     @Override
     public void addWeddingPerson(Wedding wedding, Person toAdd) {
 
+    }
+
+    public void setCurrentWedding(Wedding wedding) {
+        this.currentWedding = wedding;
+    }
+    
+    public Wedding getCurrentWedding() {
+        return currentWedding;
+    }
+    
+    public void clearCurrentWedding() {
+        this.currentWedding = null;
     }
 }

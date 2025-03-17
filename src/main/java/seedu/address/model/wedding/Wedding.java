@@ -9,7 +9,7 @@ import seedu.address.model.person.UniquePersonList;
  * Represents a Wedding in the address book.
  * Guarantees: details are present, validated and not null.
  */
-public class Wedding {
+public class Wedding {  // check if this class is correct later
 
     private final Date date;
 
@@ -54,6 +54,18 @@ public class Wedding {
 
     public Date getDate() {
         return this.date;
+    }
+
+    public void setBride(Person bride) {
+        this.bride = bride;
+    }
+    
+    public void setGroom(Person groom) {
+        this.groom = groom;
+    }
+    
+    public void addMember(Person member) {
+        members.add(member);
     }
 
     /**
