@@ -10,31 +10,47 @@ import seedu.address.model.WeddingModel;
 import seedu.address.model.wedding.Wedding;
 
 /**
- * Adds a Wedding to the Wedding Planner
+ * Creates a new wedding draft in the Wedding Planner
  */
 public class AddWeddingCommand extends Command {
 
-    public static final String MESSAGE_SUCCESS = "Wedding successfully created!";
-    public static final String MESSAGE_DUPLICATE_WEDDING = "This wedding already exists.";
-    private final Wedding toAdd;
+    public static final String COMMAND_WORD = "addwedding";
+    public static final String MESSAGE_USAGE = COMMAND_WORD 
+        + ": Creates a wedding draft\n"
+        + "Parameters: n/WEDDING_NAME d/DATE\n"
+        + "Example: " + COMMAND_WORD + " n/John & Mary d/2025-12-25";
 
-    /**
-     * Every field must be present and not null.
-     */
-    public AddWeddingCommand(Wedding toAdd) {
-        requireNonNull(toAdd);
-        this.toAdd = toAdd;
+    public static final String MESSAGE_SUCCESS = "Wedding draft created! "
+        + "Now add bride/groom using:\n"
+        + "addweddingperson n/NAME p/PHONE e/EMAIL a/ADDRESS role/bride\n"
+        + "addweddingperson n/NAME p/PHONE e/EMAIL a/ADDRESS role/groom";
+    public static final String MESSAGE_DUPLICATE_WEDDING = "This wedding already exists.";
+    public static final String MESSAGE_EXISTING_DRAFT = "Overwriting previous wedding draft.";
+
+    private final Wedding draftWedding;
+
+    public AddWeddingCommand(Wedding draftWedding) {
+        requireNonNull(draftWedding);
+        this.draftWedding = draftWedding;
     }
 
     @Override
     public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasWedding(toAdd)) {
+        // Check against existing weddings in permanent storage
+        if (model.hasWedding(draftWedding)) {
             throw new CommandException(MESSAGE_DUPLICATE_WEDDING);
         }
 
-        model.addWedding(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.formatWedding(toAdd)));
+        // Handle existing draft
+        String feedback = MESSAGE_SUCCESS;
+        if (model.hasDraftWedding()) {
+            feedback = MESSAGE_EXISTING_DRAFT + "\n" + MESSAGE_SUCCESS;
+        }
+
+        // Set the new draft wedding
+        model.setDraftWedding(draftWedding);
+        return new CommandResult(feedback);
     }
 }
