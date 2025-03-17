@@ -11,6 +11,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class CloseWeddingCommandParser implements Parser<CloseWeddingCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the
+     * CloseWeddingCommand and returns a CloseWeddingCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public CloseWeddingCommand parse(String args) throws ParseException {
         if (!args.trim().isEmpty()) {
             throw new ParseException(

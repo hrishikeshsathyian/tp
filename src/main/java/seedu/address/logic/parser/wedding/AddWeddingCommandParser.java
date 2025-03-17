@@ -35,7 +35,7 @@ public class AddWeddingCommandParser implements Parser<AddWeddingCommand> {
 
             if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DATE)
                     || !argMultimap.getPreamble().isEmpty()) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddWeddingCommand.MESSAGE_USAGE));
             }
 
@@ -44,13 +44,13 @@ public class AddWeddingCommandParser implements Parser<AddWeddingCommand> {
             Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_NAME).get());
             Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
 
-            logger.log(Level.INFO, "Successfully parsed wedding draft - Title: {0}, Date: {1}", 
+            logger.log(Level.INFO, "Successfully parsed wedding draft - Title: {0}, Date: {1}",
                 new Object[]{title, date});
 
             return new AddWeddingCommand(new Wedding(date, title));
         } catch (ParseException pe) {
             logger.log(Level.WARNING, "Invalid AddWeddingCommand format: " + args, pe);
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 AddWeddingCommand.MESSAGE_USAGE), pe);
         }
     }

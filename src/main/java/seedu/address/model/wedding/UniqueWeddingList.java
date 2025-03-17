@@ -16,7 +16,7 @@ import seedu.address.model.wedding.exceptions.WeddingNotFoundException;
  */
 public class UniqueWeddingList implements Iterable<Wedding> {
     private final ObservableList<Wedding> internalList = FXCollections.observableArrayList();
-    private final ObservableList<Wedding> internalUnmodifiableList = 
+    private final ObservableList<Wedding> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
     /**

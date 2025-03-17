@@ -14,7 +14,7 @@ import seedu.address.model.wedding.Wedding;
 public class AddWeddingCommand extends Command {
 
     public static final String COMMAND_WORD = "addwedding";
-    public static final String MESSAGE_USAGE = COMMAND_WORD 
+    public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Creates a wedding draft\n"
         + "Parameters: n/WEDDING_NAME d/DATE\n"
         + "Example: " + COMMAND_WORD + " n/John & Mary d/25122025";
@@ -27,6 +27,9 @@ public class AddWeddingCommand extends Command {
 
     private final Wedding draftWedding;
 
+    /**
+     * Creates an AddWeddingCommand to add the specified {@code Wedding}
+     */
     public AddWeddingCommand(Wedding draftWedding) {
         requireNonNull(draftWedding);
         this.draftWedding = draftWedding;

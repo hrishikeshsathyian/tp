@@ -14,7 +14,7 @@ import seedu.address.model.wedding.Wedding;
  */
 public class OpenWeddingCommand extends Command {
     public static final String COMMAND_WORD = "openwedding";
-    public static final String MESSAGE_USAGE = COMMAND_WORD 
+    public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Opens a wedding for editing\n"
         + "Parameters: INDEX\n"
         + "Example: " + COMMAND_WORD + " 1";
@@ -30,7 +30,7 @@ public class OpenWeddingCommand extends Command {
     @Override
     public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);
-        
+
         if (targetIndex.getZeroBased() >= model.getFilteredWeddingList().size()) {
             throw new CommandException(MESSAGE_INVALID_INDEX);
         }

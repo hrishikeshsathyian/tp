@@ -32,7 +32,7 @@ public class WeddingModelManager implements WeddingModel {
     }
 
     // =========== Permanent Storage Operations ===========
-    
+
     @Override
     public void addWedding(Wedding wedding) {
         weddingPlanner.addWedding(wedding);
@@ -55,7 +55,7 @@ public class WeddingModelManager implements WeddingModel {
     }
 
     // =========== Draft Management ===========
-    
+
     @Override
     public void setDraftWedding(Wedding wedding) {
         draftWedding = wedding;
@@ -81,7 +81,7 @@ public class WeddingModelManager implements WeddingModel {
     }
 
     // =========== Context Management ===========
-    
+
     @Override
     public void setCurrentWedding(Wedding wedding) {
         currentWedding = wedding;
@@ -103,43 +103,43 @@ public class WeddingModelManager implements WeddingModel {
     }
 
     // =========== Person Management ===========
-    
+
     @Override
     public boolean weddingHasPerson(Wedding wedding, Person toAdd) {
         requireAllNonNull(wedding, toAdd);
-        
+
         // Check bride
         if (wedding.getBride() != null && wedding.getBride().isSamePerson(toAdd)) {
             return true;
         }
-        
+
         // Check groom
         if (wedding.getGroom() != null && wedding.getGroom().isSamePerson(toAdd)) {
             return true;
         }
-        
+
         // Check members
         if (wedding.getMembers() != null) {
             return wedding.getMembers().contains(toAdd);
         }
-        
+
         return false;
     }
 
     @Override
     public void addWeddingPerson(Wedding wedding, Person toAdd) {
         requireAllNonNull(wedding, toAdd);
-        
+
         // Initialize members list if null
         if (wedding.getMembers() == null) {
             wedding.setMembers(new UniquePersonList());
         }
-        
+
         wedding.getMembers().add(toAdd);
     }
 
     // =========== Utility Methods ===========
-    
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this) {

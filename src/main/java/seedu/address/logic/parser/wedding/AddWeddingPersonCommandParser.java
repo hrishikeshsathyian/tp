@@ -29,18 +29,23 @@ import seedu.address.model.tag.Tag;
  */
 public class AddWeddingPersonCommandParser implements Parser<AddWeddingPersonCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddWeddingPersonCommand
+     * and returns an AddWeddingPersonCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public AddWeddingPersonCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, 
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
             PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 AddWeddingPersonCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
-        
+
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
@@ -51,7 +56,7 @@ public class AddWeddingPersonCommandParser implements Parser<AddWeddingPersonCom
         long roleTags = tags.stream()
             .filter(t -> t.tagName.equalsIgnoreCase("bride") || t.tagName.equalsIgnoreCase("groom"))
             .count();
-            
+
         if (roleTags > 1) {
             throw new ParseException(AddWeddingPersonCommand.MESSAGE_INVALID_ROLE_TAG);
         }

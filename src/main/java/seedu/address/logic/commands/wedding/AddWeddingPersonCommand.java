@@ -20,7 +20,7 @@ import seedu.address.model.wedding.Wedding;
  */
 public class AddWeddingPersonCommand extends Command {
     public static final String COMMAND_WORD = "addweddingperson";
-    public static final String MESSAGE_USAGE = COMMAND_WORD 
+    public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Adds a person to the active wedding\n"
         + "Parameters: "
         + PREFIX_NAME + "NAME "
@@ -41,6 +41,9 @@ public class AddWeddingPersonCommand extends Command {
 
     private final Person toAdd;
 
+    /**
+     * Creates an AddPersonCommand to add the specified {@code Person}
+     */
     public AddWeddingPersonCommand(Person toAdd) {
         requireNonNull(toAdd);
         this.toAdd = toAdd;
@@ -50,8 +53,8 @@ public class AddWeddingPersonCommand extends Command {
     public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);
 
-        Wedding activeWedding = model.getDraftWedding() != null 
-            ? model.getDraftWedding() 
+        Wedding activeWedding = model.getDraftWedding() != null
+            ? model.getDraftWedding()
             : model.getCurrentWedding();
 
         if (activeWedding == null) {
@@ -77,14 +80,14 @@ public class AddWeddingPersonCommand extends Command {
             }
             activeWedding.setBride(toAdd);
             break;
-            
+
         case "groom":
             if (activeWedding.getGroom() != null) {
                 throw new CommandException(String.format(MESSAGE_ROLE_CONFLICT, "groom"));
             }
             activeWedding.setGroom(toAdd);
             break;
-            
+
         default:
             activeWedding.addMember(toAdd);
             break;
@@ -97,8 +100,8 @@ public class AddWeddingPersonCommand extends Command {
             model.setCurrentWedding(activeWedding);
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, 
-            Messages.format(toAdd), 
+        return new CommandResult(String.format(MESSAGE_SUCCESS,
+            Messages.format(toAdd),
             role.toUpperCase()));
     }
 }

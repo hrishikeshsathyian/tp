@@ -18,27 +18,30 @@ import seedu.address.model.wedding.Wedding;
  * Represents the in-memory model of both address book and wedding planner data.
  */
 public class ModelManager implements Model {
-    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
     public static final Predicate<Wedding> PREDICATE_SHOW_ALL_WEDDINGS = unused -> true;
+    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
 
     private final AddressBook addressBook;
     private final WeddingPlanner weddingPlanner;
     private final UserPrefs userPrefs;
-    
+
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Wedding> filteredWeddings;
-    
+
     private Wedding currentWedding;
     private Wedding draftWedding;
 
-    public ModelManager(ReadOnlyAddressBook addressBook, 
+    /**
+     * Initializes a ModelManager with the given address book and user prefs.
+     */
+    public ModelManager(ReadOnlyAddressBook addressBook,
                        ReadOnlyWeddingPlanner weddingPlanner,
                        ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(addressBook, weddingPlanner, userPrefs);
 
-        logger.fine("Initializing with:\n- Address Book: " + addressBook 
-                + "\n- Wedding Planner: " + weddingPlanner 
+        logger.fine("Initializing with:\n- Address Book: " + addressBook
+                + "\n- Wedding Planner: " + weddingPlanner
                 + "\n- User Prefs: " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
@@ -97,6 +100,15 @@ public class ModelManager implements Model {
         requireNonNull(weddingPlannerFilePath);
         userPrefs.setWeddingPlannerFilePath(weddingPlannerFilePath);
     }
+
+    public void setWeddingPlanner(ReadOnlyWeddingPlanner weddingPlanner) {
+        this.weddingPlanner.resetData(weddingPlanner);
+    }
+
+    public ReadOnlyWeddingPlanner getWeddingPlanner() {
+        return weddingPlanner;
+    }
+
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
@@ -230,8 +242,12 @@ public class ModelManager implements Model {
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) return true;
-        if (!(other instanceof ModelManager)) return false;
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof ModelManager)) {
+            return false;
+        }
 
         ModelManager otherManager = (ModelManager) other;
         return addressBook.equals(otherManager.addressBook)

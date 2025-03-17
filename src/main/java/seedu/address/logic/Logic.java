@@ -55,7 +55,7 @@ public interface Logic {
      */
     ReadOnlyWeddingPlanner getWeddingPlanner();
 
-    /** 
+    /**
      * Returns an unmodifiable view of the filtered list of weddings
      */
     ObservableList<Wedding> getFilteredWeddingList();
@@ -64,5 +64,5 @@ public interface Logic {
      * Returns the wedding planner file path.
      */
     Path getWeddingPlannerFilePath();
-    
+
 }

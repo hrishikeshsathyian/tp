@@ -1,7 +1,7 @@
 package seedu.address.model.wedding;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
@@ -58,12 +58,16 @@ public class Wedding {
         requireNonNull(bride);
         this.bride = bride;
     }
-    
+
+
     public void setGroom(Person groom) {
         requireNonNull(groom);
         this.groom = groom;
     }
 
+    /**
+     * Adds a person to the list of members in this wedding.
+     */
     public void addMember(Person member) {
         requireNonNull(member);
         members.add(member);
@@ -79,14 +83,14 @@ public class Wedding {
      */
     public boolean hasPerson(Person person) {
         requireNonNull(person);
-        
+
         // Check if person is the bride or groom
         boolean isBride = bride != null && bride.isSamePerson(person);
         boolean isGroom = groom != null && groom.isSamePerson(person);
-        
+
         // Check if person is in members list
         boolean isMember = members != null && members.contains(person);
-        
+
         return isBride || isGroom || isMember;
     }
 
@@ -104,11 +108,15 @@ public class Wedding {
      */
     @Override
     public boolean equals(Object other) {
-        if (other == this) return true;
-        if (!(other instanceof Wedding)) return false;
-        
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof Wedding)) {
+            return false;
+        }
+
         Wedding otherWedding = (Wedding) other;
-        return date.equals(otherWedding.date) 
+        return date.equals(otherWedding.date)
             && title.equals(otherWedding.title);
     }
 
