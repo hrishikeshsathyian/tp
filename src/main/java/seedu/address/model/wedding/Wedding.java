@@ -1,43 +1,35 @@
 package seedu.address.model.wedding;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
 /**
- * Represents a Wedding in the address book.
+ * Represents a Wedding in the wedding planner.
  * Guarantees: details are present, validated and not null.
  */
 public class Wedding {
 
     private final Date date;
-
     private final Title title;
-
     private Person bride;
-
     private Person groom;
-
     private UniquePersonList members;
 
-
     /**
-     * Every field must be present and not null.
+     * Creates a wedding draft with empty participant lists
      */
-    public Wedding(Date date, Title name) {
-        requireAllNonNull(date, name);
+    public Wedding(Date date, Title title) {
+        requireAllNonNull(date, title);
         this.date = date;
-        this.title = name;
+        this.title = title;
+        this.members = new UniquePersonList(); // Initialize empty list
     }
 
     /**
-     * Overloaded Wedding constructor to be used for file storage loading
-     * @param date
-     * @param title
-     * @param bride
-     * @param groom
-     * @param members
+     * Full constructor for loading from storage
      */
     public Wedding(Date date, Title title, Person bride, Person groom, UniquePersonList members) {
         requireAllNonNull(date, title, bride, groom, members);
@@ -48,36 +40,92 @@ public class Wedding {
         this.members = members;
     }
 
-    public Title getTitle() {
-        return this.title;
+    // =========== Getters ===========
+    public Person getBride() {
+        return bride;
     }
 
-    public Date getDate() {
-        return this.date;
+    public Person getGroom() {
+        return groom;
+    }
+
+    public UniquePersonList getMembers() {
+        return members;
+    }
+
+    // =========== Setters ===========
+    public void setBride(Person bride) {
+        requireNonNull(bride);
+        this.bride = bride;
+    }
+
+
+    public void setGroom(Person groom) {
+        requireNonNull(groom);
+        this.groom = groom;
     }
 
     /**
-     * Returns true if both Weddings have the same title and date.
+     * Adds a person to the list of members in this wedding.
+     */
+    public void addMember(Person member) {
+        requireNonNull(member);
+        members.add(member);
+    }
+
+    public void setMembers(UniquePersonList members) {
+        requireNonNull(members);
+        this.members = members;
+    }
+
+    /**
+     * Checks if the wedding contains the specified person.
+     */
+    public boolean hasPerson(Person person) {
+        requireNonNull(person);
+
+        // Check if person is the bride or groom
+        boolean isBride = bride != null && bride.isSamePerson(person);
+        boolean isGroom = groom != null && groom.isSamePerson(person);
+
+        // Check if person is in members list
+        boolean isMember = members != null && members.contains(person);
+
+        return isBride || isGroom || isMember;
+    }
+
+    // =========== Core Methods ===========
+    public Title getTitle() {
+        return title;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * Returns true if both weddings have the same title and date.
      */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
         }
-
-        // instanceof handles nulls
         if (!(other instanceof Wedding)) {
             return false;
         }
 
         Wedding otherWedding = (Wedding) other;
-        boolean isEqual = this.date.equals(otherWedding.date) && this.title.equals(otherWedding.title);
-        return isEqual;
+        return date.equals(otherWedding.date)
+            && title.equals(otherWedding.title);
     }
 
-
-    public boolean isSameWedding(Wedding wedding) {
-        return this.equals(wedding);
+    public boolean isSameWedding(Wedding other) {
+        return equals(other);
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s (%s)", title, date);
+    }
 }

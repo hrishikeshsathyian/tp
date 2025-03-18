@@ -20,7 +20,9 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.ReadOnlyWeddingPlanner;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.WeddingPlanner;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
@@ -89,8 +91,9 @@ public class MainApp extends Application {
                     + " Will be starting with an empty AddressBook.");
             initialData = new AddressBook();
         }
-
-        return new ModelManager(initialData, userPrefs);
+        // TODO: initiate model w actual wedding data
+        ReadOnlyWeddingPlanner initialWeddingData = new WeddingPlanner();
+        return new ModelManager(initialData, initialWeddingData, userPrefs);
     }
 
     private void initLogging(Config config) {
