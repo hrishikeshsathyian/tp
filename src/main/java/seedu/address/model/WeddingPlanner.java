@@ -75,8 +75,4 @@ public class WeddingPlanner implements ReadOnlyWeddingPlanner {
                 .add("weddings", weddings)
                 .toString();
     }
-
-    public ObservableList<Wedding> getWeddingList() {
-        return weddings.getWeddingList();
-    }
 }
