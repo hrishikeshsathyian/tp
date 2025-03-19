@@ -5,8 +5,10 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
+import java.util.logging.Filter;
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.LogsCenter;
@@ -18,36 +20,65 @@ import seedu.address.model.wedding.Wedding;
  * Represents the in-memory model of the Wedding Planner data.
  * Extends a base ModelManager to inherit standard address book functionality.
  */
-public class WeddingModelManager extends ModelManager implements WeddingModel {
+public class WeddingModelManager implements WeddingModel {
     private static final Logger logger = LogsCenter.getLogger(WeddingModelManager.class);
 
     private final WeddingPlanner weddingPlanner;
     private final FilteredList<Wedding> filteredWeddings;
+    private final ObservableList<Person> allPersons; // to load wedding members
+    private final FilteredList<Person> filteredPersons; // for each wedding
     private Wedding currentWedding;
     private Wedding draftWedding;
+    private final UserPrefs userPrefs;
 
     /**
      * Initializes a WeddingModelManager with the given parameters.
      */
-    public WeddingModelManager(ReadOnlyAddressBook addressBook,
-                               ReadOnlyWeddingPlanner weddingPlanner,
+    public WeddingModelManager(ReadOnlyWeddingPlanner weddingPlanner,
                                ReadOnlyUserPrefs userPrefs) {
-        super(addressBook, userPrefs); // Call base ModelManager constructor
-
         requireNonNull(weddingPlanner);
         logger.fine("Initializing with wedding planner: " + weddingPlanner);
-
+        this.userPrefs = new UserPrefs(userPrefs);
         this.weddingPlanner = new WeddingPlanner(weddingPlanner);
         this.filteredWeddings = new FilteredList<>(this.weddingPlanner.getWeddingList());
         this.currentWedding = null;
         this.draftWedding = null;
+
+        // initialized as an empty list
+        this.allPersons = FXCollections.observableArrayList();
+        this.filteredPersons = new FilteredList<>(allPersons);
     }
 
     /**
      * Creates an empty WeddingModelManager.
      */
     public WeddingModelManager() {
-        this(new AddressBook(), new WeddingPlanner(), new UserPrefs());
+        this(new WeddingPlanner(), new UserPrefs());
+    }
+
+
+    //=========== UserPrefs =================================================================================
+
+    @Override
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
+    }
+
+    @Override
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
+    }
+
+    @Override
+    public GuiSettings getGuiSettings() {
+        return userPrefs.getGuiSettings();
+    }
+
+    @Override
+    public void setGuiSettings(GuiSettings guiSettings) {
+        requireNonNull(guiSettings);
+        userPrefs.setGuiSettings(guiSettings);
     }
 
     @Override
@@ -123,6 +154,7 @@ public class WeddingModelManager extends ModelManager implements WeddingModel {
     public void setCurrentWedding(Wedding wedding) {
         currentWedding = wedding;
         logger.info("Entered context for: " + wedding);
+        updateFilteredPersonList();
     }
 
     @Override
@@ -185,9 +217,38 @@ public class WeddingModelManager extends ModelManager implements WeddingModel {
     }
 
     @Override
+    public ObservableList<Person> getFilteredPersonList() {
+        return filteredPersons;
+    }
+
+    @Override
     public void updateFilteredWeddingList(Predicate<Wedding> predicate) {
         requireNonNull(predicate);
         filteredWeddings.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredPersonList(Predicate<Person> predicate) {
+        requireNonNull(predicate);
+        filteredPersons.setPredicate(predicate);
+    }
+
+    public void updateFilteredPersonList() {
+        if (currentWedding != null) {
+            ObservableList<Person> fullList = FXCollections.observableArrayList();
+            fullList.add(currentWedding.getBride());
+            fullList.add(currentWedding.getGroom());
+            fullList.addAll(currentWedding.getMembers().asUnmodifiableObservableList());
+            allPersons.setAll(fullList);
+            this.filteredPersons.setPredicate(PREDICATE_SHOW_ALL_PERSONS);
+        } else if (draftWedding != null) {
+            allPersons.setAll(draftWedding.getMembers().asUnmodifiableObservableList());
+            this.filteredPersons.setPredicate(PREDICATE_SHOW_ALL_PERSONS);
+        } else {
+            // show an empty list
+            allPersons.clear();
+            this.filteredPersons.setPredicate(person -> false);
+        }
     }
 
     @Override
@@ -197,10 +258,6 @@ public class WeddingModelManager extends ModelManager implements WeddingModel {
         }
 
         if (!(obj instanceof WeddingModelManager)) {
-            return false;
-        }
-
-        if (!super.equals(obj)) {
             return false;
         }
 

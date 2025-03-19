@@ -19,7 +19,7 @@ import seedu.address.model.wedding.Wedding;
  * Adds a person to the currently active wedding (draft or open)
  */
 public class AddWeddingPersonCommand extends Command {
-    public static final String COMMAND_WORD = "addweddingperson";
+    public static final String COMMAND_WORD = "add";
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Adds a person to the active wedding\n"
         + "Parameters: "
@@ -96,6 +96,10 @@ public class AddWeddingPersonCommand extends Command {
         // Update model state
         if (model.hasDraftWedding()) {
             model.setDraftWedding(activeWedding);
+            if (activeWedding.isValid()) {
+                model.commitDraftWedding();
+                System.out.println("Committing wedding...");
+            }
         } else {
             model.setCurrentWedding(activeWedding);
         }

@@ -13,7 +13,7 @@ import seedu.address.model.wedding.Wedding;
  * Opens a specific wedding for editing
  */
 public class OpenWeddingCommand extends Command {
-    public static final String COMMAND_WORD = "openwedding";
+    public static final String COMMAND_WORD = "open";
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Opens a wedding for editing\n"
         + "Parameters: INDEX\n"

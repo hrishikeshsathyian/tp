@@ -94,6 +94,14 @@ public class Wedding {
         return isBride || isGroom || isMember;
     }
 
+    /**
+     * To see if a wedding contains a bride and a groom, or if it should remain as a draft.
+     * @return
+     */
+    public boolean isValid() {
+        return this.getGroom() != null && this.getBride() != null;
+    }
+
     // =========== Core Methods ===========
     public Title getTitle() {
         return title;
