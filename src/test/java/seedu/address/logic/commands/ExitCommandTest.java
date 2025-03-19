@@ -5,8 +5,6 @@ import static seedu.address.logic.commands.ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEM
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
 import seedu.address.model.WeddingModel;
 import seedu.address.model.WeddingModelManager;
 
