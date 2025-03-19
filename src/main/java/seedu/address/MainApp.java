@@ -22,6 +22,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ReadOnlyWeddingPlanner;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.WeddingPlanner;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
@@ -60,7 +61,7 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        WeddingPlannerStorage weddingPlannerStorage = new JsonWeddingPlannerStorage(userPrefs.getAddressBookFilePath());
+        WeddingPlannerStorage weddingPlannerStorage = new JsonWeddingPlannerStorage(userPrefs.getWeddingPlannerFilePath());
         storage = new StorageManager(weddingPlannerStorage, userPrefsStorage);
 
         model = initModelManager(storage, userPrefs);
@@ -71,26 +72,26 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s wedding planner and {@code userPrefs}. <br>
+     * The data from the sample wedding planner will be used instead if {@code storage}'s wedding planner is not found,
+     * or an empty wedding planner will be used instead if errors occur when reading {@code storage}'s wedding planner.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getWeddingPlannerFilePath());
 
-        Optional<ReadOnlyWeddingPlanner> addressBookOptional;
+        Optional<ReadOnlyWeddingPlanner> weddingPlannerOptional;
         ReadOnlyWeddingPlanner initialData;
         try {
-            addressBookOptional = storage.readWeddingPlanner();
-            if (!addressBookOptional.isPresent()) {
+            weddingPlannerOptional = storage.readWeddingPlanner();
+            if (!weddingPlannerOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getWeddingPlannerFilePath()
-                        + " populated with a sample AddressBook.");
+                        + " populated with a sample WeddingPlanner.");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = weddingPlannerOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
-            initialData = new AddressBook();
+            logger.warning("Data file at " + storage.getWeddingPlannerFilePath() + " could not be loaded."
+                    + " Will be starting with an empty WeddingPlanner.");
+            initialData = new WeddingPlanner();
         }
 
         return new ModelManager(initialData, userPrefs);
