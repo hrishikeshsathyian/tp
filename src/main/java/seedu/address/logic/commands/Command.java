@@ -28,7 +28,8 @@ public abstract class Command {
      * @throws CommandException If an error occurs during command execution.
      */
     public CommandResult execute(WeddingModel model) throws CommandException {
-        throw new UnsupportedOperationException("This command does not support execution on a WeddingModel.");
+        return execute((Model) model);
+        //throw new UnsupportedOperationException("This command does not support execution on a WeddingModel.");
     }
 }
 

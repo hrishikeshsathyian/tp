@@ -10,7 +10,7 @@ import seedu.address.model.person.Person;
 /**
  * The API of the Model component.
  */
-public interface Model extends WeddingModel {
+public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
@@ -84,25 +84,4 @@ public interface Model extends WeddingModel {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
-
-    /**
-     * Returns the wedding planner file path.
-     */
-    Path getWeddingPlannerFilePath();
-
-    /**
-     * Sets the wedding planner file path.
-     */
-    void setWeddingPlannerFilePath(Path weddingPlannerFilePath);
-
-    /**
-     * Replaces wedding planner data with the data in {@code weddingPlanner}.
-     */
-    void setWeddingPlanner(ReadOnlyWeddingPlanner weddingPlanner);
-
-    /**
-     * Returns the wedding planner.
-     */
-    ReadOnlyWeddingPlanner getWeddingPlanner();
-
 }

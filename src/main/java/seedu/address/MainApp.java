@@ -22,6 +22,8 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ReadOnlyWeddingPlanner;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.WeddingModel;
+import seedu.address.model.WeddingModelManager;
 import seedu.address.model.WeddingPlanner;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
@@ -45,7 +47,7 @@ public class MainApp extends Application {
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
-    protected Model model;
+    protected WeddingModel model;
     protected Config config;
 
     @Override
@@ -70,11 +72,11 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
+     * Returns a {@code WeddingModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+    private WeddingModel initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAddressBookFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
@@ -93,7 +95,7 @@ public class MainApp extends Application {
         }
         // TODO: initiate model w actual wedding data
         ReadOnlyWeddingPlanner initialWeddingData = new WeddingPlanner();
-        return new ModelManager(initialData, initialWeddingData, userPrefs);
+        return new WeddingModelManager(initialData, initialWeddingData, userPrefs);
     }
 
     private void initLogging(Config config) {

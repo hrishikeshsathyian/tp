@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -7,9 +8,32 @@ import seedu.address.model.person.Person;
 import seedu.address.model.wedding.Wedding;
 
 /**
- * The API of the Wedding Model component.
+ * The API of the Wedding Model component which extends the base Model.
  */
-public interface WeddingModel {
+public interface WeddingModel extends Model {
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Wedding> PREDICATE_SHOW_ALL_WEDDINGS = unused -> true;
+
+    /**
+     * Returns the wedding planner file path.
+     */
+    Path getWeddingPlannerFilePath();
+
+    /**
+     * Sets the wedding planner file path.
+     */
+    void setWeddingPlannerFilePath(Path weddingPlannerFilePath);
+
+    /**
+     * Replaces wedding planner data with the data in {@code weddingPlanner}.
+     */
+    void setWeddingPlanner(ReadOnlyWeddingPlanner weddingPlanner);
+
+    /**
+     * Returns the wedding planner.
+     */
+    ReadOnlyWeddingPlanner getWeddingPlanner();
+
     // =========== Permanent Storage Operations ===========
     /**
      * Commits the draft wedding to permanent storage.
