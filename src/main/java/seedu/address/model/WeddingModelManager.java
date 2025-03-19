@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
@@ -80,6 +81,7 @@ public class WeddingModelManager implements WeddingModel {
         requireNonNull(guiSettings);
         userPrefs.setGuiSettings(guiSettings);
     }
+
 
     @Override
     public Path getWeddingPlannerFilePath() {
