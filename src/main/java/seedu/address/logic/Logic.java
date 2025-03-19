@@ -64,5 +64,4 @@ public interface Logic {
      * Returns the wedding planner file path.
      */
     Path getWeddingPlannerFilePath();
-
 }
