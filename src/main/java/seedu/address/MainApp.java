@@ -20,6 +20,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.ReadOnlyWeddingPlanner;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WeddingModel;
 import seedu.address.model.WeddingModelManager;
@@ -49,8 +50,7 @@ public class MainApp extends Application {
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
-    protected Model model;
-    protected WeddingModel weddingModel;
+    protected WeddingModel model;
     protected Config config;
 
     @Override
@@ -69,25 +69,17 @@ public class MainApp extends Application {
 
         model = initModelManager(storage, userPrefs);
 
-        /*TODO: REPLACE THE DATA HERE WITH THE ACTUAL FETCHING.
-          THIS IS SAMPLE DATA I USED FOR TESTING THE UI
-          - TIM
-         */
-        weddingModel = new WeddingModelManager(new WeddingPlanner());
-        weddingModel.addWedding(new Wedding(new Date("11072025"), new Title("TimChaewon")));
-        weddingModel.addWedding(new Wedding(new Date("13092025"), new Title("JayVik")));
-
-        logic = new LogicManager(model, weddingModel, storage);
+        logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic);
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
+     * Returns a {@code WeddingModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+    private WeddingModel initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAddressBookFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
@@ -104,8 +96,9 @@ public class MainApp extends Application {
                     + " Will be starting with an empty AddressBook.");
             initialData = new AddressBook();
         }
-
-        return new ModelManager(initialData, userPrefs);
+        // TODO: initiate model w actual wedding data
+        ReadOnlyWeddingPlanner initialWeddingData = new WeddingPlanner();
+        return new WeddingModelManager(initialData, initialWeddingData, userPrefs);
     }
 
     private void initLogging(Config config) {
