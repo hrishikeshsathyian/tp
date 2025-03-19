@@ -10,6 +10,9 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.wedding.Wedding;
 
+/**
+ * Panel containing the list of weddings.
+ */
 public class WeddingListPanel extends UiPart<Region> {
     private static final String FXML = "WeddingListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(WeddingListPanel.class);
@@ -40,6 +43,4 @@ public class WeddingListPanel extends UiPart<Region> {
             }
         }
     }
-
-    
 }
