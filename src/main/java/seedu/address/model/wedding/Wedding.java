@@ -2,6 +2,7 @@ package seedu.address.model.wedding;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -56,6 +57,18 @@ public class Wedding {
         return this.date;
     }
 
+    public Person getBride() {
+        return this.bride;
+    }
+
+    public Person getGroom() {
+        return this.groom;
+    }
+
+    public UniquePersonList getMembers() {
+        return this.members;
+    }
+
     /**
      * Returns true if both Weddings have the same title and date.
      */
@@ -78,6 +91,17 @@ public class Wedding {
 
     public boolean isSameWedding(Wedding wedding) {
         return this.equals(wedding);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("title", title)
+                .add("date", date)
+                .add("bride", bride)
+                .add("groom", groom)
+                .add("members", members)
+                .toString();
     }
 
 }

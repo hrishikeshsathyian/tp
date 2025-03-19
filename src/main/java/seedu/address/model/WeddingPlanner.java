@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.wedding.UniqueWeddingList;
 import seedu.address.model.wedding.Wedding;
@@ -9,7 +10,7 @@ import seedu.address.model.wedding.Wedding;
  * Represents a Wedding Planner that manages a collection of weddings.
  * Acts as a central storage for wedding-related data.
  */
-public class WeddingPlanner {
+public class WeddingPlanner implements ReadOnlyWeddingPlanner{
 
     private final UniqueWeddingList weddings;
 
@@ -38,6 +39,11 @@ public class WeddingPlanner {
      */
     public boolean hasWedding(Wedding otherWedding) {
         return this.weddings.contains(otherWedding);
+    }
+
+    @Override
+    public ObservableList<Wedding> getWeddingList() {
+        return weddings.asUnmodifiableObservableList();
     }
 
     @Override
