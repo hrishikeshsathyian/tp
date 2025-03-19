@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.WeddingModel;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 
 /**
@@ -32,6 +34,11 @@ public class FindCommand extends Command {
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
+    }
+
+    @Override
+    public CommandResult execute(WeddingModel model) throws CommandException {
+        throw new CommandException("Command not in use!");
     }
 
     @Override

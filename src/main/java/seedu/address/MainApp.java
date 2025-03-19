@@ -18,6 +18,8 @@ import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.WeddingModel;
+import seedu.address.model.WeddingModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ReadOnlyWeddingPlanner;
@@ -47,7 +49,7 @@ public class MainApp extends Application {
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
-    protected Model model;
+    protected WeddingModel model;
     protected Config config;
 
     @Override
@@ -72,11 +74,11 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s wedding planner and {@code userPrefs}. <br>
+     * Returns a {@code WeddingModelManager} with the data from {@code storage}'s wedding planner and {@code userPrefs}. <br>
      * The data from the sample wedding planner will be used instead if {@code storage}'s wedding planner is not found,
      * or an empty wedding planner will be used instead if errors occur when reading {@code storage}'s wedding planner.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+    private WeddingModel initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getWeddingPlannerFilePath());
 
         Optional<ReadOnlyWeddingPlanner> weddingPlannerOptional;
@@ -93,8 +95,7 @@ public class MainApp extends Application {
                     + " Will be starting with an empty WeddingPlanner.");
             initialData = new WeddingPlanner();
         }
-
-        return new ModelManager(initialData, userPrefs);
+        return new WeddingModelManager(initialData, userPrefs);
     }
 
     private void initLogging(Config config) {

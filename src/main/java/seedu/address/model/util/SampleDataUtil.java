@@ -12,6 +12,9 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.wedding.Date;
+import seedu.address.model.wedding.Title;
+import seedu.address.model.wedding.Wedding;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -37,6 +40,13 @@ public class SampleDataUtil {
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
                 getTagSet("colleagues"))
+        };
+    }
+
+    public static Wedding[] getSampleWedding() {
+        return new Wedding[] {
+                new Wedding(new Date("11072025"), new Title("TimChaewon")),
+                new Wedding(new Date("13012025"), new Title("JayVik"))
         };
     }
 

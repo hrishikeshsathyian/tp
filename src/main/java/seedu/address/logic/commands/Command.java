@@ -27,8 +27,6 @@ public abstract class Command {
      * @return feedback message of the operation result for display
      * @throws CommandException If an error occurs during command execution.
      */
-    public CommandResult execute(WeddingModel model) throws CommandException {
-        throw new UnsupportedOperationException("This command does not support execution on a WeddingModel.");
-    }
+    public abstract CommandResult execute(WeddingModel model) throws CommandException;
 }
 
