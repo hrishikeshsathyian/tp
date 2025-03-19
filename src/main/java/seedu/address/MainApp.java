@@ -89,7 +89,7 @@ public class MainApp extends Application {
                 logger.info("Creating a new data file " + storage.getWeddingPlannerFilePath()
                         + " populated with a sample WeddingPlanner.");
             }
-            initialData = weddingPlannerOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = weddingPlannerOptional.orElseGet(SampleDataUtil::getSampleWeddingPlanner);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getWeddingPlannerFilePath() + " could not be loaded."
                     + " Will be starting with an empty WeddingPlanner.");

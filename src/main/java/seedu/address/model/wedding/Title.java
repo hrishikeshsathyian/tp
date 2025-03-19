@@ -50,10 +50,6 @@ public class Title {
         return weddingTitle;
     }
 
-    public static boolean isValidTitle(String test) {
-        return test != null && !test.trim().isEmpty() && test.length() <= 100;
-    }
-
     /**
      * Checks if this {@code Name} is equal to another object.
      * Two {@code Name} objects are considered equal if they have the same wedding name.

@@ -5,7 +5,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Represents a Wedding's date in the planner.
@@ -21,6 +24,11 @@ public class Date {
     // Formatter for outputting the date in a friendly format.
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy");
 
+    private static final DateTimeFormatter formatters = new DateTimeFormatterBuilder()
+            .appendOptional(INPUT_FORMATTER)
+            .appendOptional(OUTPUT_FORMATTER)
+            .toFormatter();
+
     public final LocalDate date;
 
     /**
@@ -33,7 +41,7 @@ public class Date {
     public Date(String dateStr) {
         requireNonNull(dateStr);
         checkArgument(isValidDate(dateStr), MESSAGE_CONSTRAINTS);
-        this.date = LocalDate.parse(dateStr, INPUT_FORMATTER);
+        this.date = LocalDate.parse(dateStr, formatters);
     }
 
     /**
@@ -44,7 +52,7 @@ public class Date {
      */
     public static boolean isValidDate(String testDate) {
         try {
-            LocalDate parsedDate = LocalDate.parse(testDate, INPUT_FORMATTER);
+            LocalDate parsedDate = LocalDate.parse(testDate, formatters);
             return parsedDate.isAfter(LocalDate.now());
         } catch (DateTimeParseException e) {
             return false;

@@ -28,8 +28,10 @@ public class JsonSerializableWeddingPlanner {
      * Constructs a {@code JsonSerializableWeddingPlanner} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableWeddingPlanner(@JsonProperty("persons") List<JsonAdaptedWedding> weddings) {
+    public JsonSerializableWeddingPlanner(@JsonProperty("weddings") List<JsonAdaptedWedding> weddings) {
+
         this.weddings.addAll(weddings);
+        System.out.println("test1");
     }
 
     /**
