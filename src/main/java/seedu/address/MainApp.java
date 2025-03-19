@@ -94,7 +94,7 @@ public class MainApp extends Application {
         }
         // TODO: initiate model w actual wedding data
         ReadOnlyWeddingPlanner initialWeddingData = new WeddingPlanner();
-        return new WeddingModelManager(initialData, initialWeddingData, userPrefs);
+        return new WeddingModelManager(initialWeddingData, userPrefs);
     }
 
     private void initLogging(Config config) {

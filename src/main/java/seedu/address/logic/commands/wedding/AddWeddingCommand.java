@@ -2,6 +2,7 @@ package seedu.address.logic.commands.wedding;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -13,15 +14,15 @@ import seedu.address.model.wedding.Wedding;
  */
 public class AddWeddingCommand extends Command {
 
-    public static final String COMMAND_WORD = "addwedding";
+    public static final String COMMAND_WORD = "new";
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Creates a wedding draft\n"
         + "Parameters: n/WEDDING_NAME d/DATE\n"
         + "Example: " + COMMAND_WORD + " n/John & Mary d/25122025";
     public static final String MESSAGE_SUCCESS = "Wedding draft created! "
         + "Now add bride/groom using:\n"
-        + "addweddingperson n/NAME p/PHONE e/EMAIL a/ADDRESS role/bride\n"
-        + "addweddingperson n/NAME p/PHONE e/EMAIL a/ADDRESS role/groom";
+        + "add n/NAME p/PHONE e/EMAIL a/ADDRESS t/bride\n"
+        + "add n/NAME p/PHONE e/EMAIL a/ADDRESS t/groom";
     public static final String MESSAGE_DUPLICATE_WEDDING = "This wedding already exists.";
     public static final String MESSAGE_EXISTING_DRAFT = "Overwriting previous wedding draft.";
 
@@ -53,5 +54,20 @@ public class AddWeddingCommand extends Command {
         // Set the new draft wedding
         model.setDraftWedding(draftWedding);
         return new CommandResult(feedback);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddWeddingCommand)) {
+            return false;
+        }
+
+        AddWeddingCommand otherAddCommand = (AddWeddingCommand) other;
+        return draftWedding.equals(otherAddCommand.draftWedding);
     }
 }

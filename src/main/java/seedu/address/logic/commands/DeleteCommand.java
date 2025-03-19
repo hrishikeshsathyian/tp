@@ -9,6 +9,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.WeddingModel;
 import seedu.address.model.person.Person;
 
 /**
@@ -58,6 +59,11 @@ public class DeleteCommand extends Command {
 
         DeleteCommand otherDeleteCommand = (DeleteCommand) other;
         return targetIndex.equals(otherDeleteCommand.targetIndex);
+    }
+
+    @Override
+    public CommandResult execute(WeddingModel model) throws CommandException {
+        throw new CommandException("Command not in use!");
     }
 
     @Override

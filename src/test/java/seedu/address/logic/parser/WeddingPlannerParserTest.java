@@ -22,23 +22,34 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.wedding.AddWeddingCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.wedding.Date;
+import seedu.address.model.wedding.Title;
+import seedu.address.model.wedding.Wedding;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 
-public class AddressBookParserTest {
+public class WeddingPlannerParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final WeddingPlannerParser parser = new WeddingPlannerParser();
 
     @Test
-    public void parseCommand_add() throws Exception {
-        Person person = new PersonBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
-        assertEquals(new AddCommand(person), command);
+    public void parseCommand_addWedding() throws Exception {
+        // Create a mock Wedding object (you can modify these fields to match your actual Wedding constructor)
+        Wedding wedding = new Wedding(new Date("25122025"), new Title("Chaewon & Tim"));
+
+        // Create the command from the parsed input string (adjust the input string to match your Wedding's parameters)
+        AddWeddingCommand command = (AddWeddingCommand) parser.parseCommand("new n/Chaewon & Tim d/25122025");
+
+        // Assert that the created command matches the expected AddWeddingCommand
+        assertEquals(new AddWeddingCommand(wedding), command);
     }
+
 
     @Test
     public void parseCommand_clear() throws Exception {

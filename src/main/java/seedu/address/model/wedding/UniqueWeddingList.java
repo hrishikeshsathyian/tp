@@ -68,10 +68,6 @@ public class UniqueWeddingList implements Iterable<Wedding> {
         return internalUnmodifiableList;
     }
 
-    public ObservableList<Wedding> getWeddingList() {
-        return internalWeddingsList;
-    }
-
     @Override
     public Iterator<Wedding> iterator() {
         return internalList.iterator();

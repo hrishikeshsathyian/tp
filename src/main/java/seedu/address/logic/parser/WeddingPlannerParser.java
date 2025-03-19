@@ -18,23 +18,25 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.wedding.AddWeddingCommand;
+import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.CloseWeddingCommand;
 import seedu.address.logic.commands.wedding.OpenWeddingCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.wedding.AddWeddingCommandParser;
+import seedu.address.logic.parser.wedding.AddWeddingPersonCommandParser;
 import seedu.address.logic.parser.wedding.CloseWeddingCommandParser;
 import seedu.address.logic.parser.wedding.OpenWeddingCommandParser;
 
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class WeddingPlannerParser {
 
     /**
      * Used for initial separation of command word and args.
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-    private static final Logger logger = LogsCenter.getLogger(AddressBookParser.class);
+    private static final Logger logger = LogsCenter.getLogger(WeddingPlannerParser.class);
 
     /**
      * Parses user input into command for execution.
@@ -59,8 +61,8 @@ public class AddressBookParser {
 
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+        //case AddCommand.COMMAND_WORD:
+        //    return new AddCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
@@ -85,6 +87,9 @@ public class AddressBookParser {
 
         case AddWeddingCommand.COMMAND_WORD:
             return new AddWeddingCommandParser().parse(arguments);
+
+        case AddWeddingPersonCommand.COMMAND_WORD:
+            return new AddWeddingPersonCommandParser().parse(arguments);
 
         case OpenWeddingCommand.COMMAND_WORD:
             return new OpenWeddingCommandParser().parse(arguments);
