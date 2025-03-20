@@ -50,6 +50,14 @@ public class Title {
         return weddingTitle;
     }
 
+    /**
+     * Checks if the given title is valid.
+     * A valid title must not be empty and must not exceed {@code WEDDING_NAME_MAX_LENGTH} characters.
+     *
+     * @param test The title string to check.
+     * @return {@code true} if the title is valid, {@code false} otherwise.
+     * @throws NullPointerException if {@code test} is null.
+     */
     public static boolean isValidTitle(String test) {
         requireNonNull(test);
         boolean isValid = !test.trim().isEmpty() && test.length() <= WEDDING_NAME_MAX_LENGTH;
