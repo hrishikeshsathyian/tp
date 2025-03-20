@@ -40,8 +40,7 @@ public class OpenWeddingCommandTest {
         // Execute the command and expect an exception
         assertThrows(
                 CommandException.class,
-                OpenWeddingCommand.MESSAGE_INVALID_INDEX,
-                () -> command.execute(model)
+                OpenWeddingCommand.MESSAGE_INVALID_INDEX, () -> command.execute(model)
         );
     }
 
@@ -54,8 +53,7 @@ public class OpenWeddingCommandTest {
 
         assertThrows(
                 CommandException.class,
-                OpenWeddingCommand.MESSAGE_INVALID_INDEX,
-                () -> command.execute(model)
+                OpenWeddingCommand.MESSAGE_INVALID_INDEX, () -> command.execute(model)
         );
     }
 

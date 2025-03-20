@@ -18,12 +18,12 @@ public class UniqueWeddingListTest {
 
     private final UniqueWeddingList uniqueWeddingList = new UniqueWeddingList();
 
-    private final Wedding WeddingA = new Wedding(
+    private final Wedding weddingA = new Wedding(
             new Date("25122025"),
             new Title("Alice & Bob")
     );
 
-    private final Wedding WeddingB = new Wedding(
+    private final Wedding weddingB = new Wedding(
             new Date("01012026"),
             new Title("Charlie & Diana")
     );
@@ -35,18 +35,18 @@ public class UniqueWeddingListTest {
 
     @Test
     public void contains_weddingNotInList_returnsFalse() {
-        assertFalse(uniqueWeddingList.contains(WeddingA));
+        assertFalse(uniqueWeddingList.contains(weddingA));
     }
 
     @Test
     public void contains_weddingInList_returnsTrue() {
-        uniqueWeddingList.add(WeddingA);
-        assertTrue(uniqueWeddingList.contains(WeddingA));
+        uniqueWeddingList.add(weddingA);
+        assertTrue(uniqueWeddingList.contains(weddingA));
     }
 
     @Test
     public void contains_weddingWithSameIdentityFieldsInList_returnsTrue() {
-        uniqueWeddingList.add(WeddingA);
+        uniqueWeddingList.add(weddingA);
         Wedding weddingSameIdentity = new Wedding(
                 new Date("25122025"),
                 new Title("Alice & Bob")
@@ -61,8 +61,8 @@ public class UniqueWeddingListTest {
 
     @Test
     public void add_duplicateWedding_throwsDuplicateWeddingException() {
-        uniqueWeddingList.add(WeddingA);
-        assertThrows(DuplicateWeddingException.class, () -> uniqueWeddingList.add(WeddingA));
+        uniqueWeddingList.add(weddingA);
+        assertThrows(DuplicateWeddingException.class, () -> uniqueWeddingList.add(weddingA));
     }
 
     @Test
@@ -72,13 +72,13 @@ public class UniqueWeddingListTest {
 
     @Test
     public void remove_weddingDoesNotExist_throwsWeddingNotFoundException() {
-        assertThrows(WeddingNotFoundException.class, () -> uniqueWeddingList.remove(WeddingA));
+        assertThrows(WeddingNotFoundException.class, () -> uniqueWeddingList.remove(weddingA));
     }
 
     @Test
     public void remove_existingWedding_removesWedding() {
-        uniqueWeddingList.add(WeddingA);
-        uniqueWeddingList.remove(WeddingA);
+        uniqueWeddingList.add(weddingA);
+        uniqueWeddingList.remove(weddingA);
         UniqueWeddingList expectedUniqueWeddingList = new UniqueWeddingList();
         assertEquals(expectedUniqueWeddingList, uniqueWeddingList);
     }
@@ -90,9 +90,9 @@ public class UniqueWeddingListTest {
 
     @Test
     public void setWeddings_uniqueWeddingList_replacesOwnListWithProvidedUniqueWeddingList() {
-        uniqueWeddingList.add(WeddingA);
+        uniqueWeddingList.add(weddingA);
         UniqueWeddingList expectedUniqueWeddingList = new UniqueWeddingList();
-        expectedUniqueWeddingList.add(WeddingB);
+        expectedUniqueWeddingList.add(weddingB);
         uniqueWeddingList.setWeddings(expectedUniqueWeddingList.asUnmodifiableObservableList());
         assertEquals(expectedUniqueWeddingList, uniqueWeddingList);
     }
@@ -104,17 +104,17 @@ public class UniqueWeddingListTest {
 
     @Test
     public void setWeddings_list_replacesOwnListWithProvidedList() {
-        uniqueWeddingList.add(WeddingA);
-        List<Wedding> weddingList = Collections.singletonList(WeddingB);
+        uniqueWeddingList.add(weddingA);
+        List<Wedding> weddingList = Collections.singletonList(weddingB);
         uniqueWeddingList.setWeddings(weddingList);
         UniqueWeddingList expectedUniqueWeddingList = new UniqueWeddingList();
-        expectedUniqueWeddingList.add(WeddingB);
+        expectedUniqueWeddingList.add(weddingB);
         assertEquals(expectedUniqueWeddingList, uniqueWeddingList);
     }
 
     @Test
     public void setWeddings_listWithDuplicateWeddings_throwsDuplicateWeddingException() {
-        List<Wedding> listWithDuplicateWeddings = Arrays.asList(WeddingA, WeddingA);
+        List<Wedding> listWithDuplicateWeddings = Arrays.asList(weddingA, weddingA);
         assertThrows(DuplicateWeddingException.class, () -> uniqueWeddingList.setWeddings(listWithDuplicateWeddings));
     }
 
@@ -132,8 +132,8 @@ public class UniqueWeddingListTest {
         assertEquals(uniqueWeddingList.hashCode(), anotherUniqueWeddingList.hashCode());
 
         // After adding the same wedding, they should still have the same hashcode
-        uniqueWeddingList.add(WeddingA);
-        anotherUniqueWeddingList.add(WeddingA);
+        uniqueWeddingList.add(weddingA);
+        anotherUniqueWeddingList.add(weddingA);
         assertEquals(uniqueWeddingList.hashCode(), anotherUniqueWeddingList.hashCode());
     }
 
@@ -143,7 +143,7 @@ public class UniqueWeddingListTest {
         assertEquals(uniqueWeddingList.asUnmodifiableObservableList().toString(), uniqueWeddingList.toString());
 
         // Non-empty list
-        uniqueWeddingList.add(WeddingA);
+        uniqueWeddingList.add(weddingA);
         assertEquals(uniqueWeddingList.asUnmodifiableObservableList().toString(), uniqueWeddingList.toString());
     }
 }

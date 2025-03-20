@@ -44,8 +44,7 @@ public class AddWeddingPersonCommandTest {
         // Execute the command and expect an exception
         assertThrows(
                 CommandException.class,
-                AddWeddingPersonCommand.MESSAGE_NO_ACTIVE_WEDDING,
-                () -> command.execute(model)
+                AddWeddingPersonCommand.MESSAGE_NO_ACTIVE_WEDDING, () -> command.execute(model)
         );
     }
 
@@ -133,8 +132,7 @@ public class AddWeddingPersonCommandTest {
         // Execute the command and expect an exception
         assertThrows(
                 CommandException.class,
-                AddWeddingPersonCommand.MESSAGE_DUPLICATE_PERSON,
-                () -> command.execute(model)
+                AddWeddingPersonCommand.MESSAGE_DUPLICATE_PERSON, () -> command.execute(model)
         );
     }
 
@@ -152,10 +150,8 @@ public class AddWeddingPersonCommandTest {
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(secondBride);
 
         // Execute the command and expect an exception
-        assertThrows(
-                CommandException.class,
-                String.format(AddWeddingPersonCommand.MESSAGE_ROLE_CONFLICT, "bride"),
-                () -> command.execute(model)
+        assertThrows(CommandException.class,
+                String.format(AddWeddingPersonCommand.MESSAGE_ROLE_CONFLICT, "bride"), () -> command.execute(model)
         );
     }
 

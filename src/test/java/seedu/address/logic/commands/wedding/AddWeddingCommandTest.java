@@ -71,8 +71,7 @@ public class AddWeddingCommandTest {
         // Execute the command and expect an exception
         assertThrows(
                 CommandException.class,
-                AddWeddingCommand.MESSAGE_DUPLICATE_WEDDING,
-                () -> command.execute(model)
+                AddWeddingCommand.MESSAGE_DUPLICATE_WEDDING, () -> command.execute(model)
         );
     }
 
