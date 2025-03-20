@@ -178,4 +178,5 @@ public class AddWeddingPersonCommandTest {
         assertEquals(bride, storedWedding.getBride());
         assertEquals(groom, storedWedding.getGroom());
     }
+
 }

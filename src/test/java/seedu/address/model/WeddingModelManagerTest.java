@@ -18,7 +18,8 @@ import seedu.address.model.wedding.Title;
 import seedu.address.model.wedding.Wedding;
 import seedu.address.testutil.PersonBuilder;
 
-public class WeddingModelManagerTest {
+public class
+WeddingModelManagerTest {
 
     private WeddingModelManager modelManager = new WeddingModelManager();
 
