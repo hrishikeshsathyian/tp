@@ -15,19 +15,13 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
-import seedu.address.model.AddressBook;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.WeddingModel;
-import seedu.address.model.WeddingModelManager;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ReadOnlyWeddingPlanner;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.WeddingModel;
+import seedu.address.model.WeddingModelManager;
 import seedu.address.model.WeddingPlanner;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.JsonWeddingPlannerStorage;
 import seedu.address.storage.Storage;
@@ -63,7 +57,8 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        WeddingPlannerStorage weddingPlannerStorage = new JsonWeddingPlannerStorage(userPrefs.getWeddingPlannerFilePath());
+        WeddingPlannerStorage weddingPlannerStorage = new JsonWeddingPlannerStorage(userPrefs
+                .getWeddingPlannerFilePath());
         storage = new StorageManager(weddingPlannerStorage, userPrefsStorage);
 
         model = initModelManager(storage, userPrefs);
@@ -74,7 +69,7 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code WeddingModelManager} with the data from {@code storage}'s wedding planner and {@code userPrefs}. <br>
+     * Returns a {@code WeddingModelManager} with the data from {@code storage}'s wedding planner and {@code userPrefs}.
      * The data from the sample wedding planner will be used instead if {@code storage}'s wedding planner is not found,
      * or an empty wedding planner will be used instead if errors occur when reading {@code storage}'s wedding planner.
      */

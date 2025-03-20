@@ -8,6 +8,9 @@ import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyWeddingPlanner;
 
+/**
+ * Represents a storage for {@link seedu.address.model.wedding.Wedding}.
+ */
 public interface WeddingPlannerStorage {
     /**
      * Returns the file path of the data file.

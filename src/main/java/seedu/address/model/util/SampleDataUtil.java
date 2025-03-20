@@ -47,8 +47,8 @@ public class SampleDataUtil {
 
     public static Wedding[] getSampleWeddings() {
         return new Wedding[] {
-                new Wedding(new Date("11072025"), new Title("TimChaewon")),
-                new Wedding(new Date("13052025"), new Title("JayVik"))
+            new Wedding(new Date("11072025"), new Title("TimChaewon")),
+            new Wedding(new Date("13052025"), new Title("JayVik"))
         };
     }
 
