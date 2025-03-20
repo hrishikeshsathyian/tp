@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Wedding's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidTitle(String)}
  */
 public class Title {
 
@@ -24,20 +24,8 @@ public class Title {
      */
     public Title(String weddingTitle) {
         requireNonNull(weddingTitle);
-        checkArgument(isValidName(weddingTitle), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidTitle(weddingTitle), MESSAGE_CONSTRAINTS);
         this.weddingTitle = weddingTitle;
-    }
-
-    /**
-     * Returns true if a given string is a valid wedding name.
-     * A valid wedding name is non-blank and does not exceed {@code WEDDING_NAME_MAX_LENGTH} characters.
-     *
-     * @param test the wedding name string to validate.
-     * @return true if the string is valid, false otherwise.
-     */
-    public static boolean isValidName(String test) {
-        boolean isValid = test != null && !test.trim().isEmpty() && test.length() <= WEDDING_NAME_MAX_LENGTH;
-        return isValid;
     }
 
     /**

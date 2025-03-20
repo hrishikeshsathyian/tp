@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyWeddingPlanner;
+import seedu.address.model.WeddingPlanner;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -43,10 +45,10 @@ public class SampleDataUtil {
         };
     }
 
-    public static Wedding[] getSampleWedding() {
+    public static Wedding[] getSampleWeddings() {
         return new Wedding[] {
             new Wedding(new Date("11072025"), new Title("TimChaewon")),
-            new Wedding(new Date("13012025"), new Title("JayVik"))
+            new Wedding(new Date("13052025"), new Title("JayVik"))
         };
     }
 
@@ -56,6 +58,14 @@ public class SampleDataUtil {
             sampleAb.addPerson(samplePerson);
         }
         return sampleAb;
+    }
+
+    public static ReadOnlyWeddingPlanner getSampleWeddingPlanner() {
+        WeddingPlanner sampleWp = new WeddingPlanner();
+        for (Wedding sampleWedding : getSampleWeddings()) {
+            sampleWp.addWedding(sampleWedding);
+        }
+        return sampleWp;
     }
 
     /**

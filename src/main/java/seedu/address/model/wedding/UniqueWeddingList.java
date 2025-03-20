@@ -84,6 +84,10 @@ public class UniqueWeddingList implements Iterable<Wedding> {
     public int hashCode() {
         return internalList.hashCode();
     }
+    @Override
+    public String toString() {
+        return internalList.toString();
+    }
 
     /**
      * Returns true if all weddings are unique
