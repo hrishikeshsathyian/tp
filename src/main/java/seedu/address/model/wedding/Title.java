@@ -29,18 +29,6 @@ public class Title {
     }
 
     /**
-     * Returns true if a given string is a valid wedding name.
-     * A valid wedding name is non-blank and does not exceed {@code WEDDING_NAME_MAX_LENGTH} characters.
-     *
-     * @param test the wedding name string to validate.
-     * @return true if the string is valid, false otherwise.
-     */
-    public static boolean isValidTitle(String test) {
-        boolean isValid = test != null && !test.trim().isEmpty() && test.length() <= WEDDING_NAME_MAX_LENGTH;
-        return isValid;
-    }
-
-    /**
      * Returns the wedding name in string format.
      *
      * @return the wedding name.
@@ -48,6 +36,20 @@ public class Title {
     @Override
     public String toString() {
         return weddingTitle;
+    }
+
+    /**
+     * Checks if the given title is valid.
+     * A valid title must not be empty and must not exceed {@code WEDDING_NAME_MAX_LENGTH} characters.
+     *
+     * @param test The title string to check.
+     * @return {@code true} if the title is valid, {@code false} otherwise.
+     * @throws NullPointerException if {@code test} is null.
+     */
+    public static boolean isValidTitle(String test) {
+        requireNonNull(test);
+        boolean isValid = !test.trim().isEmpty() && test.length() <= WEDDING_NAME_MAX_LENGTH;
+        return isValid;
     }
 
     /**
