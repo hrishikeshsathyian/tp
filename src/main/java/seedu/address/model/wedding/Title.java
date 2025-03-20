@@ -51,7 +51,9 @@ public class Title {
     }
 
     public static boolean isValidTitle(String test) {
-        return test != null && !test.trim().isEmpty() && test.length() <= 100;
+        requireNonNull(test);
+        boolean isValid = !test.trim().isEmpty() && test.length() <= WEDDING_NAME_MAX_LENGTH;
+        return isValid;
     }
 
     /**
