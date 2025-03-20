@@ -274,7 +274,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of contacts over a variety of diferent weddings
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -310,7 +310,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `HappilyEverAfter` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Creating a new wedding**
 
@@ -450,19 +450,19 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Adding a wedding
 
-1. Deleting a person while all persons are being shown
+1. Adding a wedding to `HappilyEverAfter`
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: Application must be open
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   1. Test case: `new n/NAME d/09092027`<br>
+      Expected: The application will prompt addition of the contact details of bride and groom.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   1. Test case: `new NAME`<br>
+      Expected: No wedding is created. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   1. Other incorrect `new` commands to try: `new`, `new n/NAME d/DATE`, `...` (where DATE is not a recognised date format)<br>
       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
