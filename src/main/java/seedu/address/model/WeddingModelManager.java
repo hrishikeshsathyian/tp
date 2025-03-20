@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
-import java.util.logging.Filter;
 import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
@@ -81,6 +80,7 @@ public class WeddingModelManager implements WeddingModel {
         requireNonNull(guiSettings);
         userPrefs.setGuiSettings(guiSettings);
     }
+
 
     @Override
     public Path getWeddingPlannerFilePath() {
@@ -234,6 +234,10 @@ public class WeddingModelManager implements WeddingModel {
         filteredPersons.setPredicate(predicate);
     }
 
+    /**
+     * Updates the internal list with the bride, groom, and other persons associated with the weddings
+     * so that it can be displayed.
+     */
     public void updateFilteredPersonList() {
         if (currentWedding != null) {
             ObservableList<Person> fullList = FXCollections.observableArrayList();

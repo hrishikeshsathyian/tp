@@ -67,11 +67,6 @@ public interface WeddingModel {
      * Sets the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
-
-    /**
-     * Returns the user prefs' wedding planner file path.
-     */
-
     // =========== Draft Management ===========
     /**
      * Stores a wedding draft temporarily before commitment
