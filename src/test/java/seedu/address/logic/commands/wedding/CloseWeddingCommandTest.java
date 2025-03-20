@@ -34,9 +34,11 @@ public class CloseWeddingCommandTest {
 
     @Test
     public void execute_noOpenWedding_throwsCommandException() {
-        assertThrows(CommandException.class,
+        assertThrows(
+                CommandException.class,
                 CloseWeddingCommand.MESSAGE_NO_OPEN_WEDDING,
-                () -> command.execute(model));
+                () -> command.execute(model)
+        );
     }
 
     @Test

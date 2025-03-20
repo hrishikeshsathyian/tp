@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -21,11 +20,11 @@ import seedu.address.model.wedding.exceptions.DuplicateWeddingException;
 public class WeddingPlannerTest {
 
     private final WeddingPlanner weddingPlanner = new WeddingPlanner();
-    private final Wedding WEDDING_A = new Wedding(
+    private final Wedding WeddingA = new Wedding(
             new Date("25122025"),
             new Title("Alice & Bob")
     );
-    private final Wedding WEDDING_B = new Wedding(
+    private final Wedding WeddingB = new Wedding(
             new Date("01012026"),
             new Title("Charlie & Diana")
     );
@@ -42,7 +41,7 @@ public class WeddingPlannerTest {
 
     @Test
     public void resetData_withValidReadOnlyWeddingPlanner_replacesData() {
-        WeddingPlanner newData = new WeddingPlannerBuilder().withWedding(WEDDING_B).build();
+        WeddingPlanner newData = new WeddingPlannerBuilder().withWedding(WeddingB).build();
         weddingPlanner.resetData(newData);
         assertEquals(newData, weddingPlanner);
     }
@@ -55,7 +54,7 @@ public class WeddingPlannerTest {
                 new Title("Alice & Bob")
         );
 
-        ObservableList<Wedding> newWeddings = FXCollections.observableArrayList(WEDDING_A, editedWeddingA);
+        ObservableList<Wedding> newWeddings = FXCollections.observableArrayList(WeddingA, editedWeddingA);
         WeddingPlannerStub newData = new WeddingPlannerStub(newWeddings);
 
         assertThrows(DuplicateWeddingException.class, () -> weddingPlanner.resetData(newData));
@@ -68,18 +67,18 @@ public class WeddingPlannerTest {
 
     @Test
     public void hasWedding_weddingNotInWeddingPlanner_returnsFalse() {
-        assertFalse(weddingPlanner.hasWedding(WEDDING_A));
+        assertFalse(weddingPlanner.hasWedding(WeddingA));
     }
 
     @Test
     public void hasWedding_weddingInWeddingPlanner_returnsTrue() {
-        weddingPlanner.addWedding(WEDDING_A);
-        assertTrue(weddingPlanner.hasWedding(WEDDING_A));
+        weddingPlanner.addWedding(WeddingA);
+        assertTrue(weddingPlanner.hasWedding(WeddingA));
     }
 
     @Test
     public void hasWedding_weddingWithSameIdentityFieldsInWeddingPlanner_returnsTrue() {
-        weddingPlanner.addWedding(WEDDING_A);
+        weddingPlanner.addWedding(WeddingA);
         Wedding editedWeddingA = new Wedding(
                 new Date("25122025"),
                 new Title("Alice & Bob")
@@ -113,11 +112,11 @@ public class WeddingPlannerTest {
         assertFalse(weddingPlanner.equals(null));
 
         // Different weddings -> returns false
-        WeddingPlanner anotherPlanner = new WeddingPlannerBuilder().withWedding(WEDDING_A).build();
+        WeddingPlanner anotherPlanner = new WeddingPlannerBuilder().withWedding(WeddingA).build();
         assertFalse(weddingPlanner.equals(anotherPlanner));
 
         // Same weddings -> returns true
-        weddingPlanner.addWedding(WEDDING_A);
+        weddingPlanner.addWedding(WeddingA);
         assertTrue(weddingPlanner.equals(anotherPlanner));
     }
 

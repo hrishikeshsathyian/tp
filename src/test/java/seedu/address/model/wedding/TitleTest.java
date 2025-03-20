@@ -22,7 +22,8 @@ public class TitleTest {
         assertThrows(IllegalArgumentException.class, () -> new Title("   "));
 
         // Too long (over 100 characters)
-        String tooLongTitle = "This title is way too long and exceeds the maximum allowed length of one hundred characters which is definitely not allowed in our system";
+        String tooLongTitle = "This title is way too long and exceeds the maximum allowed length of one hundred "
+                + "characters which is definitely not allowed in our system";
         assertThrows(IllegalArgumentException.class, () -> new Title(tooLongTitle));
     }
 
@@ -36,13 +37,15 @@ public class TitleTest {
         assertFalse(Title.isValidTitle("   ")); // spaces only
 
         // Title exceeding maximum length (100 characters)
-        String tooLongTitle = "This title is way too long and exceeds the maximum allowed length of one hundred characters which is definitely not allowed in our system";
+        String tooLongTitle = "This title is way too long and exceeds the maximum allowed length of one hundred "
+                + "characters which is definitely not allowed in our system";
         assertFalse(Title.isValidTitle(tooLongTitle));
 
         // valid titles
         assertTrue(Title.isValidTitle("John & Mary")); // normal title
         assertTrue(Title.isValidTitle("A")); // single character
-        assertTrue(Title.isValidTitle("Super Long Wedding Title But Still Under The Limit Of One Hundred Characters So It Should Be Valid.")); // long but valid
+        assertTrue(Title.isValidTitle("Super Long Wedding Title But Still Under The Limit Of One Hundred "
+                + "Characters So It Should Be Valid.")); // long but valid
         assertTrue(Title.isValidTitle("Special Characters: !@#$%^&*()_+-=[]{}|;':\",./<>?")); // special characters
         assertTrue(Title.isValidTitle("12345")); // numbers only
     }

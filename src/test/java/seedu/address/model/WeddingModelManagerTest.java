@@ -18,23 +18,21 @@ import seedu.address.model.wedding.Title;
 import seedu.address.model.wedding.Wedding;
 import seedu.address.testutil.PersonBuilder;
 
-public class
-WeddingModelManagerTest {
+public class WeddingModelManagerTest {
 
     private WeddingModelManager modelManager = new WeddingModelManager();
 
-    private final Wedding WEDDING_A = new Wedding(
+    private final Wedding WeddingA = new Wedding(
             new Date("25122025"),
             new Title("Alice & Bob")
     );
 
-    private final Wedding WEDDING_B = new Wedding(
+    private final Wedding WeddingB = new Wedding(
             new Date("01012026"),
             new Title("Charlie & Diana")
     );
 
-    private final Person PERSON_A = new PersonBuilder().withName("Alice").build();
-    private final Person PERSON_B = new PersonBuilder().withName("Bob").build();
+    private final Person PersonA = new PersonBuilder().withName("Alice").build();
 
     @Test
     public void constructor() {
@@ -93,13 +91,13 @@ WeddingModelManagerTest {
 
     @Test
     public void hasWedding_weddingNotInWeddingPlanner_returnsFalse() {
-        assertFalse(modelManager.hasWedding(WEDDING_A));
+        assertFalse(modelManager.hasWedding(WeddingA));
     }
 
     @Test
     public void hasWedding_weddingInWeddingPlanner_returnsTrue() {
-        modelManager.addWedding(WEDDING_A);
-        assertTrue(modelManager.hasWedding(WEDDING_A));
+        modelManager.addWedding(WeddingA);
+        assertTrue(modelManager.hasWedding(WeddingA));
     }
 
     @Test
@@ -109,8 +107,8 @@ WeddingModelManagerTest {
 
     @Test
     public void setDraftWedding_validWedding_setsDraftWedding() {
-        modelManager.setDraftWedding(WEDDING_A);
-        assertEquals(WEDDING_A, modelManager.getDraftWedding());
+        modelManager.setDraftWedding(WeddingA);
+        assertEquals(WeddingA, modelManager.getDraftWedding());
         assertTrue(modelManager.hasDraftWedding());
     }
 
@@ -131,17 +129,17 @@ WeddingModelManagerTest {
 
     @Test
     public void commitDraftWedding_duplicateWedding_throwsIllegalStateException() {
-        modelManager.addWedding(WEDDING_A);
-        modelManager.setDraftWedding(WEDDING_A);
+        modelManager.addWedding(WeddingA);
+        modelManager.setDraftWedding(WeddingA);
         assertThrows(IllegalStateException.class, () -> modelManager.commitDraftWedding());
     }
 
     @Test
     public void commitDraftWedding_validDraftWedding_addsWeddingAndClearsDraft() {
-        modelManager.setDraftWedding(WEDDING_A);
+        modelManager.setDraftWedding(WeddingA);
         modelManager.commitDraftWedding();
 
-        assertTrue(modelManager.hasWedding(WEDDING_A));
+        assertTrue(modelManager.hasWedding(WeddingA));
         assertFalse(modelManager.hasDraftWedding());
         assertNull(modelManager.getDraftWedding());
     }
@@ -153,14 +151,14 @@ WeddingModelManagerTest {
 
     @Test
     public void setCurrentWedding_validWedding_setsCurrentWedding() {
-        modelManager.setCurrentWedding(WEDDING_A);
-        assertEquals(WEDDING_A, modelManager.getCurrentWedding());
+        modelManager.setCurrentWedding(WeddingA);
+        assertEquals(WeddingA, modelManager.getCurrentWedding());
         assertTrue(modelManager.hasCurrentWedding());
     }
 
     @Test
     public void clearCurrentWedding_removesCurrentWedding() {
-        modelManager.setCurrentWedding(WEDDING_A);
+        modelManager.setCurrentWedding(WeddingA);
         modelManager.clearCurrentWedding();
 
         assertFalse(modelManager.hasCurrentWedding());
@@ -169,61 +167,61 @@ WeddingModelManagerTest {
 
     @Test
     public void weddingHasPerson_nullWedding_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.weddingHasPerson(null, PERSON_A));
+        assertThrows(NullPointerException.class, () -> modelManager.weddingHasPerson(null, PersonA));
     }
 
     @Test
     public void weddingHasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.weddingHasPerson(WEDDING_A, null));
+        assertThrows(NullPointerException.class, () -> modelManager.weddingHasPerson(WeddingA, null));
     }
 
     @Test
     public void weddingHasPerson_personAsBride_returnsTrue() {
         Wedding wedding = new Wedding(new Date("25122025"), new Title("Test Wedding"));
-        wedding.setBride(PERSON_A);
+        wedding.setBride(PersonA);
 
-        assertTrue(modelManager.weddingHasPerson(wedding, PERSON_A));
+        assertTrue(modelManager.weddingHasPerson(wedding, PersonA));
     }
 
     @Test
     public void weddingHasPerson_personAsGroom_returnsTrue() {
         Wedding wedding = new Wedding(new Date("25122025"), new Title("Test Wedding"));
-        wedding.setGroom(PERSON_A);
+        wedding.setGroom(PersonA);
 
-        assertTrue(modelManager.weddingHasPerson(wedding, PERSON_A));
+        assertTrue(modelManager.weddingHasPerson(wedding, PersonA));
     }
 
     @Test
     public void weddingHasPerson_personAsMember_returnsTrue() {
         Wedding wedding = new Wedding(new Date("25122025"), new Title("Test Wedding"));
-        wedding.addMember(PERSON_A);
+        wedding.addMember(PersonA);
 
-        assertTrue(modelManager.weddingHasPerson(wedding, PERSON_A));
+        assertTrue(modelManager.weddingHasPerson(wedding, PersonA));
     }
 
     @Test
     public void weddingHasPerson_personNotInWedding_returnsFalse() {
         Wedding wedding = new Wedding(new Date("25122025"), new Title("Test Wedding"));
 
-        assertFalse(modelManager.weddingHasPerson(wedding, PERSON_A));
+        assertFalse(modelManager.weddingHasPerson(wedding, PersonA));
     }
 
     @Test
     public void addWeddingPerson_nullWedding_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.addWeddingPerson(null, PERSON_A));
+        assertThrows(NullPointerException.class, () -> modelManager.addWeddingPerson(null, PersonA));
     }
 
     @Test
     public void addWeddingPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.addWeddingPerson(WEDDING_A, null));
+        assertThrows(NullPointerException.class, () -> modelManager.addWeddingPerson(WeddingA, null));
     }
 
     @Test
     public void addWeddingPerson_validWeddingAndPerson_addsPerson() {
         Wedding wedding = new Wedding(new Date("25122025"), new Title("Test Wedding"));
-        modelManager.addWeddingPerson(wedding, PERSON_A);
+        modelManager.addWeddingPerson(wedding, PersonA);
 
-        assertTrue(modelManager.weddingHasPerson(wedding, PERSON_A));
+        assertTrue(modelManager.weddingHasPerson(wedding, PersonA));
     }
 
     @Test
@@ -249,8 +247,8 @@ WeddingModelManagerTest {
     @Test
     public void equals() {
         WeddingPlanner weddingPlanner = new WeddingPlannerTest.WeddingPlannerBuilder()
-                .withWedding(WEDDING_A)
-                .withWedding(WEDDING_B)
+                .withWedding(WeddingA)
+                .withWedding(WeddingB)
                 .build();
         WeddingPlanner differentWeddingPlanner = new WeddingPlanner();
         UserPrefs userPrefs = new UserPrefs();
@@ -274,14 +272,14 @@ WeddingModelManagerTest {
 
         // Different current wedding -> returns false
         WeddingModelManager differentModelManager = new WeddingModelManager(weddingPlanner, userPrefs);
-        modelManager.setCurrentWedding(WEDDING_A);
+        modelManager.setCurrentWedding(WeddingA);
         assertFalse(modelManager.equals(differentModelManager));
 
         // Different draft wedding -> returns false
         differentModelManager = new WeddingModelManager(weddingPlanner, userPrefs);
-        differentModelManager.setCurrentWedding(WEDDING_A);
+        differentModelManager.setCurrentWedding(WeddingA);
         modelManager.clearCurrentWedding();
-        modelManager.setDraftWedding(WEDDING_B);
+        modelManager.setDraftWedding(WeddingB);
         assertFalse(modelManager.equals(differentModelManager));
 
         // Different userPrefs -> returns false

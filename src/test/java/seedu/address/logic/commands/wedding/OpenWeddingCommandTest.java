@@ -38,9 +38,11 @@ public class OpenWeddingCommandTest {
         OpenWeddingCommand command = new OpenWeddingCommand(Index.fromOneBased(1)); // No weddings exist
 
         // Execute the command and expect an exception
-        assertThrows(CommandException.class,
+        assertThrows(
+                CommandException.class,
                 OpenWeddingCommand.MESSAGE_INVALID_INDEX,
-                () -> command.execute(model));
+                () -> command.execute(model)
+        );
     }
 
     @Test
@@ -50,9 +52,11 @@ public class OpenWeddingCommandTest {
         // Create the command with an index that's too high
         OpenWeddingCommand command = new OpenWeddingCommand(Index.fromOneBased(2)); // Only one wedding exists
 
-        assertThrows(CommandException.class,
+        assertThrows(
+                CommandException.class,
                 OpenWeddingCommand.MESSAGE_INVALID_INDEX,
-                () -> command.execute(model));
+                () -> command.execute(model)
+        );
     }
 
     @Test

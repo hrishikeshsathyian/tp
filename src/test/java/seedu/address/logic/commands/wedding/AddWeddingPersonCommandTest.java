@@ -14,7 +14,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WeddingModel;
 import seedu.address.model.WeddingModelManager;
 import seedu.address.model.person.Person;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.wedding.Date;
 import seedu.address.model.wedding.Title;
 import seedu.address.model.wedding.Wedding;
@@ -43,9 +42,11 @@ public class AddWeddingPersonCommandTest {
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(person);
 
         // Execute the command and expect an exception
-        assertThrows(CommandException.class,
+        assertThrows(
+                CommandException.class,
                 AddWeddingPersonCommand.MESSAGE_NO_ACTIVE_WEDDING,
-                () -> command.execute(model));
+                () -> command.execute(model)
+        );
     }
 
     @Test
@@ -130,9 +131,11 @@ public class AddWeddingPersonCommandTest {
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(person);
 
         // Execute the command and expect an exception
-        assertThrows(CommandException.class,
+        assertThrows(
+                CommandException.class,
                 AddWeddingPersonCommand.MESSAGE_DUPLICATE_PERSON,
-                () -> command.execute(model));
+                () -> command.execute(model)
+        );
     }
 
     @Test
@@ -149,9 +152,11 @@ public class AddWeddingPersonCommandTest {
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(secondBride);
 
         // Execute the command and expect an exception
-        assertThrows(CommandException.class,
+        assertThrows(
+                CommandException.class,
                 String.format(AddWeddingPersonCommand.MESSAGE_ROLE_CONFLICT, "bride"),
-                () -> command.execute(model));
+                () -> command.execute(model)
+        );
     }
 
     @Test
