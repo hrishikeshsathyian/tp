@@ -47,6 +47,11 @@ public class DeleteCommand extends Command {
     }
 
     @Override
+    public CommandResult execute(WeddingModel model) throws CommandException {
+        throw new CommandException("Command not in use!");
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
@@ -59,11 +64,6 @@ public class DeleteCommand extends Command {
 
         DeleteCommand otherDeleteCommand = (DeleteCommand) other;
         return targetIndex.equals(otherDeleteCommand.targetIndex);
-    }
-
-    @Override
-    public CommandResult execute(WeddingModel model) throws CommandException {
-        throw new CommandException("Command not in use!");
     }
 
     @Override
