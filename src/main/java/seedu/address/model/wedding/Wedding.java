@@ -3,6 +3,7 @@ package seedu.address.model.wedding;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -13,13 +14,18 @@ import seedu.address.model.person.UniquePersonList;
 public class Wedding {
 
     private final Date date;
+
     private final Title title;
+
     private Person bride;
+
     private Person groom;
+
     private UniquePersonList members;
 
+
     /**
-     * Creates a wedding draft with empty participant lists
+     * Every field must be present and not null.
      */
     public Wedding(Date date, Title title) {
         requireAllNonNull(date, title);
@@ -29,7 +35,12 @@ public class Wedding {
     }
 
     /**
-     * Full constructor for loading from storage
+     * Overloaded Wedding constructor to be used for file storage loading
+     * @param date
+     * @param title
+     * @param bride
+     * @param groom
+     * @param members
      */
     public Wedding(Date date, Title title, Person bride, Person groom, UniquePersonList members) {
         requireAllNonNull(date, title, bride, groom, members);
@@ -104,21 +115,23 @@ public class Wedding {
 
     // =========== Core Methods ===========
     public Title getTitle() {
-        return title;
+        return this.title;
     }
 
     public Date getDate() {
-        return date;
+        return this.date;
     }
 
     /**
-     * Returns true if both weddings have the same title and date.
+     * Returns true if both Weddings have the same title and date.
      */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
         }
+
+        // instanceof handles nulls
         if (!(other instanceof Wedding)) {
             return false;
         }
@@ -128,12 +141,20 @@ public class Wedding {
             && title.equals(otherWedding.title);
     }
 
-    public boolean isSameWedding(Wedding other) {
-        return equals(other);
+
+    public boolean isSameWedding(Wedding wedding) {
+        return this.equals(wedding);
     }
 
     @Override
     public String toString() {
-        return String.format("%s (%s)", title, date);
+        return new ToStringBuilder(this)
+                .add("title", title)
+                .add("date", date)
+                .add("bride", bride)
+                .add("groom", groom)
+                .add("members", members)
+                .toString();
     }
+
 }

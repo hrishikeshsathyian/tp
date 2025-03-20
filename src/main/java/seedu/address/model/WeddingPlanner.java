@@ -5,9 +5,10 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.wedding.UniqueWeddingList;
 import seedu.address.model.wedding.Wedding;
 
+
 /**
  * Represents a Wedding Planner that manages a collection of weddings.
- * Implements ReadOnlyWeddingPlanner to provide read-only access.
+ * Acts as a central storage for wedding-related data.
  */
 public class WeddingPlanner implements ReadOnlyWeddingPlanner {
     private final UniqueWeddingList weddings;

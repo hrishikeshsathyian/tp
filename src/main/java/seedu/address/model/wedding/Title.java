@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Wedding's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidTitle(String)}
  */
 public class Title {
 
@@ -24,7 +24,7 @@ public class Title {
      */
     public Title(String weddingTitle) {
         requireNonNull(weddingTitle);
-        checkArgument(isValidName(weddingTitle), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidTitle(weddingTitle), MESSAGE_CONSTRAINTS);
         this.weddingTitle = weddingTitle;
     }
 
@@ -35,7 +35,7 @@ public class Title {
      * @param test the wedding name string to validate.
      * @return true if the string is valid, false otherwise.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidTitle(String test) {
         boolean isValid = test != null && !test.trim().isEmpty() && test.length() <= WEDDING_NAME_MAX_LENGTH;
         return isValid;
     }
@@ -48,10 +48,6 @@ public class Title {
     @Override
     public String toString() {
         return weddingTitle;
-    }
-
-    public static boolean isValidTitle(String test) {
-        return test != null && !test.trim().isEmpty() && test.length() <= 100;
     }
 
     /**
