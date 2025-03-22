@@ -1,49 +1,51 @@
 ---
   layout: default.md
-  title: "User Guide"
+  title: "HappyEverAfter User Guide"
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# HappyEverAfter User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time! 
+
 
 <!-- * Table of Contents -->
-<page-nav-print />
+# Table of Contents 
+1. [Quick Start](#quick-start)
+2. [Feature Details](#feature-details)
+3. [Features](#features)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+   - Java Installation
+   - **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+2. Download the latest version of HappyEverAfter
+   - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happilyeverafter.jar`.
+3. Move the file to the folder
+    - Copy the file to the folder you want to use as the _home folder_ for your HappyEverAfter.
+4. Running HappyEverAfter
+    - Open the "Command Prompt" (for Windows) or "Terminal" (for Mac/Linux).
+    - Enter `cd` followed by the folder location where you saved the EduConnect file. For example:
+        - On Windows: `cd C:\Users\JohnDoe\Desktop\HappyEverAfter`
+        - On Mac/Linux: `cd /Users/JohnDoe/Desktop/HappyEverAfter`
+    - Then run this command to launch HappyEverAfter:
+      `java -jar happilyeverafter.jar`
+   - A Graphical User Interface (GUI) similar to the image below should appear in a few seconds. Note how the app contains some sample data.
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+      ![Ui](images/Ui.png)
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+5. Type the command in the command box and press Enter to execute it. 
+   - See [features](#features) for the list of all possible commands to execute
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
-
-   * `list` : Lists all contacts.
-
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
-
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * `clear` : Deletes all contacts.
-
-   * `exit` : Exits the app.
-
-1. Refer to the [Features](#features) below for details of each command.
+[Back to Table of Contents](#table-of-contents-)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## Feature-Details
 
 <box type="info" seamless>
 
@@ -66,6 +68,9 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
+
+
+# Features
 
 ### Viewing help : `help`
 
