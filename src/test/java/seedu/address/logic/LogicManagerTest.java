@@ -20,8 +20,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WeddingModel;
 import seedu.address.model.WeddingModelManager;
-import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.JsonWeddingPlannerStorage;
 import seedu.address.storage.StorageManager;
 
 public class LogicManagerTest {
@@ -36,10 +36,10 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonWeddingPlannerStorage weddingPlannerStorage = new JsonWeddingPlannerStorage(
+            temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(weddingPlannerStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
