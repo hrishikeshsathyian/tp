@@ -10,10 +10,23 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
 
 
 <!-- * Table of Contents -->
-# Table of Contents 
+# Table of Contents
 1. [Quick Start](#quick-start)
-2. [Feature Details](#feature-details)
+2. [Command Formats](#feature-details)
 3. [Features](#features)
+    - [System Commands](#system-commands)
+        - [Viewing help](#viewing-help--help)
+        - [Exiting the program](#exiting-the-program-exit)
+    - [Wedding Management](#wedding-management)
+        - [Creating a new wedding](#creating-a-wedding-add)
+        - [Opening a wedding](#opening-a-wedding--open)
+        - [Closing a wedding](#closing-the-current-wedding-closewedding)
+        - [Listing all weddings](#listing-all-weddings-list)
+    - [Member Management](#member-management-)
+        - [Adding a person to a wedding](#adding-a-person-add)
+4. [Data Storage](#data-storage)
+5. [FAQ](#faq)
+7. [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -52,15 +65,15 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `new n/WEDDING_NAME`, you should replace `WEDDING_NAME` with the actual name, like `new n/John & Mary`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or simply as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* Parameters can be in any order.<br>
+* Parameters can be provided in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
@@ -73,8 +86,14 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
     * e.g `e\hrishikeshsathyian2002@gmail.com` 
 </box>
 
+* Special role tags to identify the bride and groom:
+    * Use `t/bride` to designate a person as the bride
+    * Use `t/groom` to designate a person as the groom
+    * A wedding must have both a bride and groom to be valid
 
 # Features
+
+## System commands
 
 ### Viewing help : `help`
 
@@ -83,6 +102,14 @@ Shows a message explaining how to access the User Guide.
 ![help message](images/helpMessage.png)
 
 Format: `help`
+
+### Exiting the program: `exit`
+
+Exits the HappyEverAfter application.
+
+Format: `exit`
+
+## Wedding Management
 
 ### Creating a wedding: `add`
 
@@ -93,24 +120,6 @@ Format: `new n/WEDDING_NAME d/DATE`
 Examples: 
 * `new n/John & Mary d/25122025`
 
-### Adding a person: `add`
-
-Adds a person to the **active** Wedding Planner.
-
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
-
-<box type="tip" seamless>
-**Note:** Active refers to the wedding associated with the last `open` or `new` command 
-</box>
-
-<box type="tip" seamless>
-**Tip:** A person can have any number of tags (including 0)
-</box>
-
-Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
-
 ### Opening a wedding : `open`
 
 Opens a wedding from the Wedding Planner to view its persons.
@@ -118,7 +127,47 @@ Opens a wedding from the Wedding Planner to view its persons.
 Format: `open INDEX`
 
 Examples:
-* `open 1`
+* `open 1` (Opens the first wedding in the list)
+* `open 3` (Opens the third wedding in the list)
+
+### Closing the current wedding: `closewedding`
+
+Closes the currently open wedding project to return to the main view.
+
+Format: `closewedding`
+
+### Listing all weddings: `list`
+
+Shows a list of all weddings in the wedding planner.
+
+Format: `list`
+
+## Member Management 
+
+### Adding a person: `add`
+
+Adds a person to the **active** Wedding Planner.
+Use tags to specify if the person is a bride, groom, or other wedding party member.
+
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+
+<div markdown="block" class="alert alert-primary">
+**Note:** 
+
+* Active refers to the wedding associated with the last `open` or `new` command
+* Each wedding must have exactly one bride and one groom.
+* Use `t/bride` to designate a person as the bride.
+* Use `t/groom` to designate a person as the groom.
+* Other people added without these special tags will be considered as wedding party members.
+* A person can have any number of tags (including 0)
+</div>
+
+Examples:
+* `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kentridgr St t/bride`
+* `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
+* `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
+
+## Data Storage
 
 ### Saving the data
 
@@ -143,15 +192,17 @@ _Details coming soon ..._
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**Q**: How do I transfer my wedding planner data to another computer?  
+**A**: Install HappyEverAfter on the other computer and replace the empty data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
 
---------------------------------------------------------------------------------------------------------------------
+**Q**: Can I add multiple weddings at once?  
+**A**: No, you need to create weddings one at a time using the `new` command.
 
-## Known issues
+**Q**: What happens if I try to add a second bride or groom to a wedding?  
+**A**: The system will display an error message as each wedding can have only one bride and one groom.
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+**Q**: How many people can I add to a wedding?  
+**A**: At most 100 members for one wedding.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -159,10 +210,10 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+| **Help** | `help` |
+| **Create Wedding** | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025` |
+| **Open Wedding** | `open INDEX`<br>e.g., `open 2` |
+| **Close Wedding** | `closewedding` |
+| **List Weddings** | `list` |
+| **Add Person** | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
+| **Exit** | `exit` |
