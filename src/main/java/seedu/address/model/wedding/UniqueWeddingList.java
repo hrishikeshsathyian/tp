@@ -104,7 +104,7 @@ public class UniqueWeddingList implements Iterable<Wedding> {
     }
     //@Override
     //public String toString() {
-        //return asUnmodifiableObservableList().toString();
+    //return asUnmodifiableObservableList().toString();
     //}
 
 }
