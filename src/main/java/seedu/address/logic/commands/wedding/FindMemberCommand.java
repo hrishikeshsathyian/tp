@@ -96,7 +96,7 @@ public class FindMemberCommand extends Command {
             }
         }
 
-        // Update model to display matched weddings
+        // Update model to display matched weddings among all weddings
         model.updateFilteredWeddingList(wedding -> matchedWeddings.contains(wedding));
 
         if (matchedWeddings.isEmpty()) {
