@@ -11,7 +11,7 @@ import seedu.address.model.WeddingModel;
  * Closes the currently open wedding
  */
 public class CloseWeddingCommand extends Command {
-    public static final String COMMAND_WORD = "closewedding";
+    public static final String COMMAND_WORD = "close";
     public static final String MESSAGE_SUCCESS = "Closed current wedding";
     public static final String MESSAGE_NO_OPEN_WEDDING = "No wedding is currently open";
 
