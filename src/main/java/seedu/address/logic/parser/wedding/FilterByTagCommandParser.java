@@ -7,6 +7,9 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.PersonContainsTagPredicate;
 
+/**
+ * Parses input arguments and creates a new FilterByTagCommand object
+ */
 public class FilterByTagCommandParser implements Parser<FilterByTagCommand> {
 
     /**

@@ -5,6 +5,9 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Tests that a {@code Person}'s {@code Tag} matches the tag given.
+ */
 public class PersonContainsTagPredicate implements Predicate<Person> {
     private final Tag tag;
 
@@ -28,8 +31,8 @@ public class PersonContainsTagPredicate implements Predicate<Person> {
             return false;
         }
 
-        PersonContainsTagPredicate OtherPersonContainsTagPredicate = (PersonContainsTagPredicate) other;
-        return tag.equals(OtherPersonContainsTagPredicate.tag);
+        PersonContainsTagPredicate otherPersonContainsTagPredicate = (PersonContainsTagPredicate) other;
+        return tag.equals(otherPersonContainsTagPredicate.tag);
     }
 
     @Override
