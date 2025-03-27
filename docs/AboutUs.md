@@ -29,7 +29,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/rae2480.md)]
 
 * Role: Developer
-* Responsibilities: UI/UX
+* Responsibilities: Site Reliability Engineer
 
 
 ### Timothy Soon

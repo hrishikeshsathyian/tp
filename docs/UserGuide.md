@@ -22,6 +22,7 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
         - [Opening a wedding](#opening-a-wedding--open)
         - [Closing a wedding](#closing-the-current-wedding-closewedding)
         - [Listing all weddings](#listing-all-weddings-list)
+        - [Sorting weddings by date](#sorting-weddings-by-date-sort)
     - [Member Management](#member-management-)
         - [Adding a person to a wedding](#adding-a-person-add)
 4. [Data Storage](#data-storage)
@@ -142,6 +143,12 @@ Shows a list of all weddings in the wedding planner.
 
 Format: `list`
 
+### Sorting weddings by date: `sort`
+
+Shows a list of all weddings in the wedding planner, organised from earliest to latest.
+
+Format:  `sort`
+
 ## Member Management 
 
 ### Adding a person: `add`
@@ -184,9 +191,9 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+<!-- ### Archiving data files `[coming in v2.0]`
 
-_Details coming soon ..._
+_Details coming soon ..._ -->
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -215,5 +222,6 @@ Action     | Format, Examples
 | **Open Wedding** | `open INDEX`<br>e.g., `open 2` |
 | **Close Wedding** | `closewedding` |
 | **List Weddings** | `list` |
+| **Sort Weddings by Date** | `sort` |
 | **Add Person** | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
 | **Exit** | `exit` |
