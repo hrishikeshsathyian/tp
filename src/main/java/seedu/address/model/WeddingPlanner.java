@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.wedding.UniqueWeddingList;
 import seedu.address.model.wedding.Wedding;
+import seedu.address.model.wedding.exceptions.DuplicateWeddingException;
 
 
 /**
@@ -62,6 +63,11 @@ public class WeddingPlanner implements ReadOnlyWeddingPlanner {
     public boolean hasWedding(Wedding wedding) {
         return weddings.contains(wedding);
     }
+
+    public void sortWeddings() {
+        this.weddings.sort();
+    }
+
 
     @Override
     public boolean equals(Object other) {

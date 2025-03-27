@@ -141,4 +141,11 @@ public interface WeddingModel {
      * @throws NullPointerException if the predicate is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Sorts all weddings by date.
+     */
+    void sortWeddingList();
+
+
 }

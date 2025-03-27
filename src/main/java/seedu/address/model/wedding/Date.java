@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
  * Represents a Wedding's date in the planner.
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)}
  */
-public class Date {
+public class Date implements Comparable<Date> {
 
     public static final String MESSAGE_CONSTRAINTS = "Dates should be in the format DDMMYYYY (e.g., 30092025 for "
             + "30 September 2025) and must be in the future.";
@@ -55,6 +55,11 @@ public class Date {
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    @Override
+    public int compareTo(Date other) {
+        return this.date.compareTo(other.date);
     }
 
     /**

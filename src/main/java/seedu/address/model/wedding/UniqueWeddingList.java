@@ -3,6 +3,7 @@ package seedu.address.model.wedding;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,6 +62,11 @@ public class UniqueWeddingList implements Iterable<Wedding> {
         internalList.setAll(weddings);
     }
 
+    public void sort() {
+        internalList.sort(Comparator.comparing(wedding -> ((Wedding) wedding).getDate()));
+    }
+
+
     /**
      * Returns unmodifiable view of the list
      */
@@ -102,5 +108,9 @@ public class UniqueWeddingList implements Iterable<Wedding> {
         }
         return true;
     }
+    //@Override
+    //public String toString() {
+    //return asUnmodifiableObservableList().toString();
+    //}
 
 }

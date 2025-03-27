@@ -1,162 +1,173 @@
 ---
   layout: default.md
-  title: "User Guide"
+  title: "HappyEverAfter User Guide"
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# HappyEverAfter User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time! 
+
 
 <!-- * Table of Contents -->
-<page-nav-print />
+# Table of Contents
+1. [Quick Start](#quick-start)
+2. [Command Formats](#feature-details)
+3. [Features](#features)
+    - [System Commands](#system-commands)
+        - [Viewing help](#viewing-help--help)
+        - [Exiting the program](#exiting-the-program-exit)
+    - [Wedding Management](#wedding-management)
+        - [Creating a new wedding](#creating-a-wedding-add)
+        - [Opening a wedding](#opening-a-wedding--open)
+        - [Closing a wedding](#closing-the-current-wedding-closewedding)
+        - [Listing all weddings](#listing-all-weddings-list)
+    - [Member Management](#member-management-)
+        - [Adding a person to a wedding](#adding-a-person-add)
+4. [Data Storage](#data-storage)
+5. [FAQ](#faq)
+7. [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+   - Java Installation
+   - **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+2. Download the latest version of HappyEverAfter
+   - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happilyeverafter.jar`.
+3. Move the file to the folder
+    - Copy the file to the folder you want to use as the _home folder_ for your HappyEverAfter.
+4. Running HappyEverAfter
+    - Open the "Command Prompt" (for Windows) or "Terminal" (for Mac/Linux).
+    - Enter `cd` followed by the folder location where you saved the EduConnect file. For example:
+        - On Windows: `cd C:\Users\JohnDoe\Desktop\HappyEverAfter`
+        - On Mac/Linux: `cd /Users/JohnDoe/Desktop/HappyEverAfter`
+    - Then run this command to launch HappyEverAfter:
+      `java -jar happilyeverafter.jar`
+   - A Graphical User Interface (GUI) similar to the image below should appear in a few seconds. Note how the app contains some sample data.
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+      ![Ui](images/Ui.png)
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+5. Type the command in the command box and press Enter to execute it. 
+   - See [features](#features) for the list of all possible commands to execute
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
-
-   * `list` : Lists all contacts.
-
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
-
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * `clear` : Deletes all contacts.
-
-   * `exit` : Exits the app.
-
-1. Refer to the [Features](#features) below for details of each command.
+[Back to Table of Contents](#table-of-contents-)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## Feature-Details
 
 <box type="info" seamless>
 
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `new n/WEDDING_NAME`, you should replace `WEDDING_NAME` with the actual name, like `new n/John & Mary`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or simply as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
-* Parameters can be in any order.<br>
+* Parameters can be provided in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+* The `DATE` Parameter has to be in the format `DDMMYYYY` 
+  * e.g `25122025` for the 25th December 2025
+
+* The `EMAIL` Parameter has to be a valid email address
+    * e.g `e\hrishikeshsathyian2002@gmail.com` 
 </box>
+
+* Special role tags to identify the bride and groom:
+    * Use `t/bride` to designate a person as the bride
+    * Use `t/groom` to designate a person as the groom
+    * A wedding must have both a bride and groom to be valid
+
+# Features
+
+## System commands
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the User Guide.
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
 
+### Exiting the program: `exit`
 
-### Adding a person: `add`
+Exits the HappyEverAfter application.
 
-Adds a person to the address book.
+Format: `exit`
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+## Wedding Management
 
-<box type="tip" seamless>
+### Creating a wedding: `add`
 
-**Tip:** A person can have any number of tags (including 0)
-</box>
+Adds a wedding to the wedding planner.  
+
+Format: `new n/WEDDING_NAME d/DATE`
+
+Examples: 
+* `new n/John & Mary d/25122025`
+
+### Opening a wedding : `open`
+
+Opens a wedding from the Wedding Planner to view its persons.
+
+Format: `open INDEX`
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `open 1` (Opens the first wedding in the list)
+* `open 3` (Opens the third wedding in the list)
 
-### Listing all persons : `list`
+### Closing the current wedding: `closewedding`
 
-Shows a list of all persons in the address book.
+Closes the currently open wedding project to return to the main view.
+
+Format: `closewedding`
+
+### Listing all weddings: `list`
+
+Shows a list of all weddings in the wedding planner.
 
 Format: `list`
 
-### Editing a person : `edit`
+## Member Management 
 
-Edits an existing person in the address book.
+### Adding a person: `add`
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Adds a person to the **active** Wedding Planner.
+Use tags to specify if the person is a bride, groom, or other wedding party member.
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+<div markdown="block" class="alert alert-primary">
+**Note:** 
 
-### Locating persons by name: `find`
-
-Finds persons whose names contain any of the given keywords.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Active refers to the wedding associated with the last `open` or `new` command
+* Each wedding must have exactly one bride and one groom.
+* Use `t/bride` to designate a person as the bride.
+* Use `t/groom` to designate a person as the groom.
+* Other people added without these special tags will be considered as wedding party members.
+* A person can have any number of tags (including 0)
+</div>
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kentridgr St t/bride`
+* `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
+* `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
 
-### Deleting a person : `delete`
-
-Deletes the specified person from the address book.
-
-Format: `delete INDEX`
-
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
+## Data Storage
 
 ### Saving the data
 
@@ -181,15 +192,17 @@ _Details coming soon ..._
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**Q**: How do I transfer my wedding planner data to another computer?  
+**A**: Install HappyEverAfter on the other computer and replace the empty data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
 
---------------------------------------------------------------------------------------------------------------------
+**Q**: Can I add multiple weddings at once?  
+**A**: No, you need to create weddings one at a time using the `new` command.
 
-## Known issues
+**Q**: What happens if I try to add a second bride or groom to a wedding?  
+**A**: The system will display an error message as each wedding can have only one bride and one groom.
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+**Q**: How many people can I add to a wedding?  
+**A**: At most 100 members for one wedding.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -197,10 +210,10 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+| **Help** | `help` |
+| **Create Wedding** | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025` |
+| **Open Wedding** | `open INDEX`<br>e.g., `open 2` |
+| **Close Wedding** | `closewedding` |
+| **List Weddings** | `list` |
+| **Add Person** | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
+| **Exit** | `exit` |
