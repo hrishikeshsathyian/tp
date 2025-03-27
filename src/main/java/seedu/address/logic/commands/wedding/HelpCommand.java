@@ -2,11 +2,11 @@ package seedu.address.logic.commands.wedding;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WeddingModel;
 
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Help command that displays the link to the application's User Guide.
+ */
 public class HelpCommand extends Command {
 
     public static final String COMMAND_WORD = "help";
