@@ -9,6 +9,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.wedding.exceptions.DuplicateWeddingException;
 import seedu.address.model.wedding.exceptions.WeddingNotFoundException;
 
@@ -112,5 +113,12 @@ public class UniqueWeddingList implements Iterable<Wedding> {
     //public String toString() {
     //return asUnmodifiableObservableList().toString();
     //}
+
+    public void deleteWedding(Wedding toRemove) {
+        requireNonNull(toRemove);
+        if (!internalList.remove(toRemove)) {
+            throw new WeddingNotFoundException();
+        }
+    }
 
 }

@@ -10,24 +10,15 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SortWeddingCommand;
-import seedu.address.logic.commands.wedding.AddWeddingCommand;
-import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
-import seedu.address.logic.commands.wedding.CloseWeddingCommand;
-import seedu.address.logic.commands.wedding.FindMemberCommand;
-import seedu.address.logic.commands.wedding.OpenWeddingCommand;
+import seedu.address.logic.commands.wedding.*;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.wedding.AddWeddingCommandParser;
-import seedu.address.logic.parser.wedding.AddWeddingPersonCommandParser;
-import seedu.address.logic.parser.wedding.CloseWeddingCommandParser;
-import seedu.address.logic.parser.wedding.FindMemberCommandParser;
-import seedu.address.logic.parser.wedding.OpenWeddingCommandParser;
+import seedu.address.logic.parser.wedding.*;
 
 /**
  * Parses user input.
@@ -69,8 +60,8 @@ public class WeddingPlannerParser {
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+        case DeleteWeddingCommand.COMMAND_WORD:
+            return new DeleteWeddingCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();

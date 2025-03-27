@@ -280,4 +280,16 @@ public class WeddingModelManager implements WeddingModel {
         weddingPlanner.sortWeddings();
     }
 
+    /**
+     * Deletes the given wedding.
+     * The wedding must exist in the Wedding Planner.
+     *
+     * @param target
+     */
+    @Override
+    public void deleteWedding(Wedding target) {
+        weddingPlanner.deleteWedding(target);
+    }
+
+
 }

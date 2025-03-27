@@ -147,5 +147,11 @@ public interface WeddingModel {
      */
     void sortWeddingList();
 
+    /**
+     * Deletes the given wedding.
+     * The wedding must exist in the Wedding Planner.
+     */
+    void deleteWedding(Wedding target);
+
 
 }
