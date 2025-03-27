@@ -274,4 +274,10 @@ public class WeddingModelManager implements WeddingModel {
                 && java.util.Objects.equals(currentWedding, other.currentWedding)
                 && java.util.Objects.equals(draftWedding, other.draftWedding);
     }
+
+    @Override
+    public void sortWeddingList() {
+        weddingPlanner.sortWeddings();
+    }
+
 }

@@ -16,6 +16,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.SortWeddingCommand;
 import seedu.address.logic.commands.wedding.AddWeddingCommand;
 import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.CloseWeddingCommand;
@@ -97,6 +98,9 @@ public class WeddingPlannerParser {
 
         case CloseWeddingCommand.COMMAND_WORD:
             return new CloseWeddingCommandParser().parse(arguments);
+
+        case SortWeddingCommand.COMMAND_WORD:
+            return new SortWeddingCommand();
 
         case FindMemberCommand.COMMAND_WORD:
             return new FindMemberCommandParser().parse(arguments);
