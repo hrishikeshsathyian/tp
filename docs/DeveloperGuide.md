@@ -78,7 +78,9 @@ The `UI` component uses the JavaFx UI framework. The layout of these UI parts ar
 The `UI` component,
 
 * executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the modified data.
+* listens for changes to `WeddingModel` data so that the UI can be updated with the modified data.
+* In particular, it listens for changes to the `UniqueWeddingList`, as well as the `UniquePersonList` of 
+  the currently open wedding.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
