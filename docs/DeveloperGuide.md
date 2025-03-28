@@ -310,14 +310,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `HappilyEverAfter` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `HappyEverAfter` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Creating a new wedding**
 
 **MSS**
 
 1. User creates a new wedding
-2. HappilyEverAfter provides confirmation that the wedding has been created
+2. HappyEverAfter provides confirmation that the wedding has been created
 
      Use case ends.
 
@@ -325,7 +325,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. There exists a wedding with the same name.
 
-  2ai. HappilyEverAfter shows an error message.
+  2ai.HappyEverAfter shows an error message.
 
     Use case resumes at step 1.
 
@@ -333,7 +333,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2b. Wedding name provided is in an invalid format.
   
-  2bi. HappilyEverAfter shows an error message.
+  2bi. HappyEverAfter shows an error message.
 
     Use case resumes at step 2.
 
@@ -343,11 +343,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to list weddings
-2. HappilyEverAfter shows a list of weddings
+2. HappyEverAfter shows a list of weddings
 3. User opens the wedding they want
-4. HappilyEverAfter provides confirmation that the wedding has been opened
+4. HappyEverAfter provides confirmation that the wedding has been opened
 5. User adds contact information of person
-6. HappilyEverAfter acts the person to that wedding.
+6. HappyEverAfter acts the person to that wedding.
 
      Use case ends.
 
@@ -359,7 +359,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 5a. Contact information provided is in an invalid format.
   
-  5ai. HappilyEverAfter shows an error message.
+  5ai. HappyEverAfter shows an error message.
 
     Use case resumes at step 2.
 
@@ -368,13 +368,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to list weddings
-2. HappilyEverAfter shows a list of weddings
+2. HappyEverAfter shows a list of weddings
 3. User opens the wedding they want
-4. HappilyEverAfter provides confirmation that the wedding has been opened
+4. HappyEverAfter provides confirmation that the wedding has been opened
 5. User requests to list persons associated with that wedding
-6. HappilyEverAfter shows a list of persons
+6. HappyEverAfter shows a list of persons
 7. User requests to delete a specific person in the list
-8. HappilyEverAfter deletes the person
+8. HappyEverAfter deletes the person
 
     Use case ends.
 
@@ -452,7 +452,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Adding a wedding
 
-1. Adding a wedding to `HappilyEverAfter`
+1. Adding a wedding to `HappyEverAfter`
 
    1. Prerequisites: Application must be open
 

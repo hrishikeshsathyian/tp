@@ -15,9 +15,11 @@ Class PersonListPanel
 Class PersonCard
 Class StatusBarFooter
 Class CommandBox
+Class WeddingListPanel
+Class WeddingCard
 }
 
-package Model <<Rectangle>> {
+package WeddingModel <<Rectangle>> {
 Class HiddenModel #FFFFFF
 }
 
@@ -35,19 +37,24 @@ MainWindow *-down-> "1" ResultDisplay
 MainWindow *-down-> "1" PersonListPanel
 MainWindow *-down-> "1" StatusBarFooter
 MainWindow --> "0..1" HelpWindow
+MainWindow *-down-> "1" WeddingListPanel
 
 PersonListPanel -down-> "*" PersonCard
+WeddingListPanel -down-> "*" WeddingCard
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 PersonListPanel --|> UiPart
+WeddingListPanel --|> UiPart
 PersonCard --|> UiPart
+WeddingCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
 
-PersonCard ..> Model
+PersonCard ..> WeddingModel
+WeddingCard ..> WeddingModel
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
