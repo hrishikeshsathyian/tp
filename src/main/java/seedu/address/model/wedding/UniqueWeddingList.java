@@ -114,6 +114,10 @@ public class UniqueWeddingList implements Iterable<Wedding> {
     //return asUnmodifiableObservableList().toString();
     //}
 
+    /**
+     * Deletes a wedding from the wedding list.
+     * @param toRemove The wedding to be deleted.
+     */
     public void deleteWedding(Wedding toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {

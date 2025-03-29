@@ -1,23 +1,16 @@
 package seedu.address.logic.commands.wedding;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WeddingModel;
-import seedu.address.model.person.Person;
 import seedu.address.model.wedding.Wedding;
 
 /**
- * Adds a person to the currently active wedding (draft or open)
+ * Removes a person from the currently active wedding (draft or open)
  */
 public class RemoveWeddingPersonCommand extends Command {
     public static final String COMMAND_WORD = "remove";
@@ -28,15 +21,15 @@ public class RemoveWeddingPersonCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + "3";
 
-    public static final String MESSAGE_SUCCESS = "Removed";
+    public static final String MESSAGE_SUCCESS = "Removed Wedding Person successfully!";
     public static final String MESSAGE_NO_ACTIVE_WEDDING = "No active wedding! Create or open a wedding first.";
-    public static final String MESSAGE_REMOVE_BRIDE_OR_GROOM = "Every wedding has to have a bride or groom :0 Let's"
+    public static final String MESSAGE_REMOVE_BRIDE_OR_GROOM = "Every wedding has to have a bride and groom :0 Let's"
                                                         + " not remove the soon to be married couple!";
     public static final String MESSAGE_INDEX_OUT_OF_RANGE = "Please select a valid index to remove!";
     private final Index targetIndex;
 
     /**
-     * Creates an AddPersonCommand to add the specified {@code Person}
+     * Creates an RemoveWeddingPersonCommand to remove the person at the specified {@code Index}
      */
     public RemoveWeddingPersonCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
@@ -55,6 +48,7 @@ public class RemoveWeddingPersonCommand extends Command {
         }
 
         int indexToRemove = targetIndex.getOneBased();
+
         boolean indexOutOfRange = indexToRemove <= 0 || indexToRemove > model.getFilteredPersonList().size();
         if (indexOutOfRange) {
             throw new CommandException(MESSAGE_INDEX_OUT_OF_RANGE);

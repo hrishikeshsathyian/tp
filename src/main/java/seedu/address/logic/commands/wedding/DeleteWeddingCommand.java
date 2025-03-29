@@ -18,8 +18,8 @@ public class DeleteWeddingCommand extends Command {
             + ": Deletes a wedding based on provided index\n"
             + "Parameters: INDEX\n"
             + "Example: " + COMMAND_WORD + " 1";
-    public static final String MESSAGE_SUCCESS = "Deleted wedding: %1$s";
-    public static final String MESSAGE_INVALID_INDEX = "The provided wedding index does not exist";
+    public static final String MESSAGE_SUCCESS = "Deleted wedding successfully!";
+    public static final String MESSAGE_INVALID_INDEX = "The provided wedding index does not exist!";
 
     private final Index targetIndex;
 
@@ -31,12 +31,13 @@ public class DeleteWeddingCommand extends Command {
     public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);
 
-        if (targetIndex.getZeroBased() >= model.getFilteredWeddingList().size()) {
+        boolean isInvalidIndex = targetIndex.getZeroBased() >= model.getFilteredWeddingList().size();
+        if (isInvalidIndex) {
             throw new CommandException(MESSAGE_INVALID_INDEX);
         }
 
         Wedding weddingToDelete = model.getFilteredWeddingList().get(targetIndex.getZeroBased());
         model.deleteWedding(weddingToDelete);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, weddingToDelete));
+        return new CommandResult(String.format(MESSAGE_SUCCESS));
     }
 }

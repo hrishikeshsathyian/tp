@@ -155,7 +155,8 @@ public interface WeddingModel {
     void deleteWedding(Wedding target);
 
     /**
-     * Removes Person from wedding
+     * Removes Person from wedding.
+     * The index must be valid.
      */
     void removeWeddingPerson(Wedding wedding, int indexToRemove);
 }
