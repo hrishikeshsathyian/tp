@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.person.Person;
 import seedu.address.model.wedding.Wedding;
 
@@ -153,5 +154,8 @@ public interface WeddingModel {
      */
     void deleteWedding(Wedding target);
 
-
+    /**
+     * Removes Person from wedding
+     */
+    void removeWeddingPerson(Wedding wedding, int indexToRemove);
 }

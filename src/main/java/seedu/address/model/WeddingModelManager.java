@@ -291,5 +291,12 @@ public class WeddingModelManager implements WeddingModel {
         weddingPlanner.deleteWedding(target);
     }
 
+    @Override
+    public void removeWeddingPerson(Wedding wedding, int indexToRemove) {
+        requireAllNonNull(wedding);
+        // account for bride and groom in GUI and 0-based indexing
+        indexToRemove = indexToRemove - 3;
+        wedding.getMembers().removeByIndex(indexToRemove);
+    }
 
 }

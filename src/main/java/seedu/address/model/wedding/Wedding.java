@@ -61,6 +61,8 @@ public class Wedding {
     }
 
     public UniquePersonList getMembers() {
+
+        System.out.println(members);
         return members;
     }
 
