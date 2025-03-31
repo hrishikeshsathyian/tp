@@ -2,13 +2,9 @@ package seedu.address.model;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.wedding.UniqueWeddingList;
 import seedu.address.model.wedding.Wedding;
 import seedu.address.model.wedding.exceptions.DuplicateWeddingException;
-
-import static java.util.Objects.requireNonNull;
-
 
 /**
  * Represents a Wedding Planner that manages a collection of weddings.

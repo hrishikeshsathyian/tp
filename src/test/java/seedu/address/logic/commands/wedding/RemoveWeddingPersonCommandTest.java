@@ -13,10 +13,10 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WeddingModel;
 import seedu.address.model.WeddingModelManager;
+import seedu.address.model.person.Person;
 import seedu.address.model.wedding.Date;
 import seedu.address.model.wedding.Title;
 import seedu.address.model.wedding.Wedding;
-import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
 public class RemoveWeddingPersonCommandTest {

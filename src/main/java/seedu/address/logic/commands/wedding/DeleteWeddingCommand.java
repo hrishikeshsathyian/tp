@@ -40,4 +40,20 @@ public class DeleteWeddingCommand extends Command {
         model.deleteWedding(weddingToDelete);
         return new CommandResult(String.format(MESSAGE_SUCCESS));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof DeleteWeddingCommand)) {
+            return false;
+        }
+
+        DeleteWeddingCommand otherDeleteCommand = (DeleteWeddingCommand) other;
+        return targetIndex.equals(otherDeleteCommand.targetIndex);
+    }
+
 }
