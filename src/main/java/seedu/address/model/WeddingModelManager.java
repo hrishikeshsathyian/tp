@@ -280,4 +280,29 @@ public class WeddingModelManager implements WeddingModel {
         weddingPlanner.sortWeddings();
     }
 
+    /**
+     * Deletes the given wedding.
+     * The wedding must exist in the Wedding Planner.
+     *
+     * @param target
+     */
+    @Override
+    public void deleteWedding(Wedding target) {
+        weddingPlanner.deleteWedding(target);
+    }
+
+    /**
+     * Removes a person from a wedding's list of members.
+     * Adjusts the index to account for the bride and groom in the GUI representation.
+     * @param wedding The wedding from which the person is to be removed.
+     * @param indexToRemove The 1-based index of the person in the displayed list.
+     */
+    @Override
+    public void removeWeddingPerson(Wedding wedding, int indexToRemove) {
+        requireAllNonNull(wedding);
+        // account for bride and groom in GUI and 0-based indexing
+        indexToRemove = indexToRemove - 3;
+        wedding.getMembers().removeByIndex(indexToRemove);
+    }
+
 }
