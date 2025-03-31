@@ -23,8 +23,10 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
         - [Closing a wedding](#closing-the-current-wedding-closewedding)
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
-    - [Member Management](#member-management-)
+    - [Member Management](#member-management-) 
         - [Adding a person to a wedding](#adding-a-person-add)
+        - [Searching for members of weddings](#finding-members-findmember)
+        - [Filtering for members by tags](#filtering-by-tag-filter)
 4. [Data Storage](#data-storage)
 5. [FAQ](#faq)
 7. [Command Summary](#command-summary)
@@ -37,16 +39,16 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
    - Java Installation
    - **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 2. Download the latest version of HappyEverAfter
-   - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happilyeverafter.jar`.
+   - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happyeverafter.jar`.
 3. Move the file to the folder
     - Copy the file to the folder you want to use as the _home folder_ for your HappyEverAfter.
 4. Running HappyEverAfter
     - Open the "Command Prompt" (for Windows) or "Terminal" (for Mac/Linux).
-    - Enter `cd` followed by the folder location where you saved the EduConnect file. For example:
+    - Enter `cd` followed by the folder location where you saved the HappyEverAfter file. For example:
         - On Windows: `cd C:\Users\JohnDoe\Desktop\HappyEverAfter`
         - On Mac/Linux: `cd /Users/JohnDoe/Desktop/HappyEverAfter`
     - Then run this command to launch HappyEverAfter:
-      `java -jar happilyeverafter.jar`
+      `java -jar happyeverafter.jar`
    - A Graphical User Interface (GUI) similar to the image below should appear in a few seconds. Note how the app contains some sample data.
 
       ![Ui](images/Ui.png)
@@ -146,6 +148,10 @@ Examples:
 * `open 1` (Opens the first wedding in the list)
 * `open 3` (Opens the third wedding in the list)
 
+After a weddings is open, you will be able to see its members on the right:
+
+![An open wedding](images/openWedding.png)
+
 ### Closing the current wedding: `close`
 
 Closes the currently open wedding project to return to the main view.
@@ -157,12 +163,6 @@ Format: `close`
 Reorders the displayed weddings by chronological order - with the earliest wedding at the top.
 
 Format: `sort`
-
-### Sorting weddings by date: `sort`
-
-Shows a list of all weddings in the wedding planner, organised from earliest to latest.
-
-Format:  `sort`
 
 ## Member Management 
 
@@ -189,7 +189,7 @@ Examples:
 * `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
 * `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
 
-### Searching for members: `findmember`
+### Finding members: `findmember`
 
 Displays all weddings with members that match the provided search terms.
 You can search for any number of search terms, and HappyEverAfter will list all weddings with members that 
@@ -215,22 +215,23 @@ Format: `filter [TAGS}`
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+HappyEverAfter data is saved in the hard disk automatically after any command that changes the data. There 
+is no need to save manually.
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. 
+Advanced users 
+are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, HappyEverAfter will discard all data and start 
+with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause HappyEverAfter to behave in unexpected ways (e.g., if a value entered is 
+outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
-
-<!-- ### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._ -->
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -243,7 +244,8 @@ _Details coming soon ..._ -->
 **A**: No, you need to create weddings one at a time using the `new` command.
 
 **Q**: What happens if I try to add a second bride or groom to a wedding?  
-**A**: The system will display an error message as each wedding can have only one bride and one groom.
+**A**: The system will display an error message as each wedding can have only one bride and one groom. 
+HappyEverAfter does not support polyamory as of now.
 
 **Q**: How many people can I add to a wedding?  
 **A**: At most 100 members for one wedding.
@@ -252,13 +254,15 @@ _Details coming soon ..._ -->
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| **Help** | `help` |
-| **Create Wedding** | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025` |
-| **Open Wedding** | `open INDEX`<br>e.g., `open 2` |
-| **Close Wedding** | `closewedding` |
-| **List Weddings** | `list` |
+ Action                    | Format, Examples
+---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| **Help**                  | `help` |
+| **Create Wedding**        | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025` |
+| **Open Wedding**          | `open INDEX`<br>e.g., `open 2` |
+| **Close Wedding**         | `closewedding` |
+| **List Weddings**         | `list` |
 | **Sort Weddings by Date** | `sort` |
-| **Add Person** | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
-| **Exit** | `exit` |
+| **Add Person**            | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
+| **Finding members**       | `findmember [SEARCH TERMS]`<br>eg., `findmember John Doe` |
+| **Filtering members by tag** | `filter [TAG]`<br>eg., `filter groom` |
+| **Exit**                  | `exit` |
