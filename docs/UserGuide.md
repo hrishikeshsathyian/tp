@@ -111,6 +111,14 @@ Format: `exit`
 
 ## Wedding Management
 
+### Listing all weddings: `list`
+
+Shows a list of all weddings in the wedding planner.
+
+Format: `list`
+
+![sample result from the list command](images/listCommand.png)
+
 ### Creating a wedding: `add`
 
 Adds a wedding to the wedding planner.  
@@ -119,6 +127,13 @@ Format: `new n/WEDDING_NAME d/DATE`
 
 Examples: 
 * `new n/John & Mary d/25122025`
+
+<div markdown="block" class="alert alert-primary">
+Note:
+
+* HappyEverAfter will prompt you immediately to enter the details of the bride and the groom to confirm 
+  the wedding.
+* See [Adding a person to a wedding](#adding-a-person-add) for more details,
 
 ### Opening a wedding : `open`
 
@@ -130,17 +145,17 @@ Examples:
 * `open 1` (Opens the first wedding in the list)
 * `open 3` (Opens the third wedding in the list)
 
-### Closing the current wedding: `closewedding`
+### Closing the current wedding: `close`
 
 Closes the currently open wedding project to return to the main view.
 
-Format: `closewedding`
+Format: `close`
 
-### Listing all weddings: `list`
+### Sorting weddings by date: `sort`
 
-Shows a list of all weddings in the wedding planner.
+Reorders the displayed weddings by chronological order - with the earliest wedding at the top.
 
-Format: `list`
+Format: `sort`
 
 ## Member Management 
 
@@ -152,7 +167,7 @@ Use tags to specify if the person is a bride, groom, or other wedding party memb
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
 <div markdown="block" class="alert alert-primary">
-**Note:** 
+Note:
 
 * Active refers to the wedding associated with the last `open` or `new` command
 * Each wedding must have exactly one bride and one groom.
@@ -166,6 +181,28 @@ Examples:
 * `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kentridgr St t/bride`
 * `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
 * `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
+
+### Searching for members: `findmember`
+
+Displays all weddings with members that match the provided search terms.
+You can search for any number of search terms, and HappyEverAfter will list all weddings with members that 
+match any of 
+the terms provided.
+
+Format: `findmember [SEARCH TERMS]`
+
+Examples:
+* `findmember Sun`
+* `findmember Sun Hrishi`
+
+### Filtering by tag: `filter`
+
+Filters the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with 
+the specified tag.
+
+_Note: The tags are case-sensitive_
+
+Format: `filter [TAGS}`
 
 ## Data Storage
 
