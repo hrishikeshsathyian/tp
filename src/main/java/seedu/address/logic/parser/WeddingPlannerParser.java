@@ -19,7 +19,7 @@ import seedu.address.logic.commands.SortWeddingCommand;
 import seedu.address.logic.commands.wedding.AddWeddingCommand;
 import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.CloseWeddingCommand;
-import seedu.address.logic.commands.wedding.CloseWeddingCommand;
+import seedu.address.logic.commands.wedding.DeleteWeddingCommand;
 import seedu.address.logic.commands.wedding.FilterByTagCommand;
 import seedu.address.logic.commands.wedding.FindMemberCommand;
 import seedu.address.logic.commands.wedding.OpenWeddingCommand;
