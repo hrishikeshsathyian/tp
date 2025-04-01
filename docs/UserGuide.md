@@ -136,7 +136,8 @@ Note:
 
 * HappyEverAfter will prompt you immediately to enter the details of the bride and the groom to confirm 
   the wedding.
-* See [Adding a person to a wedding](#adding-a-person-add) for more details,
+* See [Adding a person to a wedding](#adding-a-person-add) for more details
+</div>
 
 ### Opening a wedding : `open`
 
