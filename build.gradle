@@ -16,6 +16,11 @@ repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
+run {
+    enableAssertions = true
+}
+
+
 checkstyle {
     toolVersion = '10.2'
 }
@@ -66,7 +71,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = 'addressbook.jar'
+    archiveFileName = 'happyeverafter.jar'
 }
 
 defaultTasks 'clean', 'test'
