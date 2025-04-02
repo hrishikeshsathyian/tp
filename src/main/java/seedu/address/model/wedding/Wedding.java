@@ -150,13 +150,7 @@ public class Wedding {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("title", title)
-                .add("date", date)
-                .add("bride", bride)
-                .add("groom", groom)
-                .add("members", members)
-                .toString();
+        return this.getTitle().toString();
     }
 
 }
