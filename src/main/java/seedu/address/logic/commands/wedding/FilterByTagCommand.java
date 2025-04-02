@@ -6,8 +6,10 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WeddingModel;
 import seedu.address.model.person.PersonContainsTagPredicate;
+import seedu.address.model.wedding.Wedding;
 
 /**
  * Finds all persons in a wedding with the specified tag and displays them. The tag string must be an exact match
@@ -16,6 +18,8 @@ import seedu.address.model.person.PersonContainsTagPredicate;
 public class FilterByTagCommand extends Command {
 
     public static final String COMMAND_WORD = "filter";
+    public static final String MESSAGE_NO_ACTIVE_WEDDING = "No active wedding! Create or open a wedding first.";
+
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Displays all members with the specific tag "
             + "(case-sensitive)\n"
@@ -29,8 +33,15 @@ public class FilterByTagCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(WeddingModel model) {
+    public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);
+        Wedding activeWedding = model.getDraftWedding() != null
+                ? model.getDraftWedding()
+                : model.getCurrentWedding();
+
+        if (activeWedding == null) {
+            throw new CommandException(MESSAGE_NO_ACTIVE_WEDDING);
+        }
         model.updateFilteredPersonList(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));

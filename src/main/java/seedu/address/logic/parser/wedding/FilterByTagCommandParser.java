@@ -19,7 +19,10 @@ public class FilterByTagCommandParser implements Parser<FilterByTagCommand> {
      */
     public FilterByTagCommand parse(String args) throws ParseException {
         String trimArgs = args.trim();
-        if (trimArgs.isEmpty()) {
+        String regex = "[,\\.\\s]";
+        String[] argsArray = trimArgs.split(regex);
+        boolean isArgsValid = trimArgs.isEmpty() || argsArray.length > 1;
+        if (isArgsValid) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterByTagCommand.MESSAGE_USAGE));
         }
