@@ -1,5 +1,6 @@
 package seedu.address.logic.commands.wedding;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -32,6 +33,10 @@ public class FilterByTagCommand extends Command {
         this.predicate = predicate;
     }
 
+    public FilterByTagCommand() {
+        this.predicate = null;
+    }
+
     @Override
     public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);
@@ -42,7 +47,13 @@ public class FilterByTagCommand extends Command {
         if (activeWedding == null) {
             throw new CommandException(MESSAGE_NO_ACTIVE_WEDDING);
         }
-        model.updateFilteredPersonList(predicate);
+
+        if (!isNull(predicate)) {
+            model.updateFilteredPersonList(predicate);
+        } else {
+            model.updateFilteredPersonList();
+        }
+
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
