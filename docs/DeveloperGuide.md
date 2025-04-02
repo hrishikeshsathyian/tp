@@ -79,7 +79,7 @@ The `UI` component,
 
 * executes user commands using the `Logic` component.
 * listens for changes to `WeddingModel` data so that the UI can be updated with the modified data.
-* In particular, it listens for changes to the `UniqueWeddingList`, as well as the `UniquePersonList` of 
+* In particular, it listens for changes to the `UniqueWeddingList`, as well as the `UniquePersonList` of
   the currently open wedding.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
@@ -335,7 +335,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 * 2b. Wedding name provided is in an invalid format.
-  
+
   2bi. HappyEverAfter shows an error message.
 
     Use case resumes at step 2.
@@ -361,7 +361,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 * 5a. Contact information provided is in an invalid format.
-  
+
   5ai. HappyEverAfter shows an error message.
 
     Use case resumes at step 2.

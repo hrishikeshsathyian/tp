@@ -8,13 +8,13 @@ WeddingPlanner *-right-> "1" UniqueTagList
 UniqueTagList -right-> "*" Tag
 UniqueTagList -[hidden]down-> Wedding
 WeddingPlanner *-right-> "1" UniqueWeddingList
- 
+
 UniqueWeddingList -right-> Wedding
-Wedding -down-> Date 
-Wedding -down-> Title 
+Wedding -down-> Date
+Wedding -down-> Title
 Wedding --> Person : bride
 Wedding --> Person : groom
-Wedding -right-> UniquePersonList 
+Wedding -right-> UniquePersonList
 UniquePersonList -->  Person: members
 
 Person -right-> "*" Tag
