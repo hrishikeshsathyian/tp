@@ -136,6 +136,7 @@ Note:
 
 * HappyEverAfter will prompt you immediately to enter the details of the bride and the groom to confirm 
   the wedding.
+* While you may add persons of other tags to the wedding (e.g. Photographer), the wedding will not be created and saved until both bride and groom have been added.
 * See [Adding a person to a wedding](#adding-a-person-add) for more details
 </div>
 
@@ -149,7 +150,7 @@ Examples:
 * `open 1` (Opens the first wedding in the list)
 * `open 3` (Opens the third wedding in the list)
 
-After a weddings is open, you will be able to see its members on the right:
+After a weddings is open, you will be able to see its persons on the right:
 
 ![An open wedding](images/openWedding.png)
 
@@ -165,7 +166,7 @@ Reorders the displayed weddings by chronological order - with the earliest weddi
 
 Format: `sort`
 
-## Member Management 
+## Wedding Person Management 
 
 ### Adding a person: `add`
 
@@ -177,7 +178,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 <div markdown="block" class="alert alert-primary">
 Note:
 
-* Active refers to the wedding associated with the last `open` or `new` command
+* Active refers to the wedding associated with the last `open` or `new` command.
 * Each wedding must have exactly one bride and one groom.
 * Use `t/bride` to designate a person as the bride.
 * Use `t/groom` to designate a person as the groom.
@@ -208,9 +209,13 @@ Examples:
 Filters the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with 
 the specified tag.
 
-_Note: The tags are case-sensitive_
+<div markdown="block" class="alert alert-primary">
+Note:
+* The tags are case-sensitive.
+* To reset the filter to show all members again, omit the TAG parameter
+</div>
 
-Format: `filter [TAGS}`
+Format: `filter [TAG]`
 
 ## Data Storage
 
