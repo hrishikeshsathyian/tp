@@ -7,6 +7,7 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.PersonContainsTagPredicate;
 
+
 /**
  * Parses input arguments and creates a new FilterByTagCommand object
  */
@@ -19,11 +20,18 @@ public class FilterByTagCommandParser implements Parser<FilterByTagCommand> {
      */
     public FilterByTagCommand parse(String args) throws ParseException {
         String trimArgs = args.trim();
-        if (trimArgs.isEmpty()) {
+        String regex = "[,\\.\\s]";
+        String[] argsArray = trimArgs.split(regex);
+        boolean isArgsValid = argsArray.length > 1;
+        if (isArgsValid) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterByTagCommand.MESSAGE_USAGE));
         }
 
-        return new FilterByTagCommand(new PersonContainsTagPredicate(trimArgs));
+        if (trimArgs.isEmpty()) {
+            return new FilterByTagCommand();
+        } else {
+            return new FilterByTagCommand(new PersonContainsTagPredicate(trimArgs));
+        }
     }
 }

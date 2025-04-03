@@ -164,6 +164,7 @@ public class WeddingModelManager implements WeddingModel {
     public void clearCurrentWedding() {
         currentWedding = null;
         logger.info("Cleared wedding context");
+        updateFilteredPersonList();
     }
 
     @Override

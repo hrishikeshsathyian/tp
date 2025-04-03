@@ -23,8 +23,15 @@ public class OpenWeddingCommandParser implements Parser<OpenWeddingCommand> {
             Index index = ParserUtil.parseIndex(args);
             return new OpenWeddingCommand(index);
         } catch (ParseException pe) {
-            throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, OpenWeddingCommand.MESSAGE_USAGE), pe);
+            boolean argIsNotAnInteger = pe.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX_NON_INTEGER);
+            if (argIsNotAnInteger) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, OpenWeddingCommand.MESSAGE_USAGE), pe);
+            } else {
+                throw new ParseException(
+                        String.format(OpenWeddingCommand.MESSAGE_INVALID_INDEX)
+                );
+            }
         }
     }
 }

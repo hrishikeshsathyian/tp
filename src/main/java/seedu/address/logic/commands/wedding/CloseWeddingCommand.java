@@ -15,6 +15,8 @@ public class CloseWeddingCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Closed current wedding";
     public static final String MESSAGE_NO_OPEN_WEDDING = "No wedding is currently open";
 
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Closes the current wedding \n"
+            + "Example: " + COMMAND_WORD;
     @Override
     public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);

@@ -142,6 +142,12 @@ public interface WeddingModel {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+
+    /**
+     * Resets the filtered person list back to having no filter.
+     */
+    void updateFilteredPersonList();
+
     /**
      * Sorts all weddings by date.
      */

@@ -19,7 +19,7 @@ public class CloseWeddingCommandParser implements Parser<CloseWeddingCommand> {
     public CloseWeddingCommand parse(String args) throws ParseException {
         if (!args.trim().isEmpty()) {
             throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, CloseWeddingCommand.MESSAGE_SUCCESS));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, CloseWeddingCommand.MESSAGE_USAGE));
         }
         return new CloseWeddingCommand();
     }
