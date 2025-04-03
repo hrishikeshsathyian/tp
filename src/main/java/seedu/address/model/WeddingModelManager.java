@@ -151,6 +151,10 @@ public class WeddingModelManager implements WeddingModel {
     }
 
     // =========== Wedding Context Management ===========
+    @Override
+    public boolean isWeddingPlannerEmpty() {
+        return this.weddingPlanner.getWeddingList().isEmpty();
+    }
 
     @Override
     public void setCurrentWedding(Wedding wedding) {
@@ -164,6 +168,16 @@ public class WeddingModelManager implements WeddingModel {
     public void clearCurrentWedding() {
         currentWedding = null;
         logger.info("Cleared wedding context");
+    }
+
+    @Override
+    public void clearAllWeddings() {
+        this.weddingPlanner.resetData(new WeddingPlanner());
+        this.filteredWeddings.clear();
+        this.currentWedding = null;
+        this.draftWedding = null;
+        this.allPersons.clear();
+        this.filteredPersons.clear();
     }
 
     @Override
