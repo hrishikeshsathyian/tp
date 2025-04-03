@@ -54,7 +54,7 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
 
       ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. 
+5. Type the command in the command box and press Enter to execute it.
    - See [features](#features) for the comprehensive list of all possible commands to execute and [command summary](#command-summary) for a brief overview.
 
 
@@ -243,13 +243,13 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 **Q**: How do I transfer my wedding planner data to another computer?
 **A**: Install HappyEverAfter on the other computer and replace the empty data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
 
-**Q**: Can I add multiple weddings at once?  
+**Q**: Can I add multiple weddings at once?
 **A**: No, you need to create weddings one at a time using the `new` command. Alternatively, for advanced users: you may update the data file yourself. Look through the ["Editing the data file" section](#editing-the-data-file) for more support.
 
-**Q**: What happens if I try to add a second bride or groom to a wedding?  
+**Q**: What happens if I try to add a second bride or groom to a wedding?
 **A**: The system will display an error message as the current implementation of HappyEverAfter supports only one bride and one groom per wedding.
 
-**Q**: How many people can I add to a wedding?  
+**Q**: How many people can I add to a wedding?
 **A**: As of the most recent version, you can add at most 100 members for one wedding.
 
 
