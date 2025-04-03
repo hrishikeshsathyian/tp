@@ -164,4 +164,15 @@ public interface WeddingModel {
      * The index must be valid.
      */
     void removeWeddingPerson(Wedding wedding, int indexToRemove);
+
+    /**
+     * Checks if there are no weddings in the wedding planner
+     * @return true or false depending on whether the wedding list is empty
+     */
+    boolean isWeddingPlannerEmpty();
+
+    /**
+     * Clears all weddings from the wedding model
+     */
+    public void clearAllWeddings();
 }

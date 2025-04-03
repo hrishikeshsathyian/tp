@@ -22,6 +22,7 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
         - [Deleting a wedding](#deleting-a-wedding-delete)
+        - [Deleting all weddings](#clearing-all-weddings-clearallweddings)
     - [Member Management](#member-management)
         - [Adding a person to a wedding](#adding-a-person-to-a-wedding-add)
         - [Searching for members of weddings](#finding-people-findperson)
@@ -165,6 +166,17 @@ Format: `delete INDEX`
 Examples:
 * `delete 1` (Deletes the first wedding in the list)
 * `delete 3` (Deletes the third wedding in the list)
+
+### Clearing all weddings: `clearallweddings`
+
+Deletes ALL weddings from the wedding planner.
+
+Format:
+- `clearallweddings` followed by `y` will delete all weddings from the wedding planner.
+- `clearallweddings` followed by `n` will abort the delete operation and it will not clear the weddings.
+
+To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clearallweddings` to
+confirm the deletion.
 
 [Back to Table of Contents](#table-of-contents)
 

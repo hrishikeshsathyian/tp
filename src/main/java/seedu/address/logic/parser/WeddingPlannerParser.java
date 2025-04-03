@@ -14,9 +14,12 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.NCommand;
 import seedu.address.logic.commands.SortWeddingCommand;
+import seedu.address.logic.commands.YCommand;
 import seedu.address.logic.commands.wedding.AddWeddingCommand;
 import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
+import seedu.address.logic.commands.wedding.ClearAllWeddingsCommand;
 import seedu.address.logic.commands.wedding.CloseWeddingCommand;
 import seedu.address.logic.commands.wedding.DeleteWeddingCommand;
 import seedu.address.logic.commands.wedding.EditWeddingPersonCommand;
@@ -27,6 +30,7 @@ import seedu.address.logic.commands.wedding.RemoveWeddingPersonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.wedding.AddWeddingCommandParser;
 import seedu.address.logic.parser.wedding.AddWeddingPersonCommandParser;
+import seedu.address.logic.parser.wedding.ClearAllWeddingsCommandParser;
 import seedu.address.logic.parser.wedding.CloseWeddingCommandParser;
 import seedu.address.logic.parser.wedding.DeleteWeddingCommandParser;
 import seedu.address.logic.parser.wedding.EditWeddingPersonCommandParser;
@@ -110,6 +114,15 @@ public class WeddingPlannerParser {
 
         case FilterByTagCommand.COMMAND_WORD:
             return new FilterByTagCommandParser().parse(arguments);
+
+        case ClearAllWeddingsCommand.COMMAND_WORD:
+            return new ClearAllWeddingsCommandParser().parse(arguments);
+
+        case YCommand.COMMAND_WORD:
+            return new YCommandParser().parse(arguments);
+
+        case NCommand.COMMAND_WORD:
+            return new NCommandParser().parse(arguments);
 
         case EditWeddingPersonCommand.COMMAND_WORD:
             return new EditWeddingPersonCommandParser().parse(arguments);
