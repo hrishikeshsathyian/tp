@@ -37,6 +37,6 @@ public class OpenWeddingCommand extends Command {
 
         Wedding weddingToOpen = model.getFilteredWeddingList().get(targetIndex.getZeroBased());
         model.setCurrentWedding(weddingToOpen);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, weddingToOpen));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, weddingToOpen.toPrettyString()));
     }
 }

@@ -152,4 +152,11 @@ public class Wedding {
         return this.getTitle().toString();
     }
 
+    /**
+     * Alternate String format for printing to the UI
+     */
+    public String toPrettyString() {
+        return this.title.toString();
+    }
+
 }

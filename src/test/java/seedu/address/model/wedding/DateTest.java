@@ -41,9 +41,15 @@ public class DateTest {
         assertFalse(Date.isValidDate(" ")); // spaces only
         assertFalse(Date.isValidDate("25/12/2025")); // wrong format
         assertFalse(Date.isValidDate("2025-12-25")); // wrong format
+        assertFalse(Date.isValidDate("01011200")); // past date
         assertFalse(Date.isValidDate("25122020")); // past date
         assertFalse(Date.isValidDate("32122025")); // invalid day
         assertFalse(Date.isValidDate("25132025")); // invalid month
+
+        // invalid dates within 1-31 (such as invalid leap years)
+        assertFalse(Date.isValidDate("29022029")); // wrong leap year
+        assertFalse(Date.isValidDate("31062025")); // day does not exist
+        assertFalse(Date.isValidDate("31042027")); // day does not exist
 
         // valid dates (future dates in DDMMYYYY format)
         assertTrue(Date.isValidDate("25122025")); // Christmas 2025
