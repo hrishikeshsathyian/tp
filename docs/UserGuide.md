@@ -297,7 +297,7 @@ is no need to save manually.
 
 ### Editing the data file
 
-HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`.
+HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/data/weddingplanner.json`.
 Advanced users
 are welcome to update data directly by editing that data file.
 
