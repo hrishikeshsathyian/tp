@@ -16,7 +16,7 @@ import java.time.format.ResolverStyle;
 public class Date implements Comparable<Date> {
 
     public static final String MESSAGE_CONSTRAINTS = "Dates should be in the format DDMMYYYY (e.g., 30092025 for "
-            + "30 September 2025) and must be in the future.";
+            + "30 September 2025) and must be in the future and must exist (eg 29022029 is invalid).";
 
     // Formatter for parsing the input string in DDMMYYYY format.
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("ddMMuuuu");
