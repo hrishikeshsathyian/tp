@@ -6,7 +6,7 @@
 
 # HappyEverAfter User Guide
 
-Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time! 
+Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with specific roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time! 
 
 
 <!-- * Table of Contents -->
@@ -36,7 +36,7 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
-   - Java Installation
+   - [Java Installation](https://www.java.com/en/download/help/download_options.html)
    - **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 2. Download the latest version of HappyEverAfter
    - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happyeverafter.jar`.
@@ -54,7 +54,7 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
       ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it. 
-   - See [features](#features) for the list of all possible commands to execute
+   - See [features](#features) for the comprehensive list of all possible commands to execute and [command summary](#command-summary) for a brief overview.
 
 
 [Back to Table of Contents](#table-of-contents-)
@@ -67,7 +67,7 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+* Words in `UPPER_CASE` are the parameters to be supplied by you, the user.<br>
   e.g. in `new n/WEDDING_NAME`, you should replace `WEDDING_NAME` with the actual name, like `new n/John & Mary`.
 
 * Items in square brackets are optional.<br>
@@ -216,19 +216,19 @@ Format: `filter [TAGS}`
 
 ### Saving the data
 
-HappyEverAfter data is saved in the hard disk automatically after any command that changes the data. There 
+HappyEverAfter data is saved in the hard disk automatically after any command that changes the data. There
 is no need to save manually.
 
 ### Editing the data file
 
-HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. 
-Advanced users 
+HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`.
+Advanced users
 are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, HappyEverAfter will discard all data and start 
+If your changes to the data file makes its format invalid, HappyEverAfter will discard all data and start
 with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause HappyEverAfter to behave in unexpected ways (e.g., if a value entered is 
 outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
@@ -242,14 +242,13 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 **A**: Install HappyEverAfter on the other computer and replace the empty data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
 
 **Q**: Can I add multiple weddings at once?  
-**A**: No, you need to create weddings one at a time using the `new` command.
+**A**: No, you need to create weddings one at a time using the `new` command. Alternatively, for advanced users: you may update the data file yourself. Look through the ["Editing the data file" section](#editing-the-data-file) for more support.
 
 **Q**: What happens if I try to add a second bride or groom to a wedding?  
-**A**: The system will display an error message as each wedding can have only one bride and one groom. 
-HappyEverAfter does not support polyamory as of now.
+**A**: The system will display an error message as the current implementation of HappyEverAfter supports only one bride and one groom per wedding.
 
 **Q**: How many people can I add to a wedding?  
-**A**: At most 100 members for one wedding.
+**A**: As of the most recent version, you can add at most 100 members for one wedding.
 
 --------------------------------------------------------------------------------------------------------------------
 
