@@ -159,6 +159,7 @@ Format: `sort`
 ### Deleting a wedding: `delete`
 
 You can delete a wedding from the wedding planner based on the provided index.
+You can delete any wedding(even the active one) with an wedding open or without.
 
 Format: `delete INDEX`
 
@@ -196,9 +197,9 @@ Examples:
 ### Finding people: `findperson`
 
 You can view all weddings with people that match the provided search terms.
-You can search for any number of search terms, and HappyEverAfter will list all weddings with members that
-match any of the terms provided. 
-Remember to use list command to view all the weddings.
+You can search for any number of search terms, and HappyEverAfter will show the information of 
+all weddings with members that match any of the terms provided. 
+You can use open command to view a specific wedding.
 
 Format: `findperson [SEARCH TERMS]`
 
