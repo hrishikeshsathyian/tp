@@ -23,9 +23,6 @@ public class DateTest {
         assertThrows(IllegalArgumentException.class, () -> new Date("2025-12-25"));
         assertThrows(IllegalArgumentException.class, () -> new Date("25/12/2025"));
 
-        // Past date
-        assertThrows(IllegalArgumentException.class, () -> new Date("25122020"));
-
         // Invalid day/month
         assertThrows(IllegalArgumentException.class, () -> new Date("32122025")); // Invalid day
         assertThrows(IllegalArgumentException.class, () -> new Date("25132025")); // Invalid month
@@ -41,8 +38,6 @@ public class DateTest {
         assertFalse(Date.isValidDate(" ")); // spaces only
         assertFalse(Date.isValidDate("25/12/2025")); // wrong format
         assertFalse(Date.isValidDate("2025-12-25")); // wrong format
-        assertFalse(Date.isValidDate("01011200")); // past date
-        assertFalse(Date.isValidDate("25122020")); // past date
         assertFalse(Date.isValidDate("32122025")); // invalid day
         assertFalse(Date.isValidDate("25132025")); // invalid month
 
@@ -54,6 +49,8 @@ public class DateTest {
         // valid dates (future dates in DDMMYYYY format)
         assertTrue(Date.isValidDate("25122025")); // Christmas 2025
         assertTrue(Date.isValidDate("01012030")); // New Year's Day 2030
+        assertTrue(Date.isValidDate("31012025")); // month with 31 days
+        assertTrue(Date.isValidDate("29022028")); // leap year
 
         // Edge cases - tomorrow should be valid
         LocalDate tomorrow = LocalDate.now().plusDays(1);

@@ -72,10 +72,6 @@
     -fx-opacity: 1;
 }
 
-.table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: -fx-focus-color;
-}
-
 .split-pane:horizontal .split-pane-divider {
     -fx-background-color: derive(#e2e2e2, 20%);
     -fx-border-color: transparent transparent transparent #b2b2b2;
@@ -109,16 +105,6 @@
 
 .list-cell:filled:odd {
     -fx-background-color: #eec5c2;
-}
-
-.list-cell:filled:selected {
-    -fx-background-color: #f08282;
-}
-
-.list-cell:filled:selected #cardPane {
-    -fx-border-color: #913e3e;
-    -fx-border-width: 1;
-    -fx-border-radius: 15;
 }
 
 .list-cell .label {
@@ -257,10 +243,6 @@
 .button:default {
     -fx-background-color: -fx-focus-color;
     -fx-text-fill: #000000;
-}
-
-.button:default:hover {
-    -fx-background-color: derive(-fx-focus-color, 30%);
 }
 
 .dialog-pane {

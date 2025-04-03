@@ -53,7 +53,7 @@ public class Date implements Comparable<Date> {
     public static boolean isValidDate(String testDate) {
         try {
             LocalDate parsedDate = LocalDate.parse(testDate, formatters);
-            return parsedDate.isAfter(LocalDate.now());
+            return true; // no longer going to test for this condition
         } catch (DateTimeParseException e) {
             return false;
         }
