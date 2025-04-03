@@ -1,0 +1,78 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":WeddingPlannerParser" as WeddingPlannerParser LOGIC_COLOR
+participant ":FindMemberCommandParser" as FindMemberCommandParser LOGIC_COLOR
+participant "f:FindMemberCommand" as FindMemberCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box WeddingModel MODEL_COLOR_T1
+participant "m:WeddingModel" as WeddingModel MODEL_COLOR
+end box
+
+[-> LogicManager : execute("findmember john")
+activate LogicManager
+
+LogicManager -> WeddingPlannerParser : parseCommand("findmember john")
+activate WeddingPlannerParser
+
+create FindMemberCommandParser
+WeddingPlannerParser -> FindMemberCommandParser
+activate FindMemberCommandParser
+
+FindMemberCommandParser --> WeddingPlannerParser
+deactivate FindMemberCommandParser
+
+WeddingPlannerParser -> FindMemberCommandParser : parse("john")
+activate FindMemberCommandParser
+
+create FindMemberCommand
+FindMemberCommandParser -> FindMemberCommand : new FindMemberCommand(predicate)
+activate FindMemberCommand
+
+FindMemberCommand --> FindMemberCommandParser
+deactivate FindMemberCommand
+
+FindMemberCommandParser --> WeddingPlannerParser : f
+deactivate FindMemberCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+FindMemberCommandParser -[hidden]-> WeddingPlannerParser
+destroy FindMemberCommandParser
+
+WeddingPlannerParser --> LogicManager : f
+deactivate WeddingPlannerParser
+
+LogicManager -> FindMemberCommand : execute
+activate FindMemberCommand
+
+FindMemberCommand -> WeddingModel : getWeddingList()
+activate WeddingModel
+
+WeddingModel --> FindMemberCommand : weddingList
+deactivate WeddingModel
+
+FindMemberCommand -> FindMemberCommand : Find weddings with\nmatching members
+
+FindMemberCommand -> WeddingModel : updateFilteredWeddingList()
+activate WeddingModel
+
+WeddingModel --> FindMemberCommand
+deactivate WeddingModel
+
+create CommandResult
+FindMemberCommand -> CommandResult : new CommandResult(message)
+activate CommandResult
+
+CommandResult --> FindMemberCommand
+deactivate CommandResult
+
+FindMemberCommand --> LogicManager : r
+deactivate FindMemberCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
