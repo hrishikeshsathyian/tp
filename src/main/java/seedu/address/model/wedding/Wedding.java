@@ -159,4 +159,11 @@ public class Wedding {
                 .toString();
     }
 
+    /**
+     * Alternate String format for printing to the UI
+     */
+    public String toPrettyString() {
+        return this.title.toString();
+    }
+
 }
