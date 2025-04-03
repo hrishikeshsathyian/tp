@@ -49,7 +49,7 @@ public class EditWeddingPersonCommand extends Command {
     public static final String MESSAGE_INDEX_OUT_OF_RANGE = "The person index provided is invalid";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the wedding.";
     public static final String MESSAGE_CANNOT_EDIT_BRIDE_GROOM_TAGS = "Cannot edit tags for bride or groom.";
-    public static final String MESSAGE_CANNOT_ADD_BRIDE_GROOM_TAG = "Cannot add bride or groom tag to a regular member. "
+    public static final String MESSAGE_CANNOT_ADD_BRIDE_GROOM_TAG = "Cannot add bride or groom tag to a regular member."
             + "Please use the appropriate commands to set bride/groom roles.";
 
     private final Index index;
@@ -86,11 +86,13 @@ public class EditWeddingPersonCommand extends Command {
         }
 
         Person personToEdit = model.getFilteredPersonList().get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        Person editedPerson = createEditPerson(personToEdit, editPersonDescriptor);
 
         // Check if the person is bride or groom
-        boolean isBride = personToEdit.getTags().stream().anyMatch(tag -> tag.tagName.equalsIgnoreCase("bride"));
-        boolean isGroom = personToEdit.getTags().stream().anyMatch(tag -> tag.tagName.equalsIgnoreCase("groom"));
+        boolean isBride = personToEdit.getTags().stream().
+                anyMatch(tag -> tag.tagName.equalsIgnoreCase("bride"));
+        boolean isGroom = personToEdit.getTags().stream().
+                anyMatch(tag -> tag.tagName.equalsIgnoreCase("groom"));
 
         // Check if tags are being modified
         boolean isTagsModified = editPersonDescriptor.getTags().isPresent();
@@ -119,10 +121,12 @@ public class EditWeddingPersonCommand extends Command {
 
         // Handle editing based on role
         int personIndex = index.getZeroBased();
-        if (personIndex == 0 && activeWedding.getBride() != null && activeWedding.getBride().equals(personToEdit)) {
+        if (personIndex == 0 && activeWedding.getBride() != null
+                && activeWedding.getBride().equals(personToEdit)) {
             // Editing bride
             activeWedding.setBride(editedPerson);
-        } else if (personIndex == 1 && activeWedding.getGroom() != null && activeWedding.getGroom().equals(personToEdit)) {
+        } else if (personIndex == 1 && activeWedding.getGroom() != null
+                && activeWedding.getGroom().equals(personToEdit)) {
             // Editing groom
             activeWedding.setGroom(editedPerson);
         } else {
@@ -147,7 +151,7 @@ public class EditWeddingPersonCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, EditCommand.EditPersonDescriptor editPersonDescriptor) {
+    private static Person createEditPerson(Person personToEdit, EditCommand.EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
@@ -157,7 +161,8 @@ public class EditWeddingPersonCommand extends Command {
 
         // Special handling for bride/groom - preserve their tags
         boolean isBrideOrGroom = personToEdit.getTags().stream()
-                .anyMatch(tag -> tag.tagName.equalsIgnoreCase("bride") || tag.tagName.equalsIgnoreCase("groom"));
+                .anyMatch(tag -> tag.tagName.equalsIgnoreCase("bride")
+                        || tag.tagName.equalsIgnoreCase("groom"));
 
         // If person is bride/groom, always use original tags, otherwise use updated tags
         Set<Tag> updatedTags = isBrideOrGroom
