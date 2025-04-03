@@ -20,8 +20,9 @@ import seedu.address.logic.commands.wedding.AddWeddingCommand;
 import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.CloseWeddingCommand;
 import seedu.address.logic.commands.wedding.DeleteWeddingCommand;
+import seedu.address.logic.commands.wedding.EditWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.FilterByTagCommand;
-import seedu.address.logic.commands.wedding.FindMemberCommand;
+import seedu.address.logic.commands.wedding.FindPersonCommand;
 import seedu.address.logic.commands.wedding.OpenWeddingCommand;
 import seedu.address.logic.commands.wedding.RemoveWeddingPersonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -29,8 +30,9 @@ import seedu.address.logic.parser.wedding.AddWeddingCommandParser;
 import seedu.address.logic.parser.wedding.AddWeddingPersonCommandParser;
 import seedu.address.logic.parser.wedding.CloseWeddingCommandParser;
 import seedu.address.logic.parser.wedding.DeleteWeddingCommandParser;
+import seedu.address.logic.parser.wedding.EditWeddingPersonCommandParser;
 import seedu.address.logic.parser.wedding.FilterByTagCommandParser;
-import seedu.address.logic.parser.wedding.FindMemberCommandParser;
+import seedu.address.logic.parser.wedding.FindPersonCommandParser;
 import seedu.address.logic.parser.wedding.OpenWeddingCommandParser;
 import seedu.address.logic.parser.wedding.RemoveWeddingPersonCommandParser;
 
@@ -107,14 +109,17 @@ public class WeddingPlannerParser {
         case SortWeddingCommand.COMMAND_WORD:
             return new SortWeddingCommand();
 
-        case FindMemberCommand.COMMAND_WORD:
-            return new FindMemberCommandParser().parse(arguments);
+        case FindPersonCommand.COMMAND_WORD:
+            return new FindPersonCommandParser().parse(arguments);
 
         case RemoveWeddingPersonCommand.COMMAND_WORD:
             return new RemoveWeddingPersonCommandParser().parse(arguments);
 
         case FilterByTagCommand.COMMAND_WORD:
             return new FilterByTagCommandParser().parse(arguments);
+
+        case EditWeddingPersonCommand.COMMAND_WORD:
+            return new EditWeddingPersonCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
