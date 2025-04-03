@@ -23,6 +23,7 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
         - [Closing a wedding](#closing-the-current-wedding-closewedding)
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
+        - [Deleting all weddings](#clearing-all-weddings-clearallweddings)
     - [Member Management](#member-management-)
         - [Adding a person to a wedding](#adding-a-person-add)
         - [Searching for members of weddings](#finding-members-findmember)
@@ -164,6 +165,18 @@ Format: `close`
 Reorders the displayed weddings by chronological order - with the earliest wedding at the top.
 
 Format: `sort`
+
+### Clearing all weddings: `clearallweddings`
+
+Deletes ALL weddings from the wedding planner.
+
+Format:
+- `clearallweddings` followed by `y` will delete all weddings from the wedding planner.
+- `clearallweddings` followed by `n` will abort the delete operation and it will not clear the weddings.
+
+To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clearallweddings` to
+confirm the deletion.
+
 
 ## Member Management
 
