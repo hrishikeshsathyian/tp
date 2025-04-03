@@ -89,10 +89,10 @@ public class EditWeddingPersonCommand extends Command {
         Person editedPerson = createEditPerson(personToEdit, editPersonDescriptor);
 
         // Check if the person is bride or groom
-        boolean isBride = personToEdit.getTags().stream().
-                anyMatch(tag -> tag.tagName.equalsIgnoreCase("bride"));
-        boolean isGroom = personToEdit.getTags().stream().
-                anyMatch(tag -> tag.tagName.equalsIgnoreCase("groom"));
+        boolean isBride = personToEdit.getTags().stream()
+                .anyMatch(tag -> tag.tagName.equalsIgnoreCase("bride"));
+        boolean isGroom = personToEdit.getTags().stream()
+                .anyMatch(tag -> tag.tagName.equalsIgnoreCase("groom"));
 
         // Check if tags are being modified
         boolean isTagsModified = editPersonDescriptor.getTags().isPresent();
