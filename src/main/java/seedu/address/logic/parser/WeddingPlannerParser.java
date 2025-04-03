@@ -20,6 +20,7 @@ import seedu.address.logic.commands.wedding.AddWeddingCommand;
 import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.CloseWeddingCommand;
 import seedu.address.logic.commands.wedding.DeleteWeddingCommand;
+import seedu.address.logic.commands.wedding.EditWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.FilterByTagCommand;
 import seedu.address.logic.commands.wedding.FindMemberCommand;
 import seedu.address.logic.commands.wedding.OpenWeddingCommand;
@@ -29,6 +30,7 @@ import seedu.address.logic.parser.wedding.AddWeddingCommandParser;
 import seedu.address.logic.parser.wedding.AddWeddingPersonCommandParser;
 import seedu.address.logic.parser.wedding.CloseWeddingCommandParser;
 import seedu.address.logic.parser.wedding.DeleteWeddingCommandParser;
+import seedu.address.logic.parser.wedding.EditWeddingPersonCommandParser;
 import seedu.address.logic.parser.wedding.FilterByTagCommandParser;
 import seedu.address.logic.parser.wedding.FindMemberCommandParser;
 import seedu.address.logic.parser.wedding.OpenWeddingCommandParser;
@@ -115,6 +117,9 @@ public class WeddingPlannerParser {
 
         case FilterByTagCommand.COMMAND_WORD:
             return new FilterByTagCommandParser().parse(arguments);
+
+        case EditWeddingPersonCommand.COMMAND_WORD:
+            return new EditWeddingPersonCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
