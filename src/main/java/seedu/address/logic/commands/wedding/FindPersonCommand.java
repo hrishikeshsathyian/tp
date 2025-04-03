@@ -79,8 +79,11 @@ public class FindPersonCommand extends Command {
                 matchedWeddings.add(wedding);
                 totalMatches += matchedMembers.size();
 
+                int weddingIndex = model.getFilteredWeddingList().indexOf(wedding) + 1;
+
                 // Add wedding details
-                resultMessage.append("\nWedding: ").append(wedding.getTitle())
+                resultMessage.append("\nWedding ").append(weddingIndex).append(": ")
+                        .append(wedding.getTitle())
                         .append(" (").append(wedding.getDate()).append(")\n");
                 resultMessage.append("Matched people: ");
 
@@ -96,15 +99,13 @@ public class FindPersonCommand extends Command {
             }
         }
 
-        // Update model to display matched weddings among all weddings
-        model.updateFilteredWeddingList(wedding -> matchedWeddings.contains(wedding));
-
         if (matchedWeddings.isEmpty()) {
             return new CommandResult(MESSAGE_NO_MATCHING_PEOPLE);
         }
 
         String returnMessage = String.format(MESSAGE_PEOPLE_FOUND_OVERVIEW, matchedWeddings.size())
-                + "\nTotal matching people found: " + totalMatches + "\n";
+                + "\nTotal matching people found: " + totalMatches + "\n"
+                + "Use 'open INDEX' to view a specific wedding above.\n";
         return new CommandResult(returnMessage + resultMessage.toString());
     }
 
