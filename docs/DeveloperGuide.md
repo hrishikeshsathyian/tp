@@ -67,7 +67,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2425S2-CS2103T-W09-4/tp/tree/master/src/main/java/seedu/address/ui)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
@@ -269,9 +269,9 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
+<!-- ### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+_{Explain here how the data archiving feature will be implemented}_ -->
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -409,7 +409,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 7a. The given index is invalid.
 
-    * 7a1. AddressBook shows an error message.
+    * 7a1. HappyEverAfter shows an error message.
 
       Use case resumes at step 6.
 
