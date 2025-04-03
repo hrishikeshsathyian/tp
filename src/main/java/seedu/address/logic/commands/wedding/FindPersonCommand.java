@@ -18,7 +18,7 @@ import seedu.address.model.wedding.Wedding;
  * the argument substrings.
  * Substring matching is case insensitive.
  */
-public class FindMemberCommand extends Command {
+public class FindPersonCommand extends Command {
 
     public static final String COMMAND_WORD = "findperson";
 
@@ -32,7 +32,7 @@ public class FindMemberCommand extends Command {
 
     private final NameContainsSubstringPredicate predicate;
 
-    public FindMemberCommand(NameContainsSubstringPredicate predicate) {
+    public FindPersonCommand(NameContainsSubstringPredicate predicate) {
         this.predicate = predicate;
     }
 
@@ -115,11 +115,11 @@ public class FindMemberCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof FindMemberCommand)) {
+        if (!(other instanceof FindPersonCommand)) {
             return false;
         }
 
-        FindMemberCommand otherFindMemberCommand = (FindMemberCommand) other;
+        FindPersonCommand otherFindMemberCommand = (FindPersonCommand) other;
         return predicate.equals(otherFindMemberCommand.predicate);
     }
 }
