@@ -20,15 +20,15 @@ import seedu.address.model.wedding.Wedding;
  */
 public class FindMemberCommand extends Command {
 
-    public static final String COMMAND_WORD = "findmember";
+    public static final String COMMAND_WORD = "findperson";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all weddings containing members whose names "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all weddings containing people whose names "
             + "contain any of the specified keywords (case-insensitive) and displays them as a list.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " jerry je Jerry";
 
-    public static final String MESSAGE_NO_MATCHING_MEMBERS = "No members found with the given keywords.";
-    public static final String MESSAGE_MEMBERS_FOUND_OVERVIEW = "Found %1$d wedding(s) with matching members.";
+    public static final String MESSAGE_NO_MATCHING_PEOPLE = "No person found matching the given keywords.";
+    public static final String MESSAGE_PEOPLE_FOUND_OVERVIEW = "Found %1$d wedding(s) with matching people.";
 
     private final NameContainsSubstringPredicate predicate;
 
@@ -82,7 +82,7 @@ public class FindMemberCommand extends Command {
                 // Add wedding details
                 resultMessage.append("\nWedding: ").append(wedding.getTitle())
                         .append(" (").append(wedding.getDate()).append(")\n");
-                resultMessage.append("Matched members: ");
+                resultMessage.append("Matched people: ");
 
                 for (Person member : matchedMembers) {
                     resultMessage.append(member.getName().fullName).append(", ");
@@ -100,11 +100,11 @@ public class FindMemberCommand extends Command {
         model.updateFilteredWeddingList(wedding -> matchedWeddings.contains(wedding));
 
         if (matchedWeddings.isEmpty()) {
-            return new CommandResult(MESSAGE_NO_MATCHING_MEMBERS);
+            return new CommandResult(MESSAGE_NO_MATCHING_PEOPLE);
         }
 
-        String returnMessage = String.format(MESSAGE_MEMBERS_FOUND_OVERVIEW, matchedWeddings.size())
-                + "\nTotal matching members found: " + totalMatches + "\n";
+        String returnMessage = String.format(MESSAGE_PEOPLE_FOUND_OVERVIEW, matchedWeddings.size())
+                + "\nTotal matching people found: " + totalMatches + "\n";
         return new CommandResult(returnMessage + resultMessage.toString());
     }
 
