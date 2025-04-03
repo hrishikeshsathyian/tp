@@ -3,7 +3,6 @@ package seedu.address.model.wedding;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -150,13 +149,14 @@ public class Wedding {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("title", title)
-                .add("date", date)
-                .add("bride", bride)
-                .add("groom", groom)
-                .add("members", members)
-                .toString();
+        return this.getTitle().toString();
+    }
+
+    /**
+     * Alternate String format for printing to the UI
+     */
+    public String toPrettyString() {
+        return this.title.toString();
     }
 
 }

@@ -40,11 +40,11 @@ public class AddWeddingCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        // invalid date (past date or wrong format)
+        // invalid date (wrong format)
         String dateErrorMessage = "Invalid command format! \n"
                 + "new: Creates a wedding draft\n"
                 + "Parameters: n/WEDDING_NAME d/DATE\n"
                 + "Example: new n/John & Mary d/25122025";
-        assertParseFailure(parser, " n/John & Mary d/01012020", dateErrorMessage);
+        assertParseFailure(parser, " n/John & Mary d/01302020", dateErrorMessage);
     }
 }

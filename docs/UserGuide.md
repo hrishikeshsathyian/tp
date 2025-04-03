@@ -6,7 +6,8 @@
 
 # HappyEverAfter User Guide
 
-Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time!
+
+Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time!
 
 
 <!-- * Table of Contents -->
@@ -14,20 +15,23 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
 1. [Quick Start](#quick-start)
 2. [Command Formats](#feature-details)
 3. [Features](#features)
-    - [System Commands](#system-commands)
-        - [Viewing help](#viewing-help--help)
-        - [Exiting the program](#exiting-the-program-exit)
     - [Wedding Management](#wedding-management)
         - [Creating a new wedding](#creating-a-wedding-add)
         - [Opening a wedding](#opening-a-wedding--open)
-        - [Closing a wedding](#closing-the-current-wedding-closewedding)
+        - [Closing a wedding](#closing-the-current-wedding-close)
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
+        - [Deleting a wedding](#deleting-a-wedding-delete)
         - [Deleting all weddings](#clearing-all-weddings-clearallweddings)
-    - [Member Management](#member-management-)
-        - [Adding a person to a wedding](#adding-a-person-add)
-        - [Searching for members of weddings](#finding-members-findmember)
+    - [Member Management](#member-management)
+        - [Adding a person to a wedding](#adding-a-person-to-a-wedding-add)
+        - [Searching for members of weddings](#finding-people-findperson)
         - [Filtering for members by tags](#filtering-by-tag-filter)
+        - [Removing a person](#removing-a-person-remove)
+        - [Editing a person](#editing-a-person-editperson)
+    - [System Commands](#system-commands)
+        - [Viewing help](#viewing-help--help)
+        - [Exiting the program](#exiting-the-program-exit)
 4. [Data Storage](#data-storage)
 5. [FAQ](#faq)
 7. [Command Summary](#command-summary)
@@ -37,7 +41,7 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
-   - Java Installation
+   - [Java Installation](https://www.java.com/en/download/help/download_options.html)
    - **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 2. Download the latest version of HappyEverAfter
    - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happyeverafter.jar`.
@@ -55,10 +59,11 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
       ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it.
-   - See [features](#features) for the list of all possible commands to execute
+   - See [features](#features) for the comprehensive list of all possible commands to execute and [command summary](#command-summary) for a brief overview.
 
 
-[Back to Table of Contents](#table-of-contents-)
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -68,7 +73,7 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+* Words in `UPPER_CASE` are the parameters to be supplied by you, the user.<br>
   e.g. in `new n/WEDDING_NAME`, you should replace `WEDDING_NAME` with the actual name, like `new n/John & Mary`.
 
 * Items in square brackets are optional.<br>
@@ -94,30 +99,16 @@ Welcome to HappyEverAfter - a quick, robust, intuitive Wedding Planner designed 
     * Use `t/bride` to designate a person as the bride
     * Use `t/groom` to designate a person as the groom
     * A wedding must have both a bride and groom to be valid
+  
+[Back to Table of Contents](#table-of-contents)
 
 # Features
-
-## System commands
-
-### Viewing help : `help`
-
-Shows a message explaining how to access the User Guide.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
-
-### Exiting the program: `exit`
-
-Exits the HappyEverAfter application.
-
-Format: `exit`
 
 ## Wedding Management
 
 ### Listing all weddings: `list`
 
-Shows a list of all weddings in the wedding planner.
+You can view a list of all weddings in the wedding planner.
 
 Format: `list`
 
@@ -125,7 +116,7 @@ Format: `list`
 
 ### Creating a wedding: `add`
 
-Adds a wedding to the wedding planner.
+You can add a wedding to the wedding planner.
 
 Format: `new n/WEDDING_NAME d/DATE`
 
@@ -142,7 +133,7 @@ Note:
 
 ### Opening a wedding : `open`
 
-Opens a wedding from the Wedding Planner to view its persons.
+You can open a wedding from the Wedding Planner to view its people and edit its people.
 
 Format: `open INDEX`
 
@@ -156,15 +147,25 @@ After a weddings is open, you will be able to see its members on the right:
 
 ### Closing the current wedding: `close`
 
-Closes the currently open wedding project to return to the main view.
+You can close the currently open wedding project to return to the main view.
 
 Format: `close`
 
 ### Sorting weddings by date: `sort`
 
-Reorders the displayed weddings by chronological order - with the earliest wedding at the top.
+You can view the displayed weddings by chronological order - with the earliest wedding at the top.
 
 Format: `sort`
+
+### Deleting a wedding: `delete`
+
+You can delete a wedding from the wedding planner based on the provided index.
+
+Format: `delete INDEX`
+
+Examples:
+* `delete 1` (Deletes the first wedding in the list)
+* `delete 3` (Deletes the third wedding in the list)
 
 ### Clearing all weddings: `clearallweddings`
 
@@ -177,13 +178,14 @@ Format:
 To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clearallweddings` to
 confirm the deletion.
 
+[Back to Table of Contents](#table-of-contents)
 
 ## Member Management
 
-### Adding a person: `add`
+### Adding a person to a wedding: `add`
 
-Adds a person to the **active** Wedding Planner.
-Use tags to specify if the person is a bride, groom, or other wedding party member.
+You can add a person to the **active** Wedding Planner.
+You can use tags to specify if the person is a bride, groom, or other wedding party member.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
@@ -203,27 +205,86 @@ Examples:
 * `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
 * `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
 
-### Finding members: `findmember`
+### Finding people: `findperson`
 
-Displays all weddings with members that match the provided search terms.
+You can view all weddings with people that match the provided search terms.
 You can search for any number of search terms, and HappyEverAfter will list all weddings with members that
-match any of
-the terms provided.
+match any of the terms provided. 
+Remember to use list command to view all the weddings.
 
-Format: `findmember [SEARCH TERMS]`
+Format: `findperson [SEARCH TERMS]`
 
 Examples:
-* `findmember Sun`
-* `findmember Sun Hrishi`
+* `findperson Sun`
+* `findperson Sun Hrishi`
 
 ### Filtering by tag: `filter`
 
-Filters the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with
+You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with
 the specified tag.
 
-_Note: The tags are case-sensitive_
+_Note: The tags are case-sensitive and use filter alone to display all members_
 
 Format: `filter [TAGS}`
+
+Examples:
+* `filter bride` (Displays only the bride)
+* `filter groom` (Displays only the groom)
+* `filter` (Displays all members without filtering)
+
+### Removing a person: `remove`
+
+You can remove a person from the currently active wedding based on the provided index.
+
+Format: `remove INDEX`
+
+Examples:
+* `remove 3` (Removes the third person in the list)
+
+<div markdown="block" class="alert alert-primary">
+Note:
+
+* You cannot remove a bride or groom from a wedding. Every wedding must maintain both roles.
+* The index is based on the display order of people in the active wedding view.
+</div>
+
+### Editing a person: `editperson`
+
+You can edit the details of a person in the currently active wedding.
+
+Format: `editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+
+Examples:
+* `editperson 1 p/91234567 e/newemail@example.com` (Updates phone and email of the first person)
+* `editperson 2 n/New Name a/New Address` (Updates name and address of the second person)
+
+<div markdown="block" class="alert alert-primary">
+Note:
+
+* Active refers to the wedding associated with the last `open` or `new` command
+* You cannot edit the bride/groom tags of a person.
+* At least one field must be provided for editing.
+</div>
+
+[Back to Table of Contents](#table-of-contents)
+
+## System commands
+
+### Viewing help : `help`
+
+You can view a message explaining how to access the User Guide.
+
+![help message](images/helpMessage.png)
+
+Format: `help`
+
+### Exiting the program: `exit`
+
+You can exit the HappyEverAfter application.
+
+Format: `exit`
+
+[Back to Table of Contents](#table-of-contents)
 
 ## Data Storage
 
@@ -249,34 +310,39 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 
 --------------------------------------------------------------------------------------------------------------------
 
+[Back to Table of Contents](#table-of-contents)
 ## FAQ
 
 **Q**: How do I transfer my wedding planner data to another computer?
 **A**: Install HappyEverAfter on the other computer and replace the empty data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
 
 **Q**: Can I add multiple weddings at once?
-**A**: No, you need to create weddings one at a time using the `new` command.
+**A**: No, you need to create weddings one at a time using the `new` command. Alternatively, for advanced users: you may update the data file yourself. Look through the ["Editing the data file" section](#editing-the-data-file) for more support.
 
 **Q**: What happens if I try to add a second bride or groom to a wedding?
-**A**: The system will display an error message as each wedding can have only one bride and one groom.
-HappyEverAfter does not support polyamory as of now.
+**A**: The system will display an error message as the current implementation of HappyEverAfter supports only one bride and one groom per wedding.
 
 **Q**: How many people can I add to a wedding?
-**A**: At most 100 members for one wedding.
+**A**: As of the most recent version, you can add at most 100 members for one wedding.
+
 
 --------------------------------------------------------------------------------------------------------------------
+[Back to Table of Contents](#table-of-contents)
 
 ## Command summary
 
- Action                    | Format, Examples
----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Action                    | Format, Examples
+|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | **Help**                  | `help` |
 | **Create Wedding**        | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025` |
 | **Open Wedding**          | `open INDEX`<br>e.g., `open 2` |
-| **Close Wedding**         | `closewedding` |
+| **Close Wedding**         | `close` |
 | **List Weddings**         | `list` |
 | **Sort Weddings by Date** | `sort` |
+| **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2` |
 | **Add Person**            | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
-| **Finding members**       | `findmember [SEARCH TERMS]`<br>eg., `findmember John Doe` |
-| **Filtering members by tag** | `filter [TAG]`<br>eg., `filter groom` |
+| **Find Person**           | `findperson [SEARCH TERMS]`<br>e.g., `findperson John Doe` |
+| **Filter Members by Tag** | `filter [TAG]`<br>e.g., `filter groom` |
+| **Remove Person**         | `remove INDEX`<br>e.g., `remove 3` |
+| **Edit Person**           | `editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`<br>e.g., `editperson 1 p/91234567 e/newemail@example.com` |
 | **Exit**                  | `exit` |

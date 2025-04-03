@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -23,8 +22,9 @@ import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.ClearAllWeddingsCommand;
 import seedu.address.logic.commands.wedding.CloseWeddingCommand;
 import seedu.address.logic.commands.wedding.DeleteWeddingCommand;
+import seedu.address.logic.commands.wedding.EditWeddingPersonCommand;
 import seedu.address.logic.commands.wedding.FilterByTagCommand;
-import seedu.address.logic.commands.wedding.FindMemberCommand;
+import seedu.address.logic.commands.wedding.FindPersonCommand;
 import seedu.address.logic.commands.wedding.OpenWeddingCommand;
 import seedu.address.logic.commands.wedding.RemoveWeddingPersonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -33,8 +33,9 @@ import seedu.address.logic.parser.wedding.AddWeddingPersonCommandParser;
 import seedu.address.logic.parser.wedding.ClearAllWeddingsCommandParser;
 import seedu.address.logic.parser.wedding.CloseWeddingCommandParser;
 import seedu.address.logic.parser.wedding.DeleteWeddingCommandParser;
+import seedu.address.logic.parser.wedding.EditWeddingPersonCommandParser;
 import seedu.address.logic.parser.wedding.FilterByTagCommandParser;
-import seedu.address.logic.parser.wedding.FindMemberCommandParser;
+import seedu.address.logic.parser.wedding.FindPersonCommandParser;
 import seedu.address.logic.parser.wedding.OpenWeddingCommandParser;
 import seedu.address.logic.parser.wedding.RemoveWeddingPersonCommandParser;
 
@@ -72,12 +73,6 @@ public class WeddingPlannerParser {
 
         switch (commandWord) {
 
-        //case AddCommand.COMMAND_WORD:
-        //    return new AddCommandParser().parse(arguments);
-
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
-
         case DeleteWeddingCommand.COMMAND_WORD:
             return new DeleteWeddingCommandParser().parse(arguments);
 
@@ -111,8 +106,8 @@ public class WeddingPlannerParser {
         case SortWeddingCommand.COMMAND_WORD:
             return new SortWeddingCommand();
 
-        case FindMemberCommand.COMMAND_WORD:
-            return new FindMemberCommandParser().parse(arguments);
+        case FindPersonCommand.COMMAND_WORD:
+            return new FindPersonCommandParser().parse(arguments);
 
         case RemoveWeddingPersonCommand.COMMAND_WORD:
             return new RemoveWeddingPersonCommandParser().parse(arguments);
@@ -128,6 +123,9 @@ public class WeddingPlannerParser {
 
         case NCommand.COMMAND_WORD:
             return new NCommandParser().parse(arguments);
+
+        case EditWeddingPersonCommand.COMMAND_WORD:
+            return new EditWeddingPersonCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

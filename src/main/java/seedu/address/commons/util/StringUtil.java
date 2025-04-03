@@ -65,4 +65,26 @@ public class StringUtil {
             return false;
         }
     }
+
+
+    /**
+     * Returns true if {@code s} represents a valid integer (which may include a leading '+' or '-' sign)
+     * e.g. "123", "-456", "+789" <br>
+     * Will return false for any other non-null string input
+     * e.g. empty string, "12 3" (contains whitespace), "1a", etc.
+     *
+     * @param s the String to check for integer validity
+     * @return true if the string represents a valid integer, false otherwise
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isInteger(String s) {
+        requireNonNull(s);
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
 }

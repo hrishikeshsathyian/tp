@@ -36,11 +36,11 @@ public class OpenWeddingCommandParserTest {
 
         // Negative index
         assertParseFailure(parser, "-1",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, OpenWeddingCommand.MESSAGE_USAGE));
+                String.format(OpenWeddingCommand.MESSAGE_INVALID_INDEX));
 
         // Zero index
         assertParseFailure(parser, "0",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, OpenWeddingCommand.MESSAGE_USAGE));
+                String.format(OpenWeddingCommand.MESSAGE_INVALID_INDEX));
 
         // Empty argument
         assertParseFailure(parser, "",

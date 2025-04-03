@@ -15,16 +15,16 @@ import seedu.address.model.wedding.Wedding;
 public class RemoveWeddingPersonCommand extends Command {
     public static final String COMMAND_WORD = "remove";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + "Removes a person from the active wedding\n"
+            + ": Removes a person from the active wedding\n"
             + "Parameters: "
-            + "INDEX \n"
+            + "INDEX (must be a positive integer) \n"
             + "Example: " + COMMAND_WORD + " "
             + "3";
 
     public static final String MESSAGE_SUCCESS = "Removed Wedding Person successfully!";
     public static final String MESSAGE_NO_ACTIVE_WEDDING = "No active wedding! Create or open a wedding first.";
-    public static final String MESSAGE_REMOVE_BRIDE_OR_GROOM = "Every wedding has to have a bride and groom :0 Let's"
-                                                        + " not remove the soon to be married couple!";
+    public static final String MESSAGE_REMOVE_BRIDE_OR_GROOM = "Every wedding has to have a bride and groom. \n Let's"
+                                                        + " not remove this couple who are about to get married!";
     public static final String MESSAGE_INDEX_OUT_OF_RANGE = "Please select a valid index to remove!";
     private final Index targetIndex;
 

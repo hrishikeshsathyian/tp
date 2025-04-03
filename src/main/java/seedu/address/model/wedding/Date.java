@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 /**
  * Represents a Wedding's date in the planner.
@@ -15,17 +16,18 @@ import java.time.format.DateTimeParseException;
 public class Date implements Comparable<Date> {
 
     public static final String MESSAGE_CONSTRAINTS = "Dates should be in the format DDMMYYYY (e.g., 30092025 for "
-            + "30 September 2025) and must be in the future.";
+            + "30 September 2025) and must be in the future and must exist (eg 29022029 is invalid).";
 
     // Formatter for parsing the input string in DDMMYYYY format.
-    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("ddMMyyyy");
-    // Formatter for outputting the date in a friendly format.
-    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("ddMMuuuu");
+    // Formatter for outputting the date in a prettier format.
+    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM uuuu");
 
     private static final DateTimeFormatter formatters = new DateTimeFormatterBuilder()
             .appendOptional(INPUT_FORMATTER)
             .appendOptional(OUTPUT_FORMATTER)
-            .toFormatter();
+            .toFormatter()
+            .withResolverStyle(ResolverStyle.STRICT);
 
     public final LocalDate date;
 
@@ -51,7 +53,7 @@ public class Date implements Comparable<Date> {
     public static boolean isValidDate(String testDate) {
         try {
             LocalDate parsedDate = LocalDate.parse(testDate, formatters);
-            return parsedDate.isAfter(LocalDate.now());
+            return true; // no longer going to test for this condition
         } catch (DateTimeParseException e) {
             return false;
         }

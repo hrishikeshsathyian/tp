@@ -32,10 +32,10 @@ public class CloseWeddingCommandParserTest {
     public void parse_invalidArgs_throwsParseException() {
         // non-empty arguments
         assertParseFailure(parser, "some args",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, CloseWeddingCommand.MESSAGE_SUCCESS));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, CloseWeddingCommand.MESSAGE_USAGE));
 
         // numeric arguments
         assertParseFailure(parser, "1",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, CloseWeddingCommand.MESSAGE_SUCCESS));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, CloseWeddingCommand.MESSAGE_USAGE));
     }
 }
