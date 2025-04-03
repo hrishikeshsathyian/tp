@@ -6,7 +6,8 @@
 
 # HappyEverAfter User Guide
 
-Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with specific roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time! 
+
+Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time!
 
 
 <!-- * Table of Contents -->
@@ -23,7 +24,7 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
         - [Closing a wedding](#closing-the-current-wedding-closewedding)
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
-    - [Member Management](#member-management-) 
+    - [Member Management](#member-management-)
         - [Adding a person to a wedding](#adding-a-person-add)
         - [Searching for members of weddings](#finding-members-findmember)
         - [Filtering for members by tags](#filtering-by-tag-filter)
@@ -57,6 +58,7 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
    - See [features](#features) for the comprehensive list of all possible commands to execute and [command summary](#command-summary) for a brief overview.
 
 
+
 [Back to Table of Contents](#table-of-contents-)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -82,11 +84,11 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
-* The `DATE` Parameter has to be in the format `DDMMYYYY` 
+* The `DATE` Parameter has to be in the format `DDMMYYYY`
   * e.g `25122025` for the 25th December 2025
 
 * The `EMAIL` Parameter has to be a valid email address
-    * e.g `e\hrishikeshsathyian2002@gmail.com` 
+    * e.g `e\hrishikeshsathyian2002@gmail.com`
 </box>
 
 * Special role tags to identify the bride and groom:
@@ -124,17 +126,17 @@ Format: `list`
 
 ### Creating a wedding: `add`
 
-Adds a wedding to the wedding planner.  
+Adds a wedding to the wedding planner.
 
 Format: `new n/WEDDING_NAME d/DATE`
 
-Examples: 
+Examples:
 * `new n/John & Mary d/25122025`
 
 <div markdown="block" class="alert alert-primary">
 Note:
 
-* HappyEverAfter will prompt you immediately to enter the details of the bride and the groom to confirm 
+* HappyEverAfter will prompt you immediately to enter the details of the bride and the groom to confirm
   the wedding.
 * See [Adding a person to a wedding](#adding-a-person-add) for more details
 </div>
@@ -165,7 +167,7 @@ Reorders the displayed weddings by chronological order - with the earliest weddi
 
 Format: `sort`
 
-## Member Management 
+## Member Management
 
 ### Adding a person: `add`
 
@@ -193,8 +195,8 @@ Examples:
 ### Finding members: `findmember`
 
 Displays all weddings with members that match the provided search terms.
-You can search for any number of search terms, and HappyEverAfter will list all weddings with members that 
-match any of 
+You can search for any number of search terms, and HappyEverAfter will list all weddings with members that
+match any of
 the terms provided.
 
 Format: `findmember [SEARCH TERMS]`
@@ -205,7 +207,7 @@ Examples:
 
 ### Filtering by tag: `filter`
 
-Filters the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with 
+Filters the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with
 the specified tag.
 
 _Note: The tags are case-sensitive_
@@ -230,7 +232,7 @@ are welcome to update data directly by editing that data file.
 **Caution:**
 If your changes to the data file makes its format invalid, HappyEverAfter will discard all data and start
 with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause HappyEverAfter to behave in unexpected ways (e.g., if a value entered is 
+Furthermore, certain edits can cause HappyEverAfter to behave in unexpected ways (e.g., if a value entered is
 outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
@@ -238,7 +240,7 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 
 ## FAQ
 
-**Q**: How do I transfer my wedding planner data to another computer?  
+**Q**: How do I transfer my wedding planner data to another computer?
 **A**: Install HappyEverAfter on the other computer and replace the empty data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
 
 **Q**: Can I add multiple weddings at once?  
@@ -249,6 +251,7 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 
 **Q**: How many people can I add to a wedding?  
 **A**: As of the most recent version, you can add at most 100 members for one wedding.
+
 
 --------------------------------------------------------------------------------------------------------------------
 

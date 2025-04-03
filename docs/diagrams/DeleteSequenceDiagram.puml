@@ -4,66 +4,66 @@ skinparam ArrowFontStyle plain
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
-participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
-participant "d:DeleteCommand" as DeleteCommand LOGIC_COLOR
+participant ":WeddingPlannerParser" as WeddingPlannerParser LOGIC_COLOR
+participant ":DeleteWeddingCommandParser" as DeleteWeddingCommandParser LOGIC_COLOR
+participant "d:DeleteWeddingCommand" as DeleteWeddingCommand LOGIC_COLOR
 participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
-box Model MODEL_COLOR_T1
-participant "m:Model" as Model MODEL_COLOR
+box WeddingModel MODEL_COLOR_T1
+participant "m:WeddingModel" as WeddingModel MODEL_COLOR
 end box
 
 [-> LogicManager : execute("delete 1")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("delete 1")
-activate AddressBookParser
+LogicManager -> WeddingPlannerParser : parseCommand("delete 1")
+activate WeddingPlannerParser
 
-create DeleteCommandParser
-AddressBookParser -> DeleteCommandParser
-activate DeleteCommandParser
+create DeleteWeddingCommandParser
+WeddingPlannerParser -> DeleteWeddingCommandParser
+activate DeleteWeddingCommandParser
 
-DeleteCommandParser --> AddressBookParser
-deactivate DeleteCommandParser
+DeleteWeddingCommandParser --> WeddingPlannerParser
+deactivate DeleteWeddingCommandParser
 
-AddressBookParser -> DeleteCommandParser : parse("1")
-activate DeleteCommandParser
+WeddingPlannerParser -> DeleteWeddingCommandParser : parse
+activate DeleteWeddingCommandParser
 
-create DeleteCommand
-DeleteCommandParser -> DeleteCommand
-activate DeleteCommand
+create DeleteWeddingCommand
+DeleteWeddingCommandParser -> DeleteWeddingCommand
+activate DeleteWeddingCommand
 
-DeleteCommand --> DeleteCommandParser :
-deactivate DeleteCommand
+DeleteWeddingCommand --> DeleteWeddingCommandParser :
+deactivate DeleteWeddingCommand
 
-DeleteCommandParser --> AddressBookParser : d
-deactivate DeleteCommandParser
+DeleteWeddingCommandParser --> WeddingPlannerParser : d
+deactivate DeleteWeddingCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteCommandParser -[hidden]-> AddressBookParser
-destroy DeleteCommandParser
+DeleteWeddingCommandParser -[hidden]-> WeddingPlannerParser
+destroy DeleteWeddingCommandParser
 
-AddressBookParser --> LogicManager : d
-deactivate AddressBookParser
+WeddingPlannerParser --> LogicManager : d
+deactivate WeddingPlannerParser
 
-LogicManager -> DeleteCommand : execute(m)
-activate DeleteCommand
+LogicManager -> DeleteWeddingCommand : execute
+activate DeleteWeddingCommand
 
-DeleteCommand -> Model : deletePerson(1)
-activate Model
+DeleteWeddingCommand -> WeddingModel : deleteWedding(1)
+activate WeddingModel
 
-Model --> DeleteCommand
-deactivate Model
+WeddingModel --> DeleteWeddingCommand
+deactivate WeddingModel
 
 create CommandResult
-DeleteCommand -> CommandResult
+DeleteWeddingCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> DeleteCommand
+CommandResult --> DeleteWeddingCommand
 deactivate CommandResult
 
-DeleteCommand --> LogicManager : r
-deactivate DeleteCommand
+DeleteWeddingCommand --> LogicManager : r
+deactivate DeleteWeddingCommand
 
 [<--LogicManager
 deactivate LogicManager

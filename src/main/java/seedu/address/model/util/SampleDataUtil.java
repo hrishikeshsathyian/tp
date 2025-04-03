@@ -13,6 +13,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.wedding.Date;
 import seedu.address.model.wedding.Title;
@@ -46,10 +47,22 @@ public class SampleDataUtil {
     }
 
     public static Wedding[] getSampleWeddings() {
-        return new Wedding[] {
-            new Wedding(new Date("11072025"), new Title("TimChaewon")),
-            new Wedding(new Date("13052025"), new Title("JayVik"))
-        };
+        Wedding[] sampleWeddings = new Wedding[2];
+        Wedding weddingOne = new Wedding(new Date("09062025"), new Title("Jason and Wendy"),
+                new Person(new Name("Wendy"), new Phone("99764735"), new Email("wendy@gmail.com"),
+                        new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), getTagSet("bride")),
+                new Person(new Name("Jason"), new Phone("98764735"), new Email("jason@gmail.com"),
+                        new Address("Blk 47 Tampines Street 20, #17-35"), getTagSet("groom")),
+                new UniquePersonList());
+        Wedding weddingTwo = new Wedding(new Date("21072025"), new Title("Daniel and Denise"),
+                new Person(new Name("Denise"), new Phone("97665844"), new Email("denise@gmail.com"),
+                        new Address("Blk 30 Geylang Street 29, #06-40"), getTagSet("bride")),
+                new Person(new Name("Daniel"), new Phone("67891234"), new Email("daniel@gmail.com"),
+                        new Address("Blk 45 Aljunied Street 85, #11-31"), getTagSet("groom")),
+                new UniquePersonList());
+        sampleWeddings[0] = weddingOne;
+        sampleWeddings[1] = weddingTwo;
+        return sampleWeddings;
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {

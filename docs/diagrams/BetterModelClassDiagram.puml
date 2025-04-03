@@ -4,15 +4,20 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-AddressBook *-right-> "1" UniquePersonList
-AddressBook *-right-> "1" UniqueTagList
-UniqueTagList -[hidden]down- UniquePersonList
-UniqueTagList -[hidden]down- UniquePersonList
-
+WeddingPlanner *-right-> "1" UniqueTagList
 UniqueTagList -right-> "*" Tag
-UniquePersonList -right-> Person
+UniqueTagList -[hidden]down-> Wedding
+WeddingPlanner *-right-> "1" UniqueWeddingList
 
-Person -up-> "*" Tag
+UniqueWeddingList -right-> Wedding
+Wedding -down-> Date
+Wedding -down-> Title
+Wedding --> Person : bride
+Wedding --> Person : groom
+Wedding -right-> UniquePersonList
+UniquePersonList -->  Person: members
+
+Person -right-> "*" Tag
 
 Person *--> Name
 Person *--> Phone
