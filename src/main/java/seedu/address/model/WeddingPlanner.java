@@ -52,6 +52,13 @@ public class WeddingPlanner implements ReadOnlyWeddingPlanner {
         this.weddings.setWeddings(weddings);
     }
 
+    /**
+     * Deletes a wedding from the planner.
+     */
+    public void deleteWedding(Wedding toRemove) {
+        this.weddings.deleteWedding(toRemove);
+    }
+
     //=========== ReadOnly Accessors ======================================================================
 
     @Override
@@ -80,9 +87,5 @@ public class WeddingPlanner implements ReadOnlyWeddingPlanner {
         return new ToStringBuilder(this)
                 .add("weddings", weddings)
                 .toString();
-    }
-
-    public void deleteWedding(Wedding toRemove) {
-        this.weddings.deleteWedding(toRemove);
     }
 }
