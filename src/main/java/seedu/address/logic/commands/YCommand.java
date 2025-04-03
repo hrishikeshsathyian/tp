@@ -7,7 +7,7 @@ import seedu.address.model.WeddingModel;
 public class YCommand extends Command {
     public static final String COMMAND_WORD = "y";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + "Confirms the currently executing task\n"
+            + "Confirm to execute the pending task\n"
             + "Usage: y";
     public static final String MESSAGE_NO_COMMANDS_EXECUTING = "No pending operations";
     public static final String MESSAGE_SUCCESS_CLEARALLWEDDINGS = "Successfully cleared all weddings";
