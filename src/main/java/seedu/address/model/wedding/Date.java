@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 /**
  * Represents a Wedding's date in the planner.
@@ -18,14 +19,15 @@ public class Date implements Comparable<Date> {
             + "30 September 2025) and must be in the future.";
 
     // Formatter for parsing the input string in DDMMYYYY format.
-    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("ddMMyyyy");
-    // Formatter for outputting the date in a friendly format.
-    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("ddMMuuuu");
+    // Formatter for outputting the date in a prettier format.
+    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM uuuu");
 
     private static final DateTimeFormatter formatters = new DateTimeFormatterBuilder()
             .appendOptional(INPUT_FORMATTER)
             .appendOptional(OUTPUT_FORMATTER)
-            .toFormatter();
+            .toFormatter()
+            .withResolverStyle(ResolverStyle.STRICT);
 
     public final LocalDate date;
 
