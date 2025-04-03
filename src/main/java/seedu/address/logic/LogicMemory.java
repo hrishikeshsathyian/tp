@@ -6,13 +6,17 @@ package seedu.address.logic;
  * so that the subsequent confirmation or rejection will know what it is supposed to delete.
  */
 public class LogicMemory {
-    public static boolean isClearingWeddingPlanner = false;
+    private static boolean clearingWeddingPlanner = false;
+
+    public static boolean isClearingWeddingPlanner() {
+        return clearingWeddingPlanner;
+    }
 
     public static void setClearingWeddingPlanner(boolean state) {
-        isClearingWeddingPlanner = state;
+        clearingWeddingPlanner = state;
     }
 
     public static void resetLogicMemory() {
-        isClearingWeddingPlanner = false;
+        clearingWeddingPlanner = false;
     }
 }

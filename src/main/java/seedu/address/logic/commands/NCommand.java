@@ -4,6 +4,9 @@ import seedu.address.logic.LogicMemory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WeddingModel;
 
+/**
+ * No prompt command to abort executing the currently pending task (for 2-step tasks such as clearing all weddings)
+ */
 public class NCommand extends Command {
     public static final String COMMAND_WORD = "n";
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -12,10 +15,9 @@ public class NCommand extends Command {
     public static final String MESSAGE_NO_COMMANDS_EXECUTING = "No pending operations";
     public static final String MESSAGE_SUCCESS_ABORT = "Aborted pending operation";
 
-    public NCommand() {}
-
+    @Override
     public CommandResult execute(WeddingModel model) throws CommandException {
-        if (LogicMemory.isClearingWeddingPlanner) {
+        if (LogicMemory.isClearingWeddingPlanner()) {
             LogicMemory.resetLogicMemory();
             return new CommandResult(MESSAGE_SUCCESS_ABORT);
         }
