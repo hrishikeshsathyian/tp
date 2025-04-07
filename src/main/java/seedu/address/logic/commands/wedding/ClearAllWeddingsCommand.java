@@ -13,7 +13,7 @@ import seedu.address.model.WeddingModel;
  */
 public class ClearAllWeddingsCommand extends Command {
     public static final String COMMAND_WORD = "ca";
-    public static final String CONFIRMATION_MESSAGE = "Are you sure you want to delete all weddings?"
+    public static final String MESSAGE_SUCCESS = "Are you sure you want to delete all weddings?"
             + " Type 'y' to proceed and 'n' to cancel deletion";
     public static final String MESSAGE_NO_WEDDINGS = "There are no weddings to be cleared!";
 
@@ -27,7 +27,7 @@ public class ClearAllWeddingsCommand extends Command {
 
         LogicMemory.setClearingWeddingPlanner(true);
 
-        return new CommandResult(CONFIRMATION_MESSAGE);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 
     @Override
