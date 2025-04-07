@@ -11,11 +11,11 @@
 
 ---
 
-## **Acknowledgements**
+<!-- ## **Acknowledgements**
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
 
----
+--- -->
 
 ## **Setting up, getting started**
 
@@ -44,7 +44,7 @@ The bulk of the app's work is done by the following four components:
 
 - [**`UI`**](#ui-component): The UI of the App.
 - [**`Logic`**](#logic-component): The command executor.
-- [**`WeddingModel`**](#model-component): Holds the data of the App in memory.
+- [**`WeddingModel`**](#weddingmodel-component): Holds the data of the App in memory.
 - [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
@@ -125,7 +125,7 @@ How the parsing works:
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
-The `Model` component,
+The `WeddingModel` component,
 
 - stores the wedding planner data i.e., all `Wedding` objects (which are contained in a `UniqueWeddingList` object) and all `Person` objects (which are contained in each `Wedding` object's `UniquePersonList`)
 - exposes the data to the outside as `ReadOnlyWeddingPlanner` objects that can be 'observed' e.g. the UI can be bound to this list so that whe each wedding is selected, the UI updates to show the selected Wedding's data i.e., all the `Person` objects within it
