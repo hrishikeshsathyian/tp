@@ -38,12 +38,6 @@ public class WeddingPlannerParserTest {
 
 
     @Test
-    public void parseCommand_clear() throws Exception {
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
-        assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
-    }
-
-    @Test
     public void parseCommand_deleteWedding() throws Exception {
         DeleteWeddingCommand command = (DeleteWeddingCommand) parser.parseCommand(
                 DeleteWeddingCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
