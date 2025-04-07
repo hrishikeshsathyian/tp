@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import seedu.address.logic.LogicMemory;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -34,7 +35,11 @@ public class AddWeddingPersonCommand extends Command {
         + PREFIX_TAG + "bride";
 
     public static final String MESSAGE_SUCCESS = "Added %1$s as %2$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the wedding";
+    public static final String MESSAGE_SUCCESS_BRIDE = "Successfully added the bride. Now add the groom using \n"
+            + "add n/NAME p/PHONE e/EMAIL a/ADDRESS t/groom";
+    public static final String MESSAGE_SUCCESS_GROOM = "Successfully added the groom. Check out your new Wedding "
+            + "on the left pane!";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the wedding\n";
     public static final String MESSAGE_NO_ACTIVE_WEDDING = "No active wedding! Create or open a wedding first.";
     public static final String MESSAGE_ROLE_CONFLICT = "The %s role is already assigned!";
     public static final String MESSAGE_INVALID_ROLE_TAG = "Invalid role tag! Use 'bride' or 'groom' for special roles.";
@@ -52,10 +57,39 @@ public class AddWeddingPersonCommand extends Command {
     @Override
     public CommandResult execute(WeddingModel model) throws CommandException {
         requireNonNull(model);
+        LogicMemory.DraftState state = LogicMemory.getDraftStage();
 
-        Wedding activeWedding = model.getDraftWedding() != null
-            ? model.getDraftWedding()
-            : model.getCurrentWedding();
+        if (state != LogicMemory.DraftState.NO_DRAFT) {
+
+            Wedding activeWedding = model.getDraftWedding();
+
+            if (model.weddingHasPerson(activeWedding, toAdd)) {
+                throw new CommandException(MESSAGE_DUPLICATE_PERSON + LogicMemory.getDraftingMessage());
+            }
+
+            switch (state) {
+            case ADDING_BRIDE:
+                if (!toAdd.getTags().stream().anyMatch(t -> t.tagName.equalsIgnoreCase("bride"))) {
+                    throw new CommandException(LogicMemory.getDraftingMessage());
+                }
+                activeWedding.setBride(toAdd);
+                LogicMemory.setDraftStage(LogicMemory.DraftState.ADDING_GROOM);
+                return new CommandResult(MESSAGE_SUCCESS_BRIDE);
+            case ADDING_GROOM:
+                if (!toAdd.getTags().stream().anyMatch(t -> t.tagName.equalsIgnoreCase("groom"))) {
+                    throw new CommandException(LogicMemory.getDraftingMessage());
+                }
+                activeWedding.setGroom(toAdd);
+                LogicMemory.resetLogicMemory();
+                model.commitDraftWedding();
+                System.out.println("Committing wedding...");
+                return new CommandResult(MESSAGE_SUCCESS_GROOM);
+            default:
+                throw new CommandException(LogicMemory.getDraftingMessage());
+            }
+        }
+
+        Wedding activeWedding = model.getCurrentWedding();
 
         if (activeWedding == null) {
             throw new CommandException(MESSAGE_NO_ACTIVE_WEDDING);
@@ -94,15 +128,7 @@ public class AddWeddingPersonCommand extends Command {
         }
 
         // Update model state
-        if (model.hasDraftWedding()) {
-            model.setDraftWedding(activeWedding);
-            if (activeWedding.isValid()) {
-                model.commitDraftWedding();
-                System.out.println("Committing wedding...");
-            }
-        } else {
-            model.setCurrentWedding(activeWedding);
-        }
+        model.setCurrentWedding(activeWedding);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS,
             Messages.format(toAdd),
