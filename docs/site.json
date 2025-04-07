@@ -1,8 +1,8 @@
 {
   "baseUrl": "",
   "titlePrefix": "HappyEverAfter",
-  "titleSuffix": "AddressBook Level-3",
-  "faviconPath": "images/SeEduLogo.png",
+  "titleSuffix": "Wedding Planner",
+  "faviconPath": "images/hpe_32.png",
   "style": {
     "codeTheme": "light"
   },

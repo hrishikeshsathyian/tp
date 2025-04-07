@@ -130,7 +130,7 @@ Format: `new n/WEDDING_NAME d/DATE`
 Examples:
 - `new n/John & Mary d/25122025`
 
-<box type="info" seamless>
+<box type="info">
 Note:
 
 - HappyEverAfter will prompt you immediately to enter the details of the bride and the groom to confirm
@@ -143,7 +143,7 @@ Note:
 - You cannot add a wedding with the exact same `WEDDING_NAME` and `DATE` as one that already exists.
 </box>
 
-<box type="info" seamless>
+<box type="info">
 
 ++**Restrictions on Parameters**++
 
@@ -306,7 +306,7 @@ Examples:
 You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with
 the specified tag.
 
-Format: `filter [TAGS}`
+Format: `filter [TAGS]`
 
 Examples:
 
