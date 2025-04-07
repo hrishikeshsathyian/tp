@@ -114,9 +114,9 @@ Format: `list`
 
 ![sample result from the list command](images/listCommand.png)
 
-### Creating a wedding: `add`
+### Creating a wedding: `new`
 
-You can add a wedding to the wedding planner.
+You can create and add a new wedding to the wedding planner.
 
 Format: `new n/WEDDING_NAME d/DATE`
 
@@ -168,15 +168,15 @@ Examples:
 * `delete 1` (Deletes the first wedding in the list)
 * `delete 3` (Deletes the third wedding in the list)
 
-### Clearing all weddings: `clearallweddings`
+### Clearing all weddings: `ca`
 
 Deletes ALL weddings from the wedding planner.
 
 Format:
-- `clearallweddings` followed by `y` will delete all weddings from the wedding planner.
-- `clearallweddings` followed by `n` will abort the delete operation and it will not clear the weddings.
+- `ca` followed by `y` will delete all weddings from the wedding planner.
+- `ca` followed by `n` will abort the delete operation, and it will not clear the weddings.
 
-To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clearallweddings` to
+To prevent accidental deletions, there will be a secondary confirmation prompt issued after `ca` to
 confirm the deletion.
 
 [Back to Table of Contents](#table-of-contents)
@@ -333,18 +333,19 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 
 ## Command summary
 
-| Action                    | Format, Examples
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| **Help**                  | `help` |
-| **Create Wedding**        | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025` |
-| **Open Wedding**          | `open INDEX`<br>e.g., `open 2` |
-| **Close Wedding**         | `close` |
-| **List Weddings**         | `list` |
-| **Sort Weddings by Date** | `sort` |
-| **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2` |
+| Action                    | Format, Examples                                                                                                                     
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------
+| **Help**                  | `help`                                                                                                                               |
+| **Create Wedding**        | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025`                                                                  |
+| **Open Wedding**          | `open INDEX`<br>e.g., `open 2`                                                                                                       |
+| **Close Wedding**         | `close`                                                                                                                              |
+| **List Weddings**         | `list`                                                                                                                               |
+| **Clear All Weddings**    | `ca`                                                                                                                                 |
+| **Sort Weddings by Date** | `sort`                                                                                                                               |
+| **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2`                                                                                                   |
 | **Add Person**            | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
-| **Find Person**           | `findperson [SEARCH TERMS]`<br>e.g., `findperson John Doe` |
-| **Filter Members by Tag** | `filter [TAG]`<br>e.g., `filter groom` |
-| **Remove Person**         | `remove INDEX`<br>e.g., `remove 3` |
-| **Edit Person**           | `editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`<br>e.g., `editperson 1 p/91234567 e/newemail@example.com` |
-| **Exit**                  | `exit` |
+| **Find Person**           | `findperson [SEARCH TERMS]`<br>e.g., `findperson John Doe`                                                                           |
+| **Filter Members by Tag** | `filter [TAG]`<br>e.g., `filter groom`                                                                                               |
+| **Remove Person**         | `remove INDEX`<br>e.g., `remove 3`                                                                                                   |
+| **Edit Person**           | `editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`<br>e.g., `editperson 1 p/91234567 e/newemail@example.com`     |
+| **Exit**                  | `exit`                                                                                                                               |

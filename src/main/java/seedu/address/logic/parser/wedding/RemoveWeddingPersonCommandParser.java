@@ -23,8 +23,15 @@ public class RemoveWeddingPersonCommandParser implements Parser<RemoveWeddingPer
             Index index = ParserUtil.parseIndex(args);
             return new RemoveWeddingPersonCommand(index);
         } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemoveWeddingPersonCommand.MESSAGE_USAGE), pe);
+            boolean argIsNotAnInteger = pe.getMessage().equals(ParserUtil.MESSAGE_INVALID_INDEX_NON_INTEGER);
+            if (argIsNotAnInteger) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemoveWeddingPersonCommand.MESSAGE_USAGE), pe);
+            } else {
+                throw new ParseException(
+                        String.format(RemoveWeddingPersonCommand.MESSAGE_INDEX_OUT_OF_RANGE)
+                );
+            }
         }
     }
 }
