@@ -11,11 +11,11 @@
 
 ---
 
-## **Acknowledgements**
+<!-- ## **Acknowledgements**
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
 
----
+--- -->
 
 ## **Setting up, getting started**
 
@@ -44,7 +44,7 @@ The bulk of the app's work is done by the following four components:
 
 - [**`UI`**](#ui-component): The UI of the App.
 - [**`Logic`**](#logic-component): The command executor.
-- [**`Model`**](#model-component): Holds the data of the App in memory.
+- [**`WeddingModel`**](#weddingmodel-component): Holds the data of the App in memory.
 - [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
@@ -119,13 +119,13 @@ How the parsing works:
 - When called upon to parse a user command, the `WeddingPlannerParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddWeddingCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddWeddingCommand`) which the `WeddingPlannerParser` returns back as a `Command` object.
 - All `XYZCommandParser` classes (e.g., `AddWeddingCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
+### WeddingModel component
 
-**API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`WeddingModel.java`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/model/WeddingModel.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
-The `Model` component,
+The `WeddingModel` component,
 
 - stores the wedding planner data i.e., all `Wedding` objects (which are contained in a `UniqueWeddingList` object) and all `Person` objects (which are contained in each `Wedding` object's `UniquePersonList`)
 - exposes the data to the outside as `ReadOnlyWeddingPlanner` objects that can be 'observed' e.g. the UI can be bound to this list so that whe each wedding is selected, the UI updates to show the selected Wedding's data i.e., all the `Person` objects within it
@@ -293,7 +293,7 @@ _{Explain here how the data archiving feature will be implemented}_ -->
 
 **Target user profile**:
 
-- has a need to manage a significant number of contacts over a variety of diferent weddings
+- has a need to manage a significant number of contacts over a variety of different weddings
 - prefer desktop apps over other types
 - can type fast
 - prefers typing to mouse interactions
@@ -434,55 +434,201 @@ _{More to be added}_
 
 ---
 
-## **Appendix: Instructions for manual testing**
+## **Appendix: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
 
 <box type="info" seamless>
 
-**Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more _exploratory_ testing.
+**Note:** These instructions provide a starting point for testers; testers are expected to perform additional _exploratory_ testing.
 
 </box>
 
-### Launch and shutdown
+### Launch and Shutdown
 
-1. Initial launch
+1. **Initial Launch**
 
-    1. Download the jar file and copy into an empty folder
+    1. **Prerequisites**: Ensure that Java 17 or above is installed on your computer.
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    2. **Test Case**: Download the `happyeverafter.jar` file and place it in an empty folder.
 
-1. Saving window preferences
+        - **Execution**: Double-click the `happyeverafter.jar` file.
 
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+        - **Expected Outcome**: The GUI launches displaying a set of sample weddings. The window size may not be optimal.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+2. **Saving Window Preferences**
 
-1. _{ more test cases …​ }_
+    1. **Test Case**: Resize the application window to an optimal size and move it to a preferred location. Close the application.
 
-### Adding a wedding
+        - **Execution**: Re-launch the application by double-clicking the `happyeverafter.jar` file.
 
-1. Adding a wedding to `HappyEverAfter`
+        - **Expected Outcome**: The application window retains the most recent size and location.
 
-    1. Prerequisites: Application must be open
+3. **Exiting the Application**
 
-    1. Test case: `new n/NAME d/09092027`<br>
-       Expected: The application will prompt addition of the contact details of bride and groom.
+    1. **Test Case**: Click the close button on the application window or enter the `exit` command in the command box.
 
-    1. Test case: `new NAME`<br>
-       Expected: No wedding is created. Error details shown in the status message. Status bar remains the same.
+        - **Expected Outcome**: The application shuts down gracefully without any error messages.
 
-    1. Other incorrect `new` commands to try: `new`, `new n/NAME d/DATE`, `...` (where DATE is not a recognised date format)<br>
-       Expected: Similar to previous.
+### Adding a Wedding
 
-1. _{ more test cases …​ }_
+1. **Adding a Wedding to HappyEverAfter**
 
-### Saving data
+    1. **Prerequisites**: The application must be running.
 
-1. Dealing with missing/corrupted data files
+    2. **Test Case**: Enter the command `new n/John & Mary d/09092027`.
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+        - **Expected Outcome**: A new wedding named "John & Mary" with the date 09 September 2027 is created. The application prompts for the contact details of the bride and groom.
 
-1. _{ more test cases …​ }_
+    3. **Test Case**: Enter the command `new n/John & Mary`.
+
+        - **Expected Outcome**: No wedding is created. An error message is displayed indicating the missing date parameter.
+
+    4. **Test Case**: Enter the command `new n/John & Mary d/31-02-2027`.
+
+        - **Expected Outcome**: No wedding is created. An error message is displayed indicating the invalid date format.
+
+    5. **Other Incorrect `new` Commands to Try**:
+
+        - `new`
+        - `new n/John & Mary d/`
+        - `new d/09092027`
+
+        - **Expected Outcome**: Similar to previous cases, no wedding is created, and appropriate error messages are displayed.
+
+### Managing Weddings
+
+1. **Listing All Weddings**
+
+    1. **Prerequisites**: At least one wedding has been added to the application.
+
+    2. **Test Case**: Enter the command `list`.
+
+        - **Expected Outcome**: A list of all weddings is displayed, showing their names and dates.
+
+2. **Sorting Weddings by Date**
+
+    1. **Prerequisites**: Multiple weddings with different dates have been added.
+
+    2. **Test Case**: Enter the command `sort`.
+
+        - **Expected Outcome**: The list of weddings is sorted in ascending order by date.
+
+3. **Deleting a Wedding**
+
+    1. **Prerequisites**: At least one wedding exists in the application.
+
+    2. **Test Case**: Enter the command `delete 1`.
+
+        - **Expected Outcome**: The first wedding in the list is deleted. The list updates to reflect the change.
+
+    3. **Test Case**: Enter the command `delete 0` or `delete` with an invalid index.
+
+        - **Expected Outcome**: No wedding is deleted. An error message is displayed indicating the invalid index.
+
+4. **Deleting All Weddings**
+
+    1. **Prerequisites**: Multiple weddings exist in the application.
+
+    2. **Test Case**: Enter the command `clear`.
+
+        - **Expected Outcome**: All weddings are deleted from the application. The list becomes empty.
+
+### Managing Members
+
+1. **Adding a Person to a Wedding**
+
+    1. **Prerequisites**: At least one wedding exists. The wedding is currently open in the application.
+
+    2. **Test Case**: Enter the command `add n/Emily Tan p/91234567 e/emily@example.com r/Bride`.
+
+        - **Expected Outcome**: A person named "Emily Tan" with the specified contact details and role "Bride" is added to the current wedding.
+
+    3. **Test Case**: Enter the command `add n/Emily Tan p/91234567 e/emily@example.com`.
+
+        - **Expected Outcome**: No person is added. An error message is displayed indicating the missing role parameter.
+
+    4. **Other Incorrect `add` Commands to Try**:
+
+        - `add n/Emily Tan e/emily@example.com r/Bride`
+        - `add p/91234567 e/emily@example.com r/Bride`
+        - `add n/Emily Tan p/91234567 r/Bride`
+
+        - **Expected Outcome**: Similar to previous cases, no person is added, and appropriate error messages are displayed.
+
+2. **Searching for Members of Weddings**
+
+    1. **Prerequisites**: Multiple members have been added to the current wedding.
+
+    2. **Test Case**: Enter the command `find Emily`.
+
+        - **Expected Outcome**: A list of members whose names contain "Emily" is displayed.
+
+    3. **Test Case**: Enter the command `find`.
+
+        - **Expected Outcome**: No members are displayed. An error message is shown indicating the missing search keyword.
+
+3. **Filtering Members by Tags**
+
+    1. **Prerequisites**: Members have been tagged with specific labels (e.g., "family", "friend").
+
+    2. **Test Case**: Enter the command `filter t/family`.
+
+        - **Expected Outcome**: A list of members tagged with "family" is displayed.
+
+    3. **Test Case**: Enter the command `filter t/unknown`.
+
+        - **Expected Outcome**: No members are displayed. A message indicates that no members have the specified tag.
+
+4. **Editing a Person**
+
+    1. **Prerequisites**: At least one member exists in the current wedding.
+
+    2. **Test Case**: Enter the command `edit 1 p/98765432`.
+
+        - **Expected Outcome**: The phone number of the first member in the list is updated to "98765432".
+
+    3. **Test Case**: Enter the command `edit 1`.
+
+        - **Expected Outcome**: No changes are made. An error message is displayed indicating the missing fields to edit.
+
+5. **Removing a Person**
+
+    1. **Prerequisites**: At least one member exists in the current wedding.
+
+    2. **Test Case**: Enter the command `remove 1`.
+
+        - **Expected Outcome**: The first member in the list is removed from the wedding.
+
+    3. **Test Case**: Enter the command `remove 0` or `remove` with an invalid index.
+
+        - **Expected Outcome**: No member is removed and an appropriate error message is displayed.
+ 
+### Saving Data
+
+1. **Dealing with Missing/Corrupted Data Files**
+
+    1. **Simulating a Missing Data File**:
+    
+        - **Execution**: Navigate to the application's data directory and delete the data file (i.e. data/weddingplanner.json).
+        
+        - **Test Case**: Launch the application after deleting the data file.
+        
+            - **Expected Outcome**: The application starts with an sample list of weddings. A new data file by the same name is created upon exiting the application.
+
+    2. **Simulating a Corrupted Data File**:
+    
+        - **Execution**: Open the data file in a text editor and intentionally break its format (e.g., delete a brace, alter tags, insert random characters).
+        
+        - **Test Case**: Launch the application after corrupting the file.
+        
+            - **Expected Outcome**: The application detects the corrupted file and logs that as the datafile could not be loaded, a new and empty file has been created. 
+            - User can then manually fix the crropted file or input their wedding details from scratch.
+
+2. **Verifying Data Persistence After Application Restart**
+
+    - **Prerequisites**: The application is running and at least one wedding has been added.
+
+    - **Test Case**: Close the application and re-launch it.
+
+        - **Expected Outcome**: All previously entered data (weddings, people, preferences) are correctly loaded and displayed.

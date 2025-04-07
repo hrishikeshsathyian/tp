@@ -7,7 +7,7 @@
 Package " "<<Rectangle>>{
     Class UI UI_COLOR
     Class Logic LOGIC_COLOR
-    Class Storage STORAGE_COLOR
+    Class WeddingPlannerStorage STORAGE_COLOR
     Class WeddingModel MODEL_COLOR
     Class Main #grey
     Class Commons LOGIC_COLOR_T2
@@ -19,15 +19,15 @@ Class "<$documents>" as File UI_COLOR_T1
 
 UI -[#green]> Logic
 UI -right[#green]-> WeddingModel
-Logic -[#blue]-> Storage
+Logic -[#blue]-> WeddingPlannerStorage
 Logic -down[#blue]-> WeddingModel
 Main -[#grey]-> UI
 Main -[#grey]-> Logic
-Main -[#grey]-> Storage
+Main -[#grey]-> WeddingPlannerStorage
 Main -up[#grey]-> WeddingModel
 Main -down[hidden]-> Commons
 
-Storage -up[STORAGE_COLOR].> WeddingModel
-Storage .right[STORAGE_COLOR].>File
+WeddingPlannerStorage -up[STORAGE_COLOR].> WeddingModel
+WeddingPlannerStorage .right[STORAGE_COLOR].>File
 User ..> UI
 @enduml
