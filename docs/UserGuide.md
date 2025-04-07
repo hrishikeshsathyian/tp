@@ -378,6 +378,10 @@ See **Restrictions on Parameters** in the [add command](#adding-a-person-to-a-we
 
 <box type="tip">
 
+**Tip:** If you need to change the bride or groom of a wedding, use the edit commands to change their information instead of altering the tags of another member to make them bride/groom.
+
+</box>
+
 [Back to Table of Contents](#table-of-contents)
 
 ## System commands
