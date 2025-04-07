@@ -20,7 +20,7 @@ import seedu.address.model.wedding.Wedding;
  */
 public class FindPersonCommand extends Command {
 
-    public static final String COMMAND_WORD = "findperson";
+    public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all weddings containing people whose names "
             + "contain any of the specified keywords (case-insensitive) and displays them as a list.\n"
@@ -105,7 +105,8 @@ public class FindPersonCommand extends Command {
 
         String returnMessage = String.format(MESSAGE_PEOPLE_FOUND_OVERVIEW, matchedWeddings.size())
                 + "\nTotal matching people found: " + totalMatches + "\n"
-                + "Use 'open INDEX' to view a specific wedding above.\n";
+                + "Scroll down to see detailed information.\n"
+                + "Use 'open INDEX' to view a specific wedding below.\n";
         return new CommandResult(returnMessage + resultMessage.toString());
     }
 

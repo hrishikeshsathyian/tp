@@ -33,7 +33,7 @@ import seedu.address.model.wedding.Wedding;
  * Edits a person in the currently active wedding (draft or open).
  */
 public class EditWeddingPersonCommand extends Command {
-    public static final String COMMAND_WORD = "editperson";
+    public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits a person in the active wedding identified by the index number.\n"
