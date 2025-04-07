@@ -25,8 +25,7 @@ public class RemoveWeddingPersonCommand extends Command {
     public static final String MESSAGE_NO_ACTIVE_WEDDING = "No active wedding! Create or open a wedding first.";
     public static final String MESSAGE_REMOVE_BRIDE_OR_GROOM = "Every wedding has to have a bride and groom. \n Let's"
                                                         + " not remove this couple who are about to get married!";
-    public static final String MESSAGE_INDEX_OUT_OF_RANGE =
-            "Please select a valid index to remove!\n" + MESSAGE_USAGE;
+    public static final String MESSAGE_INDEX_OUT_OF_RANGE = "Please select a valid index to remove!";
     private final Index targetIndex;
 
     /**

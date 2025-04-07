@@ -16,7 +16,7 @@ public class DeleteWeddingCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes a wedding based on provided index\n"
-            + "Parameters: INDEX\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
     public static final String MESSAGE_SUCCESS = "Deleted wedding successfully!";
     public static final String MESSAGE_INVALID_INDEX = "The provided wedding index does not exist!";

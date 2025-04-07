@@ -22,8 +22,8 @@ import seedu.address.model.wedding.Title;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX_NON_INTEGER = "Index is not a non-zero unsigned integer.";
-    public static final String MESSAGE_INVALID_INDEX_NON_NEGATIVE = "Index is not an integer";
+    public static final String MESSAGE_INVALID_INDEX_NON_INTEGER = "Provided Index is not an integer";
+    public static final String MESSAGE_INVALID_INDEX_NON_NEGATIVE = "Provided Index is not a non-zero unsigned integer";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
