@@ -123,7 +123,6 @@ public class WeddingModelManager implements WeddingModel {
 
     @Override
     public void setDraftWedding(Wedding wedding) {
-        requireNonNull(wedding);
         draftWedding = wedding;
         logger.info("New draft set: " + wedding);
     }

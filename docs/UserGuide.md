@@ -21,8 +21,8 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
         - [Deleting a wedding](#deleting-a-wedding-delete)
-        - [Deleting all weddings](#clearing-all-weddings-clearallweddings)
-    - [People Management](#people-management)
+        - [Deleting all weddings](#clearing-all-weddings-ca)
+    - [Member Management](#member-management)
         - [Adding a person to a wedding](#adding-a-person-to-a-wedding-add)
         - [Finding people of weddings](#finding-people-find)
         - [Filtering for people by tags](#filtering-by-tag-filter)
@@ -118,7 +118,7 @@ Format: `new n/WEDDING_NAME d/DATE`
 Example:
 - `new n/John & Mary d/25122025`
 
-<box type="info" seamless>
+<box type="info">
 Note:
 
 - HappyEverAfter will prompt you immediately to enter the details of the bride and the groom to confirm
@@ -131,7 +131,7 @@ Note:
 - You cannot add a wedding with the exact same `WEDDING_NAME` and `DATE` as one that already exists.
 </box>
 
-<box type="info" seamless>
+<box type="info">
 
 ++**Restrictions on Parameters**++
 
@@ -240,7 +240,6 @@ Examples:
 ++**Restrictions on Parameters**++
 
 **Names:**
-
 - Should not be blank.
 - Can be any length.
 - Can only contain alphanumeric characters, spaces and limited special characters(, ' . -)
@@ -252,13 +251,11 @@ Examples:
     - A person by the name of "Ma Dong-Seok" cannot be added.
 
 **Phone numbers:**
-
 - Should not be blank.
 - Should only contain numbers (no letters, spaces or special characters).
 - Can be any length.
 
 **Email addresses:**
-
 - Should be of the format `LOCAL_PART@DOMAIN`, with the following constraints:
 - `LOCAL_PART` has the following constraints:
   - Should only consist of alphanumeric characters and these special characters: `+_.-`.
@@ -276,11 +273,11 @@ Examples:
 - Can take any value.
 
 **Tags:**
-
 - Should consist only alphanumeric characters, with no spaces
 - Should be case-sensitive: A tag "Brother" is considered different from "brother".
   - The only exception to this are the `groom` and `bride` tags. <span title='Any variation of a word where the only difference is letter casing (e.g., "GROOM, "Groom", "gRoOm")'>Case-insensitive variations</span> of them will not be permitted if the wedding already has a person with that corresponding tag.
 - Only one person in each wedding may have the `groom` and `bride` tag, specified with `t/groom` and `t/bride` respectively.
+  - However, a bride and groom may have other tags.
 - Can have any number of tags (including 0)
 
 </box>
@@ -318,7 +315,7 @@ Examples:
 
 You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all people with the specified tag.
 
-Format: `filter [TAGS}`
+Format: `filter [TAGS]`
 
 Examples:
 
@@ -334,7 +331,7 @@ Examples:
 
 </box>
 
-<box type="tip" seamless>
+<box type="tip">
 
 **Tip:** If you want to remove the filters, use the filter command with no tags, i.e. `filter`
 
@@ -370,7 +367,7 @@ Examples:
 - `edit 1 p/91234567 e/newemail@example.com` (Updates phone and email of the first person)
 - `edit 2 n/New Name a/New Address` (Updates name and address of the second person)
 
-<box type="info" seamless>
+<box type="info">
 
 ++**Note:**++
 
@@ -382,7 +379,9 @@ Examples:
 
 **Restrictions on Parameters:**
 
-See **Restrictions on Parameters** in the [add command](#adding-a-person-to-a-wedding-add) for more details.
+
+- See **Restrictions on Parameters** in the [add command](#adding-a-person-to-a-wedding-add) for more details.
+</box>
 
 <box type="tip">
 
@@ -422,7 +421,8 @@ is no need to save manually.
 HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/data/weddingplanner.json`.
 Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="warning">
+
 **Caution:**
 If your changes to the data file makes its format invalid, HappyEverAfter will discard all data and start
 with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>

@@ -10,7 +10,10 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.NCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
 import seedu.address.logic.parser.WeddingPlannerParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyWeddingPlanner;
@@ -43,12 +46,23 @@ public class LogicManager implements Logic {
         weddingPlannerParser = new WeddingPlannerParser();
     }
 
+    private boolean isCommandAllowedInDrafting(Command command) {
+        return command instanceof AddWeddingPersonCommand
+                || command instanceof ExitCommand
+                || command instanceof NCommand;
+    }
+
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
         Command command = weddingPlannerParser.parseCommand(commandText);
+
+        if (LogicMemory.checkIfDrafting() && !isCommandAllowedInDrafting(command)) {
+            throw new CommandException(LogicMemory.getDraftingMessage());
+        }
+
         commandResult = command.execute(model);
 
         try {
