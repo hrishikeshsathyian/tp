@@ -11,7 +11,7 @@ public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters, spaces and limited special characters(, ' . -), "
-                    + " it can not start with the special character and it should not be blank";
+                    + " it can not start with the special character and it should not be blank.";
 
     /*
      * The first character of the address must not be a whitespace,
