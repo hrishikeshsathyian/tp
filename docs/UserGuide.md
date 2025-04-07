@@ -21,7 +21,7 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
         - [Deleting a wedding](#deleting-a-wedding-delete)
-        - [Deleting all weddings](#clearing-all-weddings-ca)
+        - [Deleting all weddings](#clearing-all-weddings-clear)
     - [Member Management](#member-management)
         - [Adding a person to a wedding](#adding-a-person-to-a-wedding-add)
         - [Finding people of weddings](#finding-people-find)
@@ -202,18 +202,18 @@ Note:
 
 </box>
 
-### Clearing all weddings: `ca`
+### Clearing all weddings: `clear`
 
 Deletes All weddings and associated contacts from the wedding planner. 
 
 Format:
-- `ca` followed by `y` will delete all weddings from the wedding planner.
-- `ca` followed by `n` will abort the delete operation, and it will not clear the weddings.
+- `clear` followed by `y` will delete all weddings from the wedding planner.
+- `clear` followed by `n` will abort the delete operation, and it will not clear the weddings.
 
 <box type="info">
 Note:
 
-- To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clearallweddings` to
+- To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clear` to
   confirm the deletion.
 
 </box>
@@ -457,19 +457,19 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 
 ## Command summary
 
-| Action                    | Format, Examples                                                                                                     
-|---------------------------|----------------------------------------------------------------------------------------------------------------------
-| **Create Wedding**        | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025`                                                  |
-| **Open Wedding**          | `open INDEX`<br>e.g., `open 2`                                                                                       |
-| **Close Wedding**         | `close`                                                                                                              |
-| **List Weddings**         | `list`                                                                                                               |
-| **Sort Weddings by Date** | `sort`                                                                                                               |
-| **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2`                                                                                   |
-| **Clear All Weddings**    | `ca`                                                                                                                 |
+| Action                    | Format, Examples                                                                                                                     
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------
+| **Create Wedding**        | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025`                                                                  |
+| **Open Wedding**          | `open INDEX`<br>e.g., `open 2`                                                                                                       |
+| **Close Wedding**         | `close`                                                                                                                              |
+| **List Weddings**         | `list`                                                                                                                               |
+| **Sort Weddings by Date** | `sort`                                                                                                                               |
+| **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2`                                                                                                   |
+| **Clear All Weddings**    | `clear`                                                                                                                              |
 | **Add Person**            | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
-| **Find Person**           | `find [SEARCH TERMS]`<br>e.g., `find John Doe`                                                                       |
-| **Filter People by Tag**  | `filter [TAG]`<br>e.g., `filter groom`                                                                               |
-| **Remove Person**         | `remove INDEX`<br>e.g., `remove 3`                                                                                   |
-| **Edit Person**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`<br>e.g., `edit 1 p/91234567 e/newemail@example.com` |
-| **Help**                  | `help`                                                                                                               |P
-| **Exit**                  | `exit`                                                                                                               |
+| **Find Person**           | `find [SEARCH TERMS]`<br>e.g., `find John Doe`                                                                                       |
+| **Filter People by Tag**  | `filter [TAG]`<br>e.g., `filter groom`                                                                                               |
+| **Remove Person**         | `remove INDEX`<br>e.g., `remove 3`                                                                                                   |
+| **Edit Person**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`<br>e.g., `edit 1 p/91234567 e/newemail@example.com`                 |
+| **Help**                  | `help`                                                                                                                               |P
+| **Exit**                  | `exit`                                                                                                                               |
