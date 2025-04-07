@@ -114,7 +114,7 @@ Format: `list`
 
 ![sample result from the list command](images/listCommand.png)
 
-### Creating a wedding: `add`
+### Creating a wedding: `new`
 
 You can add a wedding to the wedding planner.
 
