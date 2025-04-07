@@ -251,9 +251,10 @@ Note:
 - Can be any length.
 - Can take any value.
 - Should not be identical to any person already in the wedding.
-  - e.g. If a person with the name of "Irene" already exists in the wedding,
-    - A person by the name of "irene" can be added.
-    - A person by the name of "Irene" cannot be added.
+  - e.g. If a person with the name of "Ma Dong-Seok" already exists in the wedding,
+    - A person by the name of "ma Dong-Seok" can be added.
+    - A person by the name of "Ma  Dong-Seok" (with two spaces between "Ma" and "Dong-Seok") can be added.
+    - A person by the name of "Ma Dong-Seok" cannot be added.
 
 **Phone numbers:**
 
