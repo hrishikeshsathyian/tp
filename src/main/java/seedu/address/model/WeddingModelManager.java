@@ -303,6 +303,11 @@ public class WeddingModelManager implements WeddingModel {
     @Override
     public void deleteWedding(Wedding target) {
         weddingPlanner.deleteWedding(target);
+
+        // Check if the deleted wedding is the current wedding
+        if (currentWedding != null && currentWedding.equals(target)) {
+            clearCurrentWedding();
+        }
     }
 
     /**
