@@ -6,7 +6,7 @@
 
 # HappyEverAfter User Guide
 
-Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time!
+Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of people with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time!
 
 <!-- * Table of Contents -->
 ## Table of Contents
@@ -22,12 +22,12 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
         - [Deleting a wedding](#deleting-a-wedding-delete)
         - [Deleting all weddings](#clearing-all-weddings-clearallweddings)
-    - [Member Management](#member-management)
+    - [People Management](#people-management)
         - [Adding a person to a wedding](#adding-a-person-to-a-wedding-add)
-        - [Searching for members of weddings](#finding-people-findperson)
-        - [Filtering for members by tags](#filtering-by-tag-filter)
+        - [Finding people of weddings](#finding-people-find)
+        - [Filtering for people by tags](#filtering-by-tag-filter)
         - [Removing a person](#removing-a-person-remove)
-        - [Editing a person](#editing-a-person-editperson)
+        - [Editing a person](#editing-a-person-edit)
     - [System Commands](#system-commands)
         - [Viewing help](#viewing-help--help)
         - [Exiting the program](#exiting-the-program-exit)
@@ -46,12 +46,12 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
    - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happyeverafter.jar`.
 3. Move the file to the folder
     - Copy the file to the folder you want to use as the _home folder_ for your HappyEverAfter.
-4. Running HappyEverAfter
+4. Here are the steps for you to run HappyEverAfter
    - Open the "Command Prompt" (for Windows) or "Terminal" (for Mac/Linux).
    - Enter `cd` followed by the folder location where you saved the HappyEverAfter file. For example:
      - On Windows: `cd C:\Users\JohnDoe\Desktop\HappyEverAfter`
      - On Mac/Linux: `cd /Users/JohnDoe/Desktop/HappyEverAfter`
-   - Then run this command to launch HappyEverAfter: `java -jar happyeverafter.jar`
+   - Run this command to launch HappyEverAfter: `java -jar happyeverafter.jar`
    - A Graphical User Interface (GUI) similar to the image below should appear in a few seconds. Note how the app contains some sample data.
 
       ![Ui](images/Ui.png)
@@ -67,13 +67,14 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
 
 <box type="info" seamless>
 
-**Notes about the command format:**
+### Things you need to know about the features:
 
 - Commands are case-insensitive.
   - e.g. `Help` and `help` will run the same command.
   - However, parameters are not case-sensitive, unless stated otherwise.
+  
 - Words in `UPPER_CASE` are the parameters to be supplied by you, the user.
-  - e.g. in `new n/WEDDING_NAME`, you should replace `WEDDING_NAME` with the actual name, like `new n/John & Mary`.
+  - e.g. in `new n/WEDDING_NAME`, you should replace `WEDDING_NAME` with the actual name, like `new n/John & Mary`
 
 - Items in square brackets are optional.
   - e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or simply as `n/John Doe`.
@@ -87,25 +88,12 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
 - Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.
   - e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
-- The `EMAIL` Parameter has to consist of two parts, `LOCAL_PART` and `DOMAIN` in the form `LOCAL_PART@DOMAIN`
-  - The `LOCAL_PART` should contain only alphanumeric characters and these special characters: `+_.-`
-  - The `LOCAL_PART` may not start or end with any special characters
-  - The `DOMAIN` is made up of 1 or more domain labels, separated by periods
-  - Each domain label must
-    - Have at least 2 characters
-    - Start and end with alphanumeric characters
-    - Consist of only alphanumeric characters, separated only by hyphens, if any.
-  - Examples of valid `EMAIL` parameters:
-    - `hrishikeshsathyian2002@gmail.com`
-    - `chaewon@hybe`
-    - `boris_johnson@happy-ever-after.gov.uk`
-
+ - Special role tags to identify the bride and groom:
+    - Use `t/bride` to designate a person as the bride
+    - Use `t/groom` to designate a person as the groom
+    - A wedding must have both a bride and groom to be valid
 </box>
 
-- Special role tags to identify the bride and groom:
-  - Use `t/bride` to designate a person as the bride
-  - Use `t/groom` to designate a person as the groom
-  - A wedding must have both a bride and groom to be valid
   
 [Back to Table of Contents](#table-of-contents)
 
@@ -127,7 +115,7 @@ You can create and add a new wedding to the wedding planner.
 
 Format: `new n/WEDDING_NAME d/DATE`
 
-Examples:
+Example:
 - `new n/John & Mary d/25122025`
 
 <box type="info" seamless>
@@ -149,15 +137,16 @@ Note:
 
 **Names:**
 
-- Are case-sensitive.
-- Can contain any amount of alphanumeric characters, spaces, and special characters.
 - Should not be blank.
+- Should be case-sensitive.
+- Can contain any amount of alphanumeric characters, spaces, and special characters.
+- May not include bride and groom's name.
 
 **Dates:**
 
 - The `DATE` Parameter has to be in the format `DDMMYYYY`.
   - e.g `25122025` for the 25th December 2025
-- `Can be any date, past, present or future.
+- Can be any date, past, present or future.
 
 </box>
 
@@ -172,7 +161,7 @@ Examples:
 - `open 1` (Opens the first wedding in the list)
 - `open 3` (Opens the third wedding in the list)
 
-After a weddings is open, you will be able to see its members on the right:
+After a weddings is open, you will be able to see the people belongs to it on the right:
 
 ![An open wedding](images/openWedding.png)
 
@@ -208,31 +197,35 @@ Examples:
 <box type="info">
 Note:
 
-- You can delete any wedding (even the active one) regardless if there is a wedding open or not.
-- When deleting the active wedding, you will still be able to run commands on it. However, no data will be saved.
+- You can delete any wedding (even the open one) regardless if there is a wedding open or not.
+- When deleting the open wedding, you will still be able to run commands on it. However, no data will be saved.
 
 </box>
 
 ### Clearing all weddings: `ca`
 
-Deletes ALL weddings and associated contacts from the wedding planner. To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clearallweddings` to
-confirm the deletion.
+Deletes All weddings and associated contacts from the wedding planner. 
 
 Format:
 - `ca` followed by `y` will delete all weddings from the wedding planner.
 - `ca` followed by `n` will abort the delete operation, and it will not clear the weddings.
 
-To prevent accidental deletions, there will be a secondary confirmation prompt issued after `ca` to
-confirm the deletion.
+<box type="info">
+Note:
+
+- To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clearallweddings` to
+  confirm the deletion.
+
+</box>
 
 [Back to Table of Contents](#table-of-contents)
 
-## Member Management
+## People Management
 
 ### Adding a person to a wedding: `add`
 
 You can add a person to the [opened](#opening-a-wedding--open) Wedding Planner.
-You can use tags to specify if the person is a bride, groom, or other wedding party member.
+You can use tags to specify if the person is a bride, groom, or other wedding party participant.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
@@ -243,7 +236,6 @@ Examples:
 - `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
 
 <box type="info">
-Note:
 
 ++**Restrictions on Parameters**++
 
@@ -251,7 +243,8 @@ Note:
 
 - Should not be blank.
 - Can be any length.
-- Can take any value.
+- Can only contain alphanumeric characters, spaces and limited special characters(, ' . -)
+- Can not start with the special character.
 - Should not be identical to any person already in the wedding.
   - e.g. If a person with the name of "Ma Dong-Seok" already exists in the wedding,
     - A person by the name of "ma Dong-Seok" can be added.
@@ -260,8 +253,8 @@ Note:
 
 **Phone numbers:**
 
-- Should only contain numbers (no letters, spaces or special characters).
 - Should not be blank.
+- Should only contain numbers (no letters, spaces or special characters).
 - Can be any length.
 
 **Email addresses:**
@@ -271,45 +264,59 @@ Note:
   - Should only consist of alphanumeric characters and these special characters: `+_.-`.
   - Should not be blank.
   - Should not start or end with any of the above special characters.
-- `DOMAIN` is a domain name, which is made up of domain labels separated by periods.
-- `DOMAIN` has the following constraints:
-  - Should end with a domain label at least 2 characters long.
-  - Each domain label should start and end with alphanumeric characters.
-  - Each domain label should consists only of alphanumeric characters, separated only by hyphens, if any.
+- `DOMAIN` is a domain name, which is made up of 1 or more domain labels separated by periods.
+- Each domain label has the following constraints:
+  - Be at least 2 characters long.
+  - Should start and end with alphanumeric characters.
+  - Should consist only of alphanumeric characters, separated only by hyphens, if any.
 
 **Addresses:**
 
-- Can take any value.
 - Should not be blank.
+- Can take any value.
 
 **Tags:**
 
 - Should consist only alphanumeric characters, with no spaces
-- Are case-sensitive: A tag "Brother" is considered different from "brother".
+- Should be case-sensitive: A tag "Brother" is considered different from "brother".
   - The only exception to this are the `groom` and `bride` tags. <span title='Any variation of a word where the only difference is letter casing (e.g., "GROOM, "Groom", "gRoOm")'>Case-insensitive variations</span> of them will not be permitted if the wedding already has a person with that corresponding tag.
 - Only one person in each wedding may have the `groom` and `bride` tag, specified with `t/groom` and `t/bride` respectively.
 - Can have any number of tags (including 0)
 
 </box>
 
-### Finding people: `findperson`
+### Finding people: `find`
 
-You can view all weddings with people that match the provided search terms and it is not case-sensitive.
-You can search for any number of search terms, and HappyEverAfter will show the information of 
-all weddings with members that match any of the terms provided. 
-You can use open command to view a specific wedding.
+You can view all weddings with people that match the provided search terms, and HappyEverAfter will show the information of 
+all weddings with people that match any of the terms provided.
 
-Format: `findperson [SEARCH TERMS]`
+Format: `find [SEARCH TERMS]`
 
 Examples:
 
-- `findperson Sun`
-- `findperson Sun Hrishi`
+- `find Sun`
+- `find Sun Hrishi`
+- `find sun`
+
+<box type="info" seamless>
+
+++**Note:**++
+
+- Search term should not be blank.
+- Search term may not be case-sensitive.
+- Can have any number of search terms.
+
+</box>
+
+<box type="tip" seamless>
+
+**Tip:** You can use open command to view a specific wedding.
+
+</box>
 
 ### Filtering by tag: `filter`
 
-You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with
-the specified tag.
+You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all people with the specified tag.
 
 Format: `filter [TAGS}`
 
@@ -317,13 +324,13 @@ Examples:
 
 - `filter bride` (Displays only the bride)
 - `filter groom` (Displays only the groom)
-- `filter` (Displays all members without filtering)
+- `filter` (Displays all people without filtering)
 
 <box type="info" seamless>
 
 ++**Note:**++
 
-- Tags are case-sensitive
+- Tags are case-sensitive.
 
 </box>
 
@@ -335,12 +342,12 @@ Examples:
 
 ### Removing a person: `remove`
 
-You can remove a person from the currently active wedding based on the provided index.
+You can remove a person from the currently [opened](#opening-a-wedding--open) wedding based on the provided index.
 The index refers to the index number shown in the displayed list. The index **must be a positive integer**.
 
 Format: `remove INDEX`
 
-Examples:
+Example:
 
 - `remove 3` (Removes the third person in the list)
 
@@ -352,35 +359,34 @@ Examples:
 
 </box>
 
-### Editing a person: `editperson`
+### Editing a person: `edit`
 
 You can edit the details of a person in the currently [opened](#opening-a-wedding--open) wedding.
 
-Format: `editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
 
 Examples:
 
-- `editperson 1 p/91234567 e/newemail@example.com` (Updates phone and email of the first person)
-- `editperson 2 n/New Name a/New Address` (Updates name and address of the second person)
+- `edit 1 p/91234567 e/newemail@example.com` (Updates phone and email of the first person)
+- `edit 2 n/New Name a/New Address` (Updates name and address of the second person)
 
 <box type="info" seamless>
 
 ++**Note:**++
 
-- You cannot edit the `bride/groom` tags of a person.
-- At least one field must be provided for editing.
-- When editing tags, the existing tags of the person will be removed.
-  - e.g. if the person already has the tag `Brother`, and you want to add a new tag `Coming`, you will have to run the command `editperson INDEX t/Brother t/Coming`.
+ - You cannot edit the `bride/groom` tags of a person.
+ - At least one field must be provided for editing.
+ - When editing tags, the existing tags of the person will be removed.
+  - e.g. if the person already has the tag `Brother`, and you want to add a new tag `Coming`, you will have to run the command `edit INDEX t/Brother t/Coming`.
   - If you want to remove all tags from a person, you can enter `t/` with no tags behind. This will remove all tags from the person at the specified index.
 
 **Restrictions on Parameters:**
 
 See **Restrictions on Parameters** in the [add command](#adding-a-person-to-a-wedding-add) for more details.
-</div>
 
 <box type="tip">
 
-**Tip:** If you need to change the bride or groom of a wedding, use the edit commands to change their information instead of altering the tags of another member to make them bride/groom.
+**Tip:** If you need to change the bride or groom of a wedding, use the edit commands to change their information instead of altering the tags of another person to make them bride/groom.
 
 </box>
 
@@ -417,12 +423,12 @@ HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/d
 Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
-
 **Caution:**
 If your changes to the data file makes its format invalid, HappyEverAfter will discard all data and start
 with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause HappyEverAfter to behave in unexpected ways (e.g., if a value entered is
 outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -431,19 +437,19 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 
 ## FAQ
 
-**Q**: How do I transfer my wedding planner data to another computer?
+**Q**: How do I transfer my wedding planner data to another computer?\
 **A**: Install HappyEverAfter on the other computer and replace the empty data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
 
-**Q**: Can I add multiple weddings at once?
+**Q**: Can I add multiple weddings at once?\
 **A**: No, you need to create weddings one at a time using the `new` command. Alternatively, for advanced users: you may update the data file yourself. Look through the ["Editing the data file" section](#editing-the-data-file) for more support.
 
-**Q**: What happens if I try to add a second bride or groom to a wedding?
+**Q**: What happens if I try to add a second bride or groom to a wedding?\
 **A**: The system will display an error message as the current implementation of HappyEverAfter supports only one bride and one groom per wedding.
 
-**Q**: How many people can I add to a wedding?
-**A**: As of the most recent version, you can add at most 100 members for one wedding.
+**Q**: How many people can I add to a wedding?\
+**A**: As of the most recent version, you can add at most 100 people for one wedding.
 
-**Q**: I renamed the bride and groom of a wedding. How do I change the wedding name?
+**Q**: I renamed the bride and groom of a wedding. How do I change the wedding name?\
 **A**: The system currently does not support the editing of wedding names directly. However, you may update the data file yourself. Look through the ["Editing the data file" section](#editing-the-data-file) for more support.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -451,19 +457,19 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 
 ## Command summary
 
-| Action                    | Format, Examples                                                                                                                     
-|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------
-| **Help**                  | `help`                                                                                                                               |
-| **Create Wedding**        | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025`                                                                  |
-| **Open Wedding**          | `open INDEX`<br>e.g., `open 2`                                                                                                       |
-| **Close Wedding**         | `close`                                                                                                                              |
-| **List Weddings**         | `list`                                                                                                                               |
-| **Clear All Weddings**    | `ca`                                                                                                                                 |
-| **Sort Weddings by Date** | `sort`                                                                                                                               |
-| **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2`                                                                                                   |
+| Action                    | Format, Examples                                                                                                     
+|---------------------------|----------------------------------------------------------------------------------------------------------------------
+| **Create Wedding**        | `new n/WEDDING_NAME d/DATE`<br>e.g., `new n/John & Mary d/25122025`                                                  |
+| **Open Wedding**          | `open INDEX`<br>e.g., `open 2`                                                                                       |
+| **Close Wedding**         | `close`                                                                                                              |
+| **List Weddings**         | `list`                                                                                                               |
+| **Sort Weddings by Date** | `sort`                                                                                                               |
+| **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2`                                                                                   |
+| **Clear All Weddings**    | `ca`                                                                                                                 |
 | **Add Person**            | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
-| **Find Person**           | `findperson [SEARCH TERMS]`<br>e.g., `findperson John Doe`                                                                           |
-| **Filter Members by Tag** | `filter [TAG]`<br>e.g., `filter groom`                                                                                               |
-| **Remove Person**         | `remove INDEX`<br>e.g., `remove 3`                                                                                                   |
-| **Edit Person**           | `editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`<br>e.g., `editperson 1 p/91234567 e/newemail@example.com`     |
-| **Exit**                  | `exit`                                                                                                                               |
+| **Find Person**           | `find [SEARCH TERMS]`<br>e.g., `find John Doe`                                                                       |
+| **Filter People by Tag**  | `filter [TAG]`<br>e.g., `filter groom`                                                                               |
+| **Remove Person**         | `remove INDEX`<br>e.g., `remove 3`                                                                                   |
+| **Edit Person**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`<br>e.g., `edit 1 p/91234567 e/newemail@example.com` |
+| **Help**                  | `help`                                                                                                               |P
+| **Exit**                  | `exit`                                                                                                               |
