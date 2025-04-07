@@ -306,7 +306,7 @@ Examples:
 You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all members with
 the specified tag.
 
-Format: `filter [TAGS}`
+Format: `filter [TAGS]`
 
 Examples:
 
