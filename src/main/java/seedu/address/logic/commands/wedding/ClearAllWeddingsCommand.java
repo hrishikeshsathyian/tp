@@ -12,7 +12,7 @@ import seedu.address.model.WeddingModel;
  * Clears all weddings from the current wedding planner
  */
 public class ClearAllWeddingsCommand extends Command {
-    public static final String COMMAND_WORD = "caw";
+    public static final String COMMAND_WORD = "ca";
     public static final String CONFIRMATION_MESSAGE = "Are you sure you want to delete all weddings?"
             + " Type 'y' to proceed and 'n' to cancel deletion";
     public static final String MESSAGE_NO_WEDDINGS = "There are no weddings to be cleared!";

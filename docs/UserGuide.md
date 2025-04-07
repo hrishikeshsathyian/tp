@@ -168,15 +168,15 @@ Examples:
 * `delete 1` (Deletes the first wedding in the list)
 * `delete 3` (Deletes the third wedding in the list)
 
-### Clearing all weddings: `caw`
+### Clearing all weddings: `ca`
 
 Deletes ALL weddings from the wedding planner.
 
 Format:
-- `caw` followed by `y` will delete all weddings from the wedding planner.
-- `caw` followed by `n` will abort the delete operation, and it will not clear the weddings.
+- `ca` followed by `y` will delete all weddings from the wedding planner.
+- `ca` followed by `n` will abort the delete operation, and it will not clear the weddings.
 
-To prevent accidental deletions, there will be a secondary confirmation prompt issued after `caw` to
+To prevent accidental deletions, there will be a secondary confirmation prompt issued after `ca` to
 confirm the deletion.
 
 [Back to Table of Contents](#table-of-contents)
@@ -340,7 +340,7 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 | **Open Wedding**          | `open INDEX`<br>e.g., `open 2`                                                                                                       |
 | **Close Wedding**         | `close`                                                                                                                              |
 | **List Weddings**         | `list`                                                                                                                               |
-| **Clear All Weddings**    | `caw`                                                                                                                                |
+| **Clear All Weddings**    | `ca`                                                                                                                                 |
 | **Sort Weddings by Date** | `sort`                                                                                                                               |
 | **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2`                                                                                                   |
 | **Add Person**            | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
