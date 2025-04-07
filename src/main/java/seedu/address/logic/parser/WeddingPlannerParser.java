@@ -11,7 +11,6 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.NCommand;
@@ -63,7 +62,7 @@ public class WeddingPlannerParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
-        final String commandWord = matcher.group("commandWord");
+        final String commandWord = matcher.group("commandWord").toLowerCase();
         final String arguments = matcher.group("arguments");
 
         // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
@@ -78,9 +77,6 @@ public class WeddingPlannerParser {
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
-
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
