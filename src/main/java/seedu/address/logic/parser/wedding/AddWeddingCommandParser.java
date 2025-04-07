@@ -50,8 +50,15 @@ public class AddWeddingCommandParser implements Parser<AddWeddingCommand> {
             return new AddWeddingCommand(new Wedding(date, title));
         } catch (ParseException pe) {
             logger.log(Level.WARNING, "Invalid AddWeddingCommand format: " + args, pe);
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                AddWeddingCommand.MESSAGE_USAGE), pe);
+            boolean isTitleOrDateError = pe.getMessage().equals(Date.MESSAGE_CONSTRAINTS)
+                    || pe.getMessage().equals(Title.MESSAGE_CONSTRAINTS);
+            if (isTitleOrDateError) {
+                throw pe;
+            } else {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        AddWeddingCommand.MESSAGE_USAGE), pe);
+            }
+
         }
     }
 
