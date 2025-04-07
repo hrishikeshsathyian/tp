@@ -44,7 +44,7 @@ The bulk of the app's work is done by the following four components:
 
 - [**`UI`**](#ui-component): The UI of the App.
 - [**`Logic`**](#logic-component): The command executor.
-- [**`Model`**](#model-component): Holds the data of the App in memory.
+- [**`WeddingModel`**](#model-component): Holds the data of the App in memory.
 - [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
@@ -119,9 +119,9 @@ How the parsing works:
 - When called upon to parse a user command, the `WeddingPlannerParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddWeddingCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddWeddingCommand`) which the `WeddingPlannerParser` returns back as a `Command` object.
 - All `XYZCommandParser` classes (e.g., `AddWeddingCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
+### WeddingModel component
 
-**API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`WeddingModel.java`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/model/WeddingModel.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
