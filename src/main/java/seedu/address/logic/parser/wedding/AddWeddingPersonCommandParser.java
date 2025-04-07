@@ -54,7 +54,8 @@ public class AddWeddingPersonCommandParser implements Parser<AddWeddingPersonCom
 
         // Validate role tags
         long roleTags = tags.stream()
-            .filter(t -> t.tagName.equalsIgnoreCase("bride") || t.tagName.equalsIgnoreCase("groom"))
+            .filter(t -> t.tagName.equalsIgnoreCase("bride")
+                    || t.tagName.equalsIgnoreCase("groom"))
             .count();
 
         if (roleTags > 1) {

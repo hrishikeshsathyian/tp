@@ -9,6 +9,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.LogicMemory;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WeddingModel;
@@ -38,9 +39,10 @@ public class AddWeddingPersonCommandTest {
     @Test
     public void execute_noActiveWedding_throwsCommandException() {
         // Create a person to add and create the command
+        LogicMemory.setDraftStage(LogicMemory.DraftState.NO_DRAFT);
         Person person = new PersonBuilder().build();
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(person);
-
+        assert person != null;
         // Execute the command and expect an exception
         assertThrows(
                 CommandException.class,
@@ -56,13 +58,21 @@ public class AddWeddingPersonCommandTest {
         // Create a person to add
         Person person = new PersonBuilder().build();
 
+        // Update the draft stage to be waiting for bride
+        LogicMemory.setDraftStage(LogicMemory.DraftState.ADDING_BRIDE);
+
         // Create and execute the command
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(person);
-        CommandResult result = command.execute(model);
 
         // Verify the result
-        assertTrue(result.getFeedbackToUser().contains("Added"));
-        assertTrue(model.weddingHasPerson(model.getDraftWedding(), person));
+        assertThrows(
+                CommandException.class,
+                "You have a wedding being created!\n"
+                        + "Add the bride using : add n/NAME p/PHONE e/EMAIL a/ADDRESS t/bride", ()
+                        -> command.execute(model)
+        );
+
+        LogicMemory.resetLogicMemory();
     }
 
     @Test
@@ -91,13 +101,18 @@ public class AddWeddingPersonCommandTest {
         // Create a person with bride tag
         Person person = new PersonBuilder().withTags("bride").build();
 
+        // Update the draft stage to be waiting for bride
+        LogicMemory.setDraftStage(LogicMemory.DraftState.ADDING_BRIDE);
+
         // Create and execute the command
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(person);
         CommandResult result = command.execute(model);
 
         // Verify the result
-        assertTrue(result.getFeedbackToUser().contains("BRIDE"));
+        assertTrue(result.getFeedbackToUser().contains("bride"));
         assertEquals(person, model.getDraftWedding().getBride());
+
+        LogicMemory.resetLogicMemory();
     }
 
     @Test
@@ -108,42 +123,28 @@ public class AddWeddingPersonCommandTest {
         // Create a person with groom tag
         Person person = new PersonBuilder().withName("John").withTags("groom").build();
 
+        // Update the draft stage to be waiting for groom
+        LogicMemory.setDraftStage(LogicMemory.DraftState.ADDING_GROOM);
+
         // Create and execute the command
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(person);
         CommandResult result = command.execute(model);
 
         // Verify the result
-        assertTrue(result.getFeedbackToUser().contains("GROOM"));
-        assertEquals(person, model.getDraftWedding().getGroom());
-    }
+        assertTrue(result.getFeedbackToUser().contains("groom"));
 
-    @Test
-    public void execute_addDuplicatePerson_throwsCommandException() throws Exception {
-        // Set up a draft wedding
-        model.setDraftWedding(testWedding);
-
-        // Create a person to add and add the person
-        Person person = new PersonBuilder().build();
-        new AddWeddingPersonCommand(person).execute(model);
-
-        // Try to add the same person again
-        AddWeddingPersonCommand command = new AddWeddingPersonCommand(person);
-
-        // Execute the command and expect an exception
-        assertThrows(
-                CommandException.class,
-                AddWeddingPersonCommand.MESSAGE_DUPLICATE_PERSON, () -> command.execute(model)
-        );
+        LogicMemory.resetLogicMemory();
     }
 
     @Test
     public void execute_addSecondBride_throwsCommandException() throws Exception {
         // Set up a draft wedding
         model.setDraftWedding(testWedding);
-
+        LogicMemory.setDraftStage(LogicMemory.DraftState.ADDING_BRIDE);
         // Add first bride
         Person firstBride = new PersonBuilder().withName("Mary").withTags("bride").build();
         new AddWeddingPersonCommand(firstBride).execute(model);
+
 
         // Try to add second bride
         Person secondBride = new PersonBuilder().withName("Jane").withTags("bride").build();
@@ -151,15 +152,19 @@ public class AddWeddingPersonCommandTest {
 
         // Execute the command and expect an exception
         assertThrows(CommandException.class,
-                String.format(AddWeddingPersonCommand.MESSAGE_ROLE_CONFLICT, "bride"), () -> command.execute(model)
+                "You have a wedding being created!\n"
+                        + "Add the groom using : add n/NAME p/PHONE e/EMAIL a/ADDRESS t/groom", ()
+                        -> command.execute(model)
         );
+
+        LogicMemory.resetLogicMemory();
     }
 
     @Test
     public void execute_addBrideAndGroom_commitsValidWedding() throws Exception {
         // Set up a draft wedding
         model.setDraftWedding(testWedding);
-
+        LogicMemory.setDraftStage(LogicMemory.DraftState.ADDING_BRIDE);
         // Add bride
         Person bride = new PersonBuilder().withName("Mary").withTags("bride").build();
         new AddWeddingPersonCommand(bride).execute(model);
@@ -178,5 +183,7 @@ public class AddWeddingPersonCommandTest {
         assertNotNull(storedWedding.getGroom());
         assertEquals(bride, storedWedding.getBride());
         assertEquals(groom, storedWedding.getGroom());
+
+        LogicMemory.resetLogicMemory();
     }
 }

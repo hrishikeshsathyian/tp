@@ -22,6 +22,12 @@ public class NCommand extends Command {
             return new CommandResult(MESSAGE_SUCCESS_ABORT);
         }
 
+        if (LogicMemory.checkIfDrafting()) {
+            LogicMemory.resetLogicMemory();
+            model.setDraftWedding(null);
+            return new CommandResult(MESSAGE_SUCCESS_ABORT);
+        }
+
         throw new CommandException(MESSAGE_NO_COMMANDS_EXECUTING);
     }
 

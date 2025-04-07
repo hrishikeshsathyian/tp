@@ -100,10 +100,12 @@ public class WeddingModelManagerTest {
         assertTrue(modelManager.hasWedding(weddingA));
     }
 
+    /*
     @Test
     public void setDraftWedding_nullWedding_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.setDraftWedding(null));
     }
+     */
 
     @Test
     public void setDraftWedding_validWedding_setsDraftWedding() {

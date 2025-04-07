@@ -2,6 +2,7 @@ package seedu.address.logic.commands.wedding;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.logic.LogicMemory;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -19,9 +20,8 @@ public class AddWeddingCommand extends Command {
         + "Parameters: n/WEDDING_NAME d/DATE\n"
         + "Example: " + COMMAND_WORD + " n/John & Mary d/25122025";
     public static final String MESSAGE_SUCCESS = "Wedding draft created! "
-        + "Now add bride/groom using:\n"
-        + "add n/NAME p/PHONE e/EMAIL a/ADDRESS t/bride\n"
-        + "add n/NAME p/PHONE e/EMAIL a/ADDRESS t/groom";
+        + "Now add the bride using:\n"
+        + "add n/NAME p/PHONE e/EMAIL a/ADDRESS t/bride";
     public static final String MESSAGE_DUPLICATE_WEDDING = "This wedding already exists.";
     public static final String MESSAGE_EXISTING_DRAFT = "Overwriting previous wedding draft.";
 
@@ -52,6 +52,7 @@ public class AddWeddingCommand extends Command {
 
         // Set the new draft wedding
         model.setDraftWedding(draftWedding);
+        LogicMemory.setDraftStage(LogicMemory.DraftState.ADDING_BRIDE);
         return new CommandResult(feedback);
     }
 
