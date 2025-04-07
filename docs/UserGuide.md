@@ -116,7 +116,7 @@ Format: `list`
 
 ### Creating a wedding: `new`
 
-You can add a wedding to the wedding planner.
+You can create and add a new wedding to the wedding planner.
 
 Format: `new n/WEDDING_NAME d/DATE`
 
