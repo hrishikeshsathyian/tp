@@ -21,7 +21,7 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
         - [Deleting a wedding](#deleting-a-wedding-delete)
-        - [Deleting all weddings](#clearing-all-weddings-clearallweddings)
+        - [Deleting all weddings](#clearing-all-weddings-ca)
     - [Member Management](#member-management)
         - [Adding a person to a wedding](#adding-a-person-to-a-wedding-add)
         - [Searching for members of weddings](#finding-people-findperson)
@@ -243,12 +243,10 @@ Examples:
 - `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
 
 <box type="info">
-Note:
 
 ++**Restrictions on Parameters**++
 
 **Names:**
-
 - Should not be blank.
 - Can be any length.
 - Can take any value.
@@ -259,13 +257,11 @@ Note:
     - A person by the name of "Ma Dong-Seok" cannot be added.
 
 **Phone numbers:**
-
 - Should only contain numbers (no letters, spaces or special characters).
 - Should not be blank.
 - Can be any length.
 
 **Email addresses:**
-
 - Should be of the format `LOCAL_PART@DOMAIN`, with the following constraints:
 - `LOCAL_PART` has the following constraints:
   - Should only consist of alphanumeric characters and these special characters: `+_.-`.
@@ -278,16 +274,15 @@ Note:
   - Each domain label should consists only of alphanumeric characters, separated only by hyphens, if any.
 
 **Addresses:**
-
 - Can take any value.
 - Should not be blank.
 
 **Tags:**
-
 - Should consist only alphanumeric characters, with no spaces
 - Are case-sensitive: A tag "Brother" is considered different from "brother".
-  - The only exception to this are the `groom` and `bride` tags. <span title='Any variation of a word where the only difference is letter casing (e.g., "GROOM, "Groom", "gRoOm")'>Case-insensitive variations</span> of them will not be permitted if the wedding already has a person with that corresponding tag.
+  - The only exception to this are the `groom` and `bride` tags. Case-insensitive variations of them will not be permitted if the wedding already has a person with that corresponding tag.
 - Only one person in each wedding may have the `groom` and `bride` tag, specified with `t/groom` and `t/bride` respectively.
+  - However, a bride and groom may have other tags.
 - Can have any number of tags (including 0)
 
 </box>
@@ -327,7 +322,7 @@ Examples:
 
 </box>
 
-<box type="tip" seamless>
+<box type="tip">
 
 **Tip:** If you want to remove the filters, use the filter command with no tags, i.e. `filter`
 
@@ -363,7 +358,7 @@ Examples:
 - `editperson 1 p/91234567 e/newemail@example.com` (Updates phone and email of the first person)
 - `editperson 2 n/New Name a/New Address` (Updates name and address of the second person)
 
-<box type="info" seamless>
+<box type="info">
 
 ++**Note:**++
 
@@ -375,8 +370,8 @@ Examples:
 
 **Restrictions on Parameters:**
 
-See **Restrictions on Parameters** in the [add command](#adding-a-person-to-a-wedding-add) for more details.
-</div>
+- See **Restrictions on Parameters** in the [add command](#adding-a-person-to-a-wedding-add) for more details.
+</box>
 
 <box type="tip">
 
@@ -416,7 +411,7 @@ is no need to save manually.
 HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/data/weddingplanner.json`.
 Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="warning">
 
 **Caution:**
 If your changes to the data file makes its format invalid, HappyEverAfter will discard all data and start
