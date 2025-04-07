@@ -9,19 +9,19 @@
 <!-- * Table of Contents -->
 <page-nav-print />
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Acknowledgements**
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Design**
 
@@ -29,35 +29,36 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App.
+The **_Architecture Diagram_** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
 **Main components of the architecture**
 
 **`Main`** (consisting of classes [`Main`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
-* At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
-* At shut down, it shuts down the other components and invokes cleanup methods where necessary.
+
+- At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
+- At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
 The bulk of the app's work is done by the following four components:
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+- [**`UI`**](#ui-component): The UI of the App.
+- [**`Logic`**](#logic-component): The command executor.
+- [**`Model`**](#model-component): Holds the data of the App in memory.
+- [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
-* defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+- defines its _API_ in an `interface` with the same name as the Component.
+- implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -77,12 +78,12 @@ The `UI` component uses the JavaFx UI framework. The layout of these UI parts ar
 
 The `UI` component,
 
-* executes user commands using the `Logic` component.
-* listens for changes to `WeddingModel` data so that the UI can be updated with the modified data.
-* In particular, it listens for changes to the `UniqueWeddingList`, as well as the `UniquePersonList` of
-  the currently open wedding.
-* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+- executes user commands using the `Logic` component.
+- listens for changes to `WeddingModel` data so that the UI can be updated with the modified data.
+- In particular, it listens for changes to the `UniqueWeddingList`, as well as the `UniquePersonList` of
+    the currently open wedding.
+- keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
+- depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
 ### Logic component
 
@@ -114,38 +115,38 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `WeddingPlannerParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddWeddingCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddWeddingCommand`) which the `WeddingPlannerParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddWeddingCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+- When called upon to parse a user command, the `WeddingPlannerParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddWeddingCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddWeddingCommand`) which the `WeddingPlannerParser` returns back as a `Command` object.
+- All `XYZCommandParser` classes (e.g., `AddWeddingCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
+
 **API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
-
 The `Model` component,
 
-* stores the wedding planner data i.e., all `Wedding` objects (which are contained in a `UniqueWeddingList` object) and all `Person` objects (which are contained in each `Wedding` object's `UniquePersonList`)
-* exposes the data to the outside as `ReadOnlyWeddingPlanner` objects that can be 'observed' e.g. the UI can be bound to this list so that whe each wedding is selected, the UI updates to show the selected Wedding's data i.e.,  all the `Person` objects within it
-* stores the currently 'selected' `Wedding` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Wedding>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+- stores the wedding planner data i.e., all `Wedding` objects (which are contained in a `UniqueWeddingList` object) and all `Person` objects (which are contained in each `Wedding` object's `UniquePersonList`)
+- exposes the data to the outside as `ReadOnlyWeddingPlanner` objects that can be 'observed' e.g. the UI can be bound to this list so that whe each wedding is selected, the UI updates to show the selected Wedding's data i.e., all the `Person` objects within it
+- stores the currently 'selected' `Wedding` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Wedding>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+- stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+- does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 #### Key Model Classes
 
-* **WeddingPlanner**: The central data structure that holds all weddings
-* **Wedding**: Represents a wedding event with the following properties:
-    * `date`: The scheduled date for the wedding
-    * `title`: The name/title of the wedding
-    * `bride`: A reference to a Person representing the bride
-    * `groom`: A reference to a Person representing the groom
-    * `members`: A UniquePersonList of other people involved in the wedding
-* **WeddingModel**: Extends the base Model interface with wedding-specific operations
-* **WeddingModelManager**: The implementation of the WeddingModel interface that:
-    * Manages the current wedding context (the active wedding being edited)
-    * Handles draft wedding creation and commitment
-    * Provides operations for adding, editing, and removing people from weddings
+- **WeddingPlanner**: The central data structure that holds all weddings
+- **Wedding**: Represents a wedding event with the following properties:
+  - `date`: The scheduled date for the wedding
+  - `title`: The name/title of the wedding
+  - `bride`: A reference to a Person representing the bride
+  - `groom`: A reference to a Person representing the groom
+  - `members`: A UniquePersonList of other people involved in the wedding
+- **WeddingModel**: Extends the base Model interface with wedding-specific operations
+- **WeddingModelManager**: The implementation of the WeddingModel interface that:
+  - Manages the current wedding context (the active wedding being edited)
+  - Handles draft wedding creation and commitment
+  - Provides operations for adding, editing, and removing people from weddings
 
 <box type="info" seamless>
 
@@ -162,15 +163,16 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both wedding planner data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `WeddingPlannerStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+
+- can save both wedding planner data and user preference data in JSON format, and read them back into corresponding objects.
+- inherits from both `WeddingPlannerStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+- depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Implementation**
 
@@ -182,9 +184,9 @@ This section describes some noteworthy details on how certain features are imple
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+- `VersionedAddressBook#commit()` — Saves the current address book state in its history.
+- `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
+- `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
 
@@ -211,7 +213,6 @@ Step 3. The user executes `add n/David …​` to add a new person. The `add` co
 Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
 
 <box type="info" seamless>
 
@@ -254,18 +255,19 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 <puml src="diagrams/CommitActivityDiagram.puml" width="250" />
 
-#### Design considerations:
+#### Design considerations
 
 **Aspect: How undo & redo executes:**
 
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+- **Alternative 1 (current choice):** Saves the entire address book.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+  - Pros: Easy to implement.
+  - Cons: May have performance issues in terms of memory usage.
+
+- **Alternative 2:** Individual command knows how to undo/redo by
+    itself.
+  - Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  - Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
@@ -273,18 +275,17 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_ -->
 
-
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+- [Documentation guide](Documentation.md)
+- [Testing guide](Testing.md)
+- [Logging guide](Logging.md)
+- [Configuration guide](Configuration.md)
+- [DevOps guide](DevOps.md)
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Appendix: Requirements**
 
@@ -292,40 +293,35 @@ _{Explain here how the data archiving feature will be implemented}_ -->
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts over a variety of diferent weddings
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+- has a need to manage a significant number of contacts over a variety of diferent weddings
+- prefer desktop apps over other types
+- can type fast
+- prefers typing to mouse interactions
+- is reasonably comfortable using CLI apps
 
 **Value proposition**: manage wedding tasks faster and clearer than a typical mouse/GUI driven app
-
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                                     | So that I can…​                                                        |
-|----------|--------------------------------------------|-------------------------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions                          | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | create a new wedding folder with a unique name | organize wedding details separately                                    |
-| `* * *`  | user                                       | open a wedding by its name                     | manage its details                                                     |
-| `* * *`  | user                                       | close an open wedding                          | open a different wedding                                              |
-| `* * *`  | user                                       | sort weddings by date                          | easily view upcoming weddings in chronological order and plan accordingly |
-| `* * *`  | user                                       | add a new person’s contact details to a wedding | track attendees and their information                                 |
-| `* *`  | user                                       | find a person by name                          | quickly locate their details                                          |
-| `*`  | user                                       | search using partial name matching             | find people even if I don’t remember their full name                   |
-| `* *`  | user                                       | filter search results by guests, staff, or couple | narrow down results                                                  |
-| `* * *`  | user                                       | delete a person from a wedding                 | remove incorrect or outdated entries                                  |
-| `*`  | user                                       | be asked for confirmation before deletion      | avoid deleting someone by mistake                                    |
-| `* *`  | user                                       | have my wedding data saved automatically       | avoid losing my progress                                             |
-| `* * *`  | user                                       | retrieve my saved data when restarting the app | continue managing weddings from where I left off                     |
-| `* * *`  | user                                       | have data persist even after closing the app   | ensure my information remains intact                                 |
-| `* *`    | user                                       | hide private contact details                   | minimize chance of someone else seeing them by accident              |
-| `*`      | user with many persons in the address book | sort persons by name                           | locate a person easily                                               |
-
-
-*{More to be added}*
+| Priority | As a …​                                    | I want to …​                                      | So that I can…​                                                           |
+| -------- | ------------------------------------------ | ------------------------------------------------- | ------------------------------------------------------------------------- |
+| `* * *`  | new user                                   | see usage instructions                            | refer to instructions when I forget how to use the App                    |
+| `* * *`  | user                                       | create a new wedding folder with a unique name    | organize wedding details separately                                       |
+| `* * *`  | user                                       | delete a wedding    | remove unwanted weddings                                       |
+| `* * *`  | user                                       | open a wedding                        | manage its details                                                        |
+| `* * *`  | user                                       | close an open wedding                             | open a different wedding                                                  |
+| `* * *`  | user                                       | sort weddings by date                             | easily view upcoming weddings in chronological order and plan accordingly |
+| `* * *`  | user                                       | add a new person’s contact details to a wedding   | track attendees and their information                                     |
+| `* *`    | user                                       | find a person by name                             | quickly locate their details                                              |
+| `*`      | user                                       | search using partial name matching                | find people even if I don’t remember their full name                      |
+| `* *`    | user                                       | filter search results by guests, staff, or couple | narrow down results                                                       |
+| `* * *`  | user                                       | delete a person from a wedding                    | remove incorrect or outdated entries                                      |
+| `*`      | user                                       | be asked for confirmation before deletion         | avoid deleting someone by mistake                                         |
+| `* *`    | user                                       | have my wedding data saved automatically          | avoid losing my progress                                                  |
+| `* * *`  | user                                       | retrieve my saved data when restarting the app    | continue managing weddings from where I left off                          |
+| `* * *`  | user                                       | have data persist even after closing the app      | ensure my information remains intact                                      |
 
 ### Use cases
 
@@ -338,24 +334,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User creates a new wedding
 2. HappyEverAfter provides confirmation that the wedding has been created
 
-     Use case ends.
+    Use case ends.
 
 **Extensions**
 
-* 2a. There exists a wedding with the same name.
+- 1a. There exists a wedding with the same name.
 
-  2ai.HappyEverAfter shows an error message.
+    1ai.HappyEverAfter shows an error message.
 
     Use case resumes at step 1.
 
-  Use case ends.
+    Use case ends.
 
-* 2b. Wedding name provided is in an invalid format.
+- 1b. Wedding name provided is in an invalid format.
 
-  2bi. HappyEverAfter shows an error message.
+    1bi. HappyEverAfter shows an error message.
 
     Use case resumes at step 2.
-
 
 **Use case: Adding a person to a wedding**
 
@@ -368,17 +363,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 5. User adds contact information of person
 6. HappyEverAfter acts the person to that wedding.
 
-     Use case ends.
+    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+- 2a. The list is empty.
 
-  Use case ends.
+    Use case ends.
 
-* 5a. Contact information provided is in an invalid format.
+- 5a. Contact information provided is in an invalid format.
 
-  5ai. HappyEverAfter shows an error message.
+    5ai. HappyEverAfter shows an error message.
 
     Use case resumes at step 2.
 
@@ -399,47 +394,45 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is empty.
+- 2a. The list is empty.
 
-  Use case ends.
+    Use case ends.
 
-* 5a. The list is empty.
+- 5a. The list is empty.
 
-  Use case ends.
+    Use case ends.
 
-* 7a. The given index is invalid.
+- 7a. The given index is invalid.
 
-    * 7a1. HappyEverAfter shows an error message.
+  - 7a1. HappyEverAfter shows an error message.
 
-      Use case resumes at step 6.
+        Use case resumes at step 6.
 
-*{More to be added}*
+_{More to be added}_
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 weddings without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4.  Data loss should not occur even in the event of an unexpected shutdown (e.g., GUI crash).
-5.  The system should be modular, allowing for easy addition or removal of features without affecting existing functionality.
-6.  All data should be stored locally on the user's device, and users should be able to access and modify their data without any delays caused by network connectivity.
-7.  The system should perform input validation and generate a response within 500 milliseconds for each user input to ensure a smooth and responsive user experience.
+1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2. Should be able to hold up to 1000 weddings without a noticeable sluggishness in performance for typical usage.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. Data loss should not occur even in the event of an unexpected shutdown (e.g., GUI crash).
+5. The system should be modular, allowing for easy addition or removal of features without affecting existing functionality.
+6. All data should be stored locally on the user's device, and users should be able to access and modify their data without any delays caused by network connectivity.
+7. The system should perform input validation and generate a response within 500 milliseconds for each user input to ensure a smooth and responsive user experience.
 
-
-*{More to be added}*
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
-* **Client**:  A couple or individual using the wedding planner’s services to organize their wedding
-* **Vendor**: A service provider (e.g., caterers, florists, photographers) who collaborates with the wedding planner
-* **Invitation**: A digital or physical wedding invitation managed and tracked within the system
-* **Event Timeline**: A structured schedule outlining key wedding milestones and deadlines
-* **Vendor Coordination**: The process of managing communication and contracts with wedding vendors
-* **Reminder Notifications**: Automated alerts to keep planners on schedule with tasks
-* **Error Message**: A message displayed when an invalid operation occurs
---------------------------------------------------------------------------------------------------------------------
+- **Mainstream OS**: Windows, Linux, Unix, MacOS
+- **Client**: A couple or individual using the wedding planner’s services to organize their wedding
+- **Vendor**: A service provider (e.g., caterers, florists, photographers) who collaborates with the wedding planner
+- **Invitation**: A digital or physical wedding invitation managed and tracked within the system
+- **Event Timeline**: A structured schedule outlining key wedding milestones and deadlines
+- **Vendor Coordination**: The process of managing communication and contracts with wedding vendors
+- **Reminder Notifications**: Automated alerts to keep planners on schedule with tasks
+- **Error Message**: A message displayed when an invalid operation occurs
+
+---
 
 ## **Appendix: Instructions for manual testing**
 
@@ -448,7 +441,7 @@ Given below are instructions to test the app manually.
 <box type="info" seamless>
 
 **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more _exploratory_ testing.
 
 </box>
 
@@ -456,15 +449,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
@@ -473,16 +466,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Adding a wedding to `HappyEverAfter`
 
-   1. Prerequisites: Application must be open
+    1. Prerequisites: Application must be open
 
-   1. Test case: `new n/NAME d/09092027`<br>
-      Expected: The application will prompt addition of the contact details of bride and groom.
+    1. Test case: `new n/NAME d/09092027`<br>
+       Expected: The application will prompt addition of the contact details of bride and groom.
 
-   1. Test case: `new NAME`<br>
-      Expected: No wedding is created. Error details shown in the status message. Status bar remains the same.
+    1. Test case: `new NAME`<br>
+       Expected: No wedding is created. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect `new` commands to try: `new`, `new n/NAME d/DATE`, `...` (where DATE is not a recognised date format)<br>
-      Expected: Similar to previous.
+    1. Other incorrect `new` commands to try: `new`, `new n/NAME d/DATE`, `...` (where DATE is not a recognised date format)<br>
+       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
 
@@ -490,6 +483,6 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_

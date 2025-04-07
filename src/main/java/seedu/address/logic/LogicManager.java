@@ -46,6 +46,12 @@ public class LogicManager implements Logic {
         weddingPlannerParser = new WeddingPlannerParser();
     }
 
+    private boolean isCommandAllowedInDrafting(Command command) {
+        return command instanceof AddWeddingPersonCommand
+                || command instanceof ExitCommand
+                || command instanceof NCommand;
+    }
+
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
@@ -53,8 +59,7 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command = weddingPlannerParser.parseCommand(commandText);
 
-        if (!(command instanceof AddWeddingPersonCommand || command instanceof ExitCommand
-                || command instanceof NCommand) && LogicMemory.checkIfDrafting()) {
+        if (LogicMemory.checkIfDrafting() && !isCommandAllowedInDrafting(command)) {
             throw new CommandException(LogicMemory.getDraftingMessage());
         }
 

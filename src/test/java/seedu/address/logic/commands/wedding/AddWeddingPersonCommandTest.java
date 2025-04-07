@@ -9,7 +9,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.Logic;
 import seedu.address.logic.LogicMemory;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -40,9 +39,10 @@ public class AddWeddingPersonCommandTest {
     @Test
     public void execute_noActiveWedding_throwsCommandException() {
         // Create a person to add and create the command
+        LogicMemory.setDraftStage(LogicMemory.DraftState.NO_DRAFT);
         Person person = new PersonBuilder().build();
         AddWeddingPersonCommand command = new AddWeddingPersonCommand(person);
-
+        assert person != null;
         // Execute the command and expect an exception
         assertThrows(
                 CommandException.class,
@@ -68,8 +68,8 @@ public class AddWeddingPersonCommandTest {
         assertThrows(
                 CommandException.class,
                 "You have a wedding being created!\n"
-                        + "Add the bride using : add n/NAME p/PHONE e/EMAIL a/ADDRESS t/bride",
-                () -> command.execute(model)
+                        + "Add the bride using : add n/NAME p/PHONE e/EMAIL a/ADDRESS t/bride", ()
+                        -> command.execute(model)
         );
 
         LogicMemory.resetLogicMemory();
@@ -153,8 +153,8 @@ public class AddWeddingPersonCommandTest {
         // Execute the command and expect an exception
         assertThrows(CommandException.class,
                 "You have a wedding being created!\n"
-                        + "Add the groom using : add n/NAME p/PHONE e/EMAIL a/ADDRESS t/groom",
-                () -> command.execute(model)
+                        + "Add the groom using : add n/NAME p/PHONE e/EMAIL a/ADDRESS t/groom", ()
+                        -> command.execute(model)
         );
 
         LogicMemory.resetLogicMemory();
