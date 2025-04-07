@@ -172,9 +172,9 @@ The `Storage` component,
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
----
+<!-----
 
-## **Implementation**
+ ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -269,7 +269,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   - Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   - Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
+_{more aspects and alternatives to be added}_ -->
 
 <!-- ### \[Proposed\] Data archiving
 
