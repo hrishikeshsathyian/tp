@@ -6,9 +6,7 @@
 
 # HappyEverAfter User Guide
 
-
 Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of members with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time!
-
 
 <!-- * Table of Contents -->
 ## Table of Contents
@@ -236,6 +234,12 @@ You can use tags to specify if the person is a bride, groom, or other wedding pa
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
+Examples:
+
+- `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kentridgr St t/bride`
+- `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
+- `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
+
 <box type="info">
 Note:
 
@@ -285,12 +289,6 @@ Note:
 
 </box>
 
-Examples:
-
-- `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kentridgr St t/bride`
-- `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
-- `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
-
 ### Finding people: `findperson`
 
 You can view all weddings with people that match the provided search terms and it is not case-sensitive.
@@ -301,6 +299,7 @@ You can use open command to view a specific wedding.
 Format: `findperson [SEARCH TERMS]`
 
 Examples:
+
 - `findperson Sun`
 - `findperson Sun Hrishi`
 
@@ -312,6 +311,7 @@ the specified tag.
 Format: `filter [TAGS}`
 
 Examples:
+
 - `filter bride` (Displays only the bride)
 - `filter groom` (Displays only the groom)
 - `filter` (Displays all members without filtering)
@@ -370,6 +370,9 @@ Examples:
   - e.g. if the person already has the tag `Brother`, and you want to add a new tag `Coming`, you will have to run the command `editperson INDEX t/Brother t/Coming`.
   - If you want to remove all tags from a person, you can enter `t/` with no tags behind. This will remove all tags from the person at the specified index.
 
+**Restrictions on Parameters:**
+
+See **Restrictions on Parameters** in the [add command](#adding-a-person-to-a-wedding-add) for more details.
 </div>
 
 <box type="tip">
@@ -418,6 +421,7 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 --------------------------------------------------------------------------------------------------------------------
 
 [Back to Table of Contents](#table-of-contents)
+
 ## FAQ
 
 **Q**: How do I transfer my wedding planner data to another computer?
@@ -434,7 +438,6 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 
 **Q**: I renamed the bride and groom of a wedding. How do I change the wedding name?
 **A**: The system currently does not support the editing of wedding names directly. However, you may update the data file yourself. Look through the ["Editing the data file" section](#editing-the-data-file) for more support.
-
 
 --------------------------------------------------------------------------------------------------------------------
 [Back to Table of Contents](#table-of-contents)
