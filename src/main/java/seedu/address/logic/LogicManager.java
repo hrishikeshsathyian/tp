@@ -64,9 +64,9 @@ public class LogicManager implements Logic {
             throw new CommandException(LogicMemory.getDraftingMessage());
         }
 
-        boolean isCancellingClear = (LogicMemory.isClearingWeddingPlanner()
+        boolean isCancellingClearWedding = (LogicMemory.isClearingWeddingPlanner()
                 && !(command instanceof YCommand || command instanceof NCommand));
-        if (isCancellingClear) {
+        if (isCancellingClearWedding) {
             LogicMemory.resetLogicMemory();
         }
 
