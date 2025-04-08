@@ -12,6 +12,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.NCommand;
+import seedu.address.logic.commands.YCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.wedding.AddWeddingPersonCommand;
 import seedu.address.logic.parser.WeddingPlannerParser;
@@ -61,6 +62,12 @@ public class LogicManager implements Logic {
 
         if (LogicMemory.checkIfDrafting() && !isCommandAllowedInDrafting(command)) {
             throw new CommandException(LogicMemory.getDraftingMessage());
+        }
+
+        boolean isCancellingClear = (LogicMemory.isClearingWeddingPlanner()
+                && !(command instanceof YCommand || command instanceof NCommand));
+        if (isCancellingClear) {
+            LogicMemory.resetLogicMemory();
         }
 
         commandResult = command.execute(model);
